@@ -29,30 +29,11 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.nikola = {
-                imports = [ ./home.nix ];
+                imports = [ ./home ]; # This should automatically find ./home/default.nix
               };
             }
           ];
         };
       };
- 
-
-
-# The below code is for using the home-manager separately
-# If we want to use it that way, we don't need to specify it in `modules` up there
-#      hmConfig = {
-#         nikola = home-manager.lib.homeManagerConfiguration {
-#         inherit system pkgs;
-#          username = "nikola";
-#          homeDirectory = "/home/nikola";
-#          stateVersion = "23.05";
-#          configuration = {
-#            imports = [
-#              ./home.nix
-#            ];
-#          };
-#         };
-#      };
-
     };
 }
