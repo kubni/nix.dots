@@ -11,5 +11,18 @@
     zip
     unzip
     ripgrep
+
+   # dwmblocks.overrideAttrs(oldAttrs: {
+   #   src = pkgs.fetchgit {
+   #     url = "https://github.com/jitessh/dwmblocks";
+   #   };
+   # })
+
+    (dwmblocks.overrideAttrs(oldAttrs: {
+      src = pkgs.fetchgit {
+        url = "https://github.com/jitessh/dwmblocks";
+        hash = "sha256-nS8BHON4FbbHXbsejc741Rw+uZXntlT0NsR4H8PvOco=";
+      };
+    }))
   ];
 }

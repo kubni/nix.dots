@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports =
@@ -51,8 +51,11 @@
 
 
   # Enable Flakes and nix-command
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -61,6 +64,7 @@
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     curl
+
   ];
 
   # Set default editor
@@ -101,5 +105,13 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
+
+
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  };
+
+
 
 }
