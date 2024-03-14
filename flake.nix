@@ -9,9 +9,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, home-manager }:
+  outputs = { self, nixpkgs, home-manager, hyprland }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -23,6 +25,7 @@
       nixosConfigurations = {
         nikola = lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit hyprland; };
           modules = [ 
             ./modules/configuration.nix
             ./modules/dwm.nix

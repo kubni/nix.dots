@@ -11,12 +11,7 @@
     zip
     unzip
     ripgrep
-
-   # dwmblocks.overrideAttrs(oldAttrs: {
-   #   src = pkgs.fetchgit {
-   #     url = "https://github.com/jitessh/dwmblocks";
-   #   };
-   # })
+    kitty
 
     (dwmblocks.overrideAttrs(oldAttrs: {
       src = pkgs.fetchgit {
