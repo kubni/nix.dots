@@ -1,6 +1,4 @@
 {
-  description = "A very basic flake";
-
   # inputs section is the attribute set of all the dependencies of the flake
   # Things from the inputs section are used to build things in the outputs section
   inputs = {
@@ -10,10 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
+   # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland }:
+  outputs = { self, nixpkgs, home-manager}:  # hyprland
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -25,15 +23,14 @@
       nixosConfigurations = {
         nikola = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit hyprland; };
+    #      specialArgs = { inherit hyprland; };
           modules = [ 
             ./modules/configuration.nix
-            ./modules/dwm.nix
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.nikola = {
-                imports = [ ./home ]; # This should automatically find ./home/default.nix
+                imports = [ ./home-manager ]; 
               };
             }
           ];
