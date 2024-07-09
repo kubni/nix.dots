@@ -3,9 +3,8 @@
     librewolf = {
       enable = true;
     };
-    chromium = {
+    firefox = {
       enable = true;
     };
   };
-
 }
