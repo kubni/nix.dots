@@ -7,13 +7,14 @@
     };
 
    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-   hyprsplit = {
-     url = "github:shezdy/hyprsplit";
+   split-monitor-workspaces = {
+     #url = "github:shezdy/hyprsplit";
+     url = "github:Duckonaut/split-monitor-workspaces";
      inputs.hyprland.follows = "hyprland";
    };
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, hyprsplit}:
+  outputs = { self, nixpkgs, home-manager, hyprland, split-monitor-workspaces}:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -31,7 +32,7 @@
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-	      home-manager.extraSpecialArgs = { inherit hyprsplit; };
+	      home-manager.extraSpecialArgs = { inherit split-monitor-workspaces hyprland; };
               home-manager.users.nikola = {
                 imports = [ ./home-manager ]; 
               };

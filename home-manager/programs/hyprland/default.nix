@@ -1,12 +1,10 @@
-{pkgs, lib, hyprsplit, ...}:
+{pkgs, lib, hyprland, split-monitor-workspaces, ...}:
 
 {
   imports = [
     ./waybar
   ]; 
 	
-
-
   wayland.windowManager.hyprland = {
      enable = true;
 
@@ -167,7 +165,7 @@
     };
 
     plugins = [
-      hyprsplit.packages.${pkgs.system}.hyprsplit
+      split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
     ];
   };
 }
