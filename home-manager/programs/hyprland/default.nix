@@ -1,4 +1,4 @@
-{pkgs, lib, hyprland, split-monitor-workspaces, ...}:
+{pkgs, lib, hyprland, ...}: # TODO: Add a plugin here, either hyprsplit or split-monitor-workspaces, depending on what is in flake.nix
 
 {
   imports = [
@@ -164,8 +164,8 @@
        ];
     };
 
-    plugins = [
-      split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
-    ];
+    #plugins = [
+    #  split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+    #];
   };
 }

@@ -65,6 +65,13 @@
      grim
      slurp
      cliphist
+     unrar
+     unzip
+
+     wineWowPackages.stable
+     winetricks
+     mono
+     qbittorrent
 
      waybar #TODO: Move this?
    ];
