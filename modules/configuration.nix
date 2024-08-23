@@ -53,6 +53,12 @@
      wget
      curl 
      git
+     dunst
+     grim
+     slurp
+     cliphist
+
+     waybar #TODO: Move this?
    ];
    environment.variables.EDITOR = "nvim";
 

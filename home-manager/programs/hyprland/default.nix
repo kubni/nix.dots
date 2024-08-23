@@ -1,6 +1,12 @@
 {pkgs, lib, ...}:
 
 {
+  imports = [
+    ./waybar
+  ]; 
+	
+
+
   wayland.windowManager.hyprland = {
      enable = true;
 

@@ -1,0 +1,94 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "right", // Waybar position (top|bottom|left|right)
+    // "height": 100%,
+    // "width": 10,
+    "spacing": 20, // Gaps between modules (4px)
+
+    // Choose the order of the modules
+    "modules-left": ["clock", "tray"],
+    "modules-center": ["hyprland/workspaces"],
+    // "modules-right": ["clock", "memory", "cpu", "temperature", "pulseaudio"],
+    "modules-right": ["memory", "cpu", "temperature", "pulseaudio"],
+
+    // Modules configuration
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{icon} ",
+        "format-icons": {
+             "1":"",
+             "2":"",
+             "3":"",
+             "4":"",
+             "5":"",
+             "6":"",
+             "7":"",
+             "8":"",
+             "9":"",
+             "10":"",
+             "11":"",
+             "12":"",
+             "13":"",
+             "14":"",
+             "15":"",
+             "16":"",
+             "17":"",
+             "18":"",
+             "19":"",
+             "20":"",
+        }
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "timezone": "Europe/Belgrade",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{percentage}% "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+   "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        // "format": "{volume}% {icon} {format_source}",
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        // "format-source": "{volume}% ",
+        // "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pulsemixer"
+    }
+}
