@@ -1,4 +1,4 @@
-{pkgs, lib, ...}:
+{pkgs, lib, hyprsplit, ...}:
 
 {
   imports = [
@@ -165,5 +165,9 @@
 	 "$mainMod, mouse:273, resizewindow"
        ];
     };
+
+    plugins = [
+      hyprsplit.packages.${pkgs.system}.hyprsplit
+    ];
   };
 }

@@ -13,5 +13,7 @@
     unzip
     ripgrep
     kitty
+
+    vesktop
   ];
 }
