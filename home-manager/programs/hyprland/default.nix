@@ -14,6 +14,12 @@
 	 "HDMI-A-1,preferred,auto-left,auto,bitdepth,10"
        ];
 
+       exec-once = [
+	 "dunst &"
+	 "wl-paste --type text --watch cliphist store"
+	 "wl-paste --type image --watch cliphist store"
+       ];
+
        "$mainMod" = "SUPER";
        "$terminal" = "kitty";
        "$fileManager" = "kitty ranger";

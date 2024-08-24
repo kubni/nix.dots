@@ -31,16 +31,19 @@
     powerManagement.enable = false;
     powerManagement.finegrained = false;
     open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
-    #package = config.boot.kernelPackages.nvidiaPackages.mkDriver { 
-    #	version = "560.35.03";
-    #    sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
-    #    sha256_aarch64 = lib.fakeSha256;
-    #    openSha256 = lib.fakeSha256;
-    #    settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
-    #    persistencedSha256 = lib.fakeSha256;
-    #};
+    nvidiaSettings = false;
+    
+
+    #package = config.boot.kernelPackages.nvidiaPackages.beta;
+
+    package = config.boot.kernelPackages.nvidiaPackages.mkDriver { 
+    	version = "560.35.03";
+        sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
+        sha256_aarch64 = lib.fakeSha256;
+        openSha256 = lib.fakeSha256;
+        settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
+        persistencedSha256 = lib.fakeSha256;
+    };
   };
 
   services.pipewire = {

@@ -1,6 +1,9 @@
 {
   inputs = {
    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+   nixpkgs-unstable = {
+     url = "github:/NixOS/nixpkgs/nixpkgs-unstable";
+   };
    home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,7 +17,7 @@
    # };
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland}: #TODO: put the plugin here
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland}: #TODO: put the plugin here
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
