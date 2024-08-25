@@ -10,6 +10,14 @@
       ./hardware-configuration.nix
     ];
 
+  nixpkgs.config.allowUnfree = true;
+
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -33,9 +41,7 @@
     open = false;
     nvidiaSettings = false;
     
-
     #package = config.boot.kernelPackages.nvidiaPackages.beta;
-
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver { 
     	version = "560.35.03";
         sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
@@ -59,44 +65,50 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-   environment.systemPackages = with pkgs; [
-     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     wget
-     curl 
-     git
-     dunst
-     grim
-     slurp
-     cliphist
-     unrar
-     unzip
+  environment = { 
+    systemPackages = with pkgs; [
+      zsh
+      neovim
+      wget
+      curl 
+      git
+      dunst
+      grim
+      slurp
+      cliphist
+      unrar
+      unzip
 
-     wineWowPackages.stable
-     winetricks
-     mono
-     qbittorrent
+      wineWowPackages.stable
+      winetricks
+      mono
+      qbittorrent
 
+      wofi
+      (waybar.overrideAttrs (oldAttrs: {
+	  mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+       })
+      )
+    ];
 
-     wofi
-     (waybar.overrideAttrs (oldAttrs: {
-     	mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      })
-     )
-   ];
-   environment.variables.EDITOR = "nvim";
+    variables.EDITOR = "nvim";
 
-  nixpkgs.config.allowUnfree = true;
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    pathsToLink = [ "/share/zsh" ];
+  
   };
 
   programs.hyprland = {
-    enable = true;
-    #package = pkgs-unstable.hyprland;
-    package = hyprland.packages.${pkgs.system}.hyprland;
+   enable = true;
+   #package = pkgs-unstable.hyprland;
+   package = hyprland.packages.${pkgs.system}.hyprland;
   };
+
+  fonts.packages = with pkgs; [
+    noto-fonts
+    commit-mono
+  ];
+
+
 
   system.stateVersion = "24.05"; # Did you read the comment?
 }
