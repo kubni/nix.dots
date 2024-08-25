@@ -57,6 +57,7 @@
     pulse.enable = true;
   };
 
+  users.defaultUserShell = pkgs.zsh;
   users.users.nikola = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
@@ -78,6 +79,8 @@
       cliphist
       unrar
       unzip
+      fzf
+      fd
 
       wineWowPackages.stable
       winetricks

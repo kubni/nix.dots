@@ -17,6 +17,7 @@
 	"git"
 	"autojump"
       ];
+      theme = "lambda";
     };
   };
 
