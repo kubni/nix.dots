@@ -92,7 +92,8 @@
 
   programs.hyprland = {
     enable = true;
-    package = pkgs-unstable.hyprland;
+    #package = pkgs-unstable.hyprland;
+    package = hyprland.packages.${pkgs.system}.hyprland;
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?

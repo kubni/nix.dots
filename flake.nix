@@ -9,15 +9,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-   hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-   split-monitor-workspaces = {
-     #url = "github:shezdy/hyprsplit";
-     url = "github:Duckonaut/split-monitor-workspaces";
-     inputs.hyprland.follows = "hyprland";
+   hyprland ={
+	url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.41.2&submodules=1";
    };
+   #hyprsplit = {
+   #  url = "github:shezdy/hyprsplit";
+   #};
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, split-monitor-workspaces}: #TODO: put the plugin here
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland}: 
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -30,13 +30,13 @@
       nixosConfigurations = {
         nikola = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit pkgs-unstable hyprland split-monitor-workspaces; };  # TODO: Add the plugin here, maybe it will fix the failed to load the following plugin error?
+          specialArgs = { inherit pkgs-unstable hyprland; };  
           modules = [ 
             ./modules/configuration.nix
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-	      home-manager.extraSpecialArgs = { inherit pkgs-unstable hyprland split-monitor-workspaces; }; #TODO: Inherit the plugin
+	      home-manager.extraSpecialArgs = { inherit pkgs-unstable hyprland; };
               home-manager.users.nikola = {
                 imports = [ ./home-manager ]; 
               };
