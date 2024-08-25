@@ -24,18 +24,19 @@
         inherit system;
         config.allowUnfree = true;
       };
+      pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
       lib = nixpkgs.lib;
     in {
       nixosConfigurations = {
         nikola = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit nixpkgs-unstable hyprland split-monitor-workspaces; };  # TODO: Add the plugin here, maybe it will fix the failed to load the following plugin error?
+          specialArgs = { inherit pkgs-unstable hyprland split-monitor-workspaces; };  # TODO: Add the plugin here, maybe it will fix the failed to load the following plugin error?
           modules = [ 
             ./modules/configuration.nix
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-	      home-manager.extraSpecialArgs = { inherit hyprland split-monitor-workspaces; }; #TODO: Inherit the plugin
+	      home-manager.extraSpecialArgs = { inherit pkgs-unstable hyprland split-monitor-workspaces; }; #TODO: Inherit the plugin
               home-manager.users.nikola = {
                 imports = [ ./home-manager ]; 
               };

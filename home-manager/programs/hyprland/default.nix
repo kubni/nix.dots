@@ -1,4 +1,4 @@
-{pkgs, lib, hyprland, split-monitor-workspaces,...}: # TODO: Add a plugin here, either hyprsplit or split-monitor-workspaces, depending on what is in flake.nix
+{pkgs, pkgs-unstable, lib, hyprland, split-monitor-workspaces,...}: # TODO: Add a plugin here, either hyprsplit or split-monitor-workspaces, depending on what is in flake.nix
 
 {
   imports = [
@@ -9,6 +9,7 @@
      enable = true;
 
      #package = hyprland.packages.${pkgs.system}.hyprland;
+     package = pkgs-unstable.hyprland; 
 
      settings = {
        monitor = [

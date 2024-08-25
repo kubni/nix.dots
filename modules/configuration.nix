@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, nixpkgs-unstable, hyprland, ... }:
+{ config, lib, pkgs, pkgs-unstable, hyprland, ... }:
 
 {
   imports =
@@ -92,8 +92,7 @@
 
   programs.hyprland = {
     enable = true;
-    #package = hyprland.packages.${pkgs.system}.hyprland; # TODO: Here or in home-manager?
-    package = nixpkgs-unstable.hyprland; 
+    package = pkgs-unstable.hyprland;
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?
