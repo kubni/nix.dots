@@ -8,7 +8,7 @@
   wayland.windowManager.hyprland = {
      enable = true;
 
-     #package = hyprland.packages.${pkgs.system}.hyprland;
+     package = hyprland.packages.${pkgs.system}.hyprland;
      #package = pkgs-unstable.hyprland; 
 
      settings = {
