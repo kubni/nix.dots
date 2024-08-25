@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, hyprland, ... }:
+{ config, lib, pkgs, nixpkgs-unstable, hyprland, ... }:
 
 {
   imports =
@@ -76,7 +76,10 @@
      mono
      qbittorrent
 
-     waybar #TODO: Move this?
+     (waybar.overrideAttrs (oldAttrs: {
+     	mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      })
+     )
    ];
    environment.variables.EDITOR = "nvim";
 
@@ -89,7 +92,8 @@
 
   programs.hyprland = {
     enable = true;
-    package = hyprland.packages.${pkgs.system}.hyprland;
+    #package = hyprland.packages.${pkgs.system}.hyprland; # TODO: Here or in home-manager?
+    package = nixpkgs-unstable.hyprland; 
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?

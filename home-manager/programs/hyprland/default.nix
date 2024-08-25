@@ -1,4 +1,4 @@
-{pkgs, lib, hyprland, ...}: # TODO: Add a plugin here, either hyprsplit or split-monitor-workspaces, depending on what is in flake.nix
+{pkgs, lib, hyprland, split-monitor-workspaces,...}: # TODO: Add a plugin here, either hyprsplit or split-monitor-workspaces, depending on what is in flake.nix
 
 {
   imports = [
@@ -7,6 +7,8 @@
 	
   wayland.windowManager.hyprland = {
      enable = true;
+
+     #package = hyprland.packages.${pkgs.system}.hyprland;
 
      settings = {
        monitor = [
@@ -170,8 +172,8 @@
        ];
     };
 
-    #plugins = [
-    #  split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
-    #];
+    plugins = [
+      split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+    ];
   };
 }
