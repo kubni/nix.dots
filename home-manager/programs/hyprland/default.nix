@@ -18,7 +18,7 @@
        ];
 
        exec-once = [
-	 "dunst &"
+	 "mako &"
 	 "wl-paste --type text --watch cliphist store"
 	 "wl-paste --type image --watch cliphist store"
        ];

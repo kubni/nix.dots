@@ -15,7 +15,15 @@
     unzip
     ripgrep
     kitty
+    ranger
+    lsd
+    duf
+    fuc # Provides cpz and rmz
+    bat
+    p7zip
 
     vesktop
+    mono
+
   ];
 }

@@ -73,7 +73,7 @@
       wget
       curl 
       git
-      dunst
+      mako
       grim
       slurp
       cliphist
@@ -81,6 +81,10 @@
       unzip
       fzf
       fd
+      rsync
+      tree
+      ncdu
+
 
       wineWowPackages.stable
       winetricks
@@ -112,6 +116,7 @@
 
   fonts.packages = with pkgs; [
     noto-fonts
+    nerdfonts
     commit-mono
   ];
 
