@@ -57,11 +57,11 @@
     pulse.enable = true;
   };
 
-  users.defaultUserShell = pkgs.zsh;
   users.users.nikola = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [];
+    shell = pkgs.zsh;
   };
 
   # List packages installed in system profile. To search, run:
@@ -104,6 +104,10 @@
    enable = true;
    #package = pkgs-unstable.hyprland;
    package = hyprland.packages.${pkgs.system}.hyprland;
+  };
+
+  programs.zsh = {
+    enable = true;
   };
 
   fonts.packages = with pkgs; [
