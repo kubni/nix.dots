@@ -66,43 +66,6 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment = { 
-    systemPackages = with pkgs; [
-      zsh
-      neovim
-      wget
-      curl 
-      git
-      mako
-      grim
-      slurp
-      cliphist
-      unrar
-      unzip
-      fzf
-      fd
-      rsync
-      tree
-      ncdu
-
-
-      wineWowPackages.stable
-      winetricks
-      mono
-      qbittorrent
-
-      wofi
-      (waybar.overrideAttrs (oldAttrs: {
-	  mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-       })
-      )
-    ];
-
-    variables.EDITOR = "nvim";
-
-    pathsToLink = [ "/share/zsh" ];
-  
-  };
 
   programs.hyprland = {
    enable = true;
@@ -126,6 +89,47 @@
 
   services.fstrim = {
     enable = true;
+  };
+
+  environment = { 
+    systemPackages = with pkgs; [
+      zsh
+      neovim
+      wget
+      curl 
+      git
+      mako
+      libnotify
+      grim
+      slurp
+      cliphist
+      unrar
+      unzip
+      fzf
+      fd
+      rsync
+      tree
+      ncdu
+      wlsunset
+      btop
+      lm_sensors
+
+      wineWowPackages.stable
+      winetricks
+      mono
+      qbittorrent
+
+      wofi
+      (waybar.overrideAttrs (oldAttrs: {
+	  mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+       })
+      )
+    ];
+
+    variables.EDITOR = "nvim";
+
+    pathsToLink = [ "/share/zsh" ];
+  
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?

@@ -11,11 +11,7 @@
       switch = "sudo nixos-rebuild switch --flake .#nikola";
       ls = "lsd";
       df = "duf";
-      cp = "cpz"; # !
-      rm = "rmz"; # !
-      cat = "bat";
-
-
+      nightlight = "wlsunset -l 44.8 -L 20.4";
     };
 
     oh-my-zsh = {

@@ -13,7 +13,8 @@
         "memory",
         "cpu",
         "temperature",
-        "pulseaudio"
+        "pulseaudio",
+	"custom/nightlight"
     ],
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -94,5 +95,12 @@
             ]
         },
         "on-click": "pulsemixer"
+    },
+    "custom/nightlight": {
+	"format": "{icon}",
+	"format-icons": [
+	  "󰖔"
+	],
+	"on-click": "toggle_nightlight.sh"
     }
 }

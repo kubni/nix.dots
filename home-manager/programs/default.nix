@@ -4,6 +4,7 @@
     ./browsers.nix
     ./zsh.nix
     ./kitty.nix
+    ./mako.nix
     ./hyprland
   ];
 
@@ -24,6 +25,6 @@
 
     vesktop
     mono
-
+    hyprpaper
   ];
 }

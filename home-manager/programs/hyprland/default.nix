@@ -31,6 +31,7 @@
        env = [
 	 "HYPRCURSOR_SIZE, 40"
 	 "QT_QPA_PLATFORMTHEME, qt6ct"
+	 "WAYBAR_SCRIPTS_DIR, ~/nix.dots/home-manager/programs/hyprland/waybar/scripts"
 
 	 # Nvidia stuff
 	 "LIBVA_DRIVER_NAME, nvidia"
