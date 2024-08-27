@@ -21,7 +21,7 @@
     duf
     fuc # Provides cpz and rmz
     bat
-    p7zip
+    thunderbird
 
     vesktop
     mono

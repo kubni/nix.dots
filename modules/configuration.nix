@@ -105,6 +105,7 @@
       cliphist
       unrar
       unzip
+      p7zip
       fzf
       fd
       rsync
@@ -113,6 +114,8 @@
       wlsunset
       btop
       lm_sensors
+      pulsemixer
+      wl-clipboard
 
       wineWowPackages.stable
       winetricks
