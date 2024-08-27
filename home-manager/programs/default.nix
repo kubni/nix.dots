@@ -5,6 +5,7 @@
     ./zsh.nix
     ./kitty.nix
     ./mako.nix
+    ./starship.nix
     ./hyprland
   ];
 

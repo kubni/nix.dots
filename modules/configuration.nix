@@ -123,10 +123,9 @@
       qbittorrent
 
       wofi
-      (waybar.overrideAttrs (oldAttrs: {
-	  mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-       })
-      )
+      waybar
+
+      starship
     ];
 
     variables.EDITOR = "nvim";

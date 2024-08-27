@@ -96,7 +96,7 @@ window#waybar {
 }
 
 #tray {
-    background: #282828;
+    background-color: transparent;
     margin: 5px 5px 5px 5px;
     border-radius: 16px;
     padding: 0px 5px;

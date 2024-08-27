@@ -19,12 +19,12 @@
       plugins = [
 	"git"
       ];
-      theme = "lambda";
     };
 
     # These get added to .zshrc
     initExtra = ''
       source <(fzf --zsh) 
+      eval "$(starship init zsh)"
     '';
   };
 
