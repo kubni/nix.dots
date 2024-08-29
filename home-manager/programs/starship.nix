@@ -5,7 +5,7 @@
     settings = {
       add_newline = true;
       format = ''
-         (bold fg:81a1c1) in $directory $git_branch   
+         (bold fg:81a1c1)in $directory$git_branch   
         [└─>](bold fg:81a1c1) $character
       '';
       character = {

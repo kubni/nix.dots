@@ -3,6 +3,7 @@
 {
   imports = [
     ./waybar
+    ./hyprpaper.nix
   ]; 
 	
   wayland.windowManager.hyprland = {
@@ -21,6 +22,7 @@
 	 "mako &"
 	 "wl-paste --type text --watch cliphist store"
 	 "wl-paste --type image --watch cliphist store"
+	 "hyprpaper &"
        ];
 
        "$mainMod" = "SUPER";
