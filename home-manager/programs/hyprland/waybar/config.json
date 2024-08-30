@@ -101,6 +101,6 @@
 	"format-icons": [
 	  "󰖔"
 	],
-	"on-click": "toggle_nightlight.sh"
+	"on-click": "toggle-nightlight"
     }
 }

@@ -25,7 +25,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use unstable kernel
-  boot.kernelPackages = pkgs-unstable.linuxPackages_latest;
+  #boot.kernelPackages = pkgs-unstable.linuxPackages_latest;
 
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -139,6 +139,18 @@
       waybar
 
       starship
+
+      (pkgs.writeShellApplication {
+	name = "toggle-nightlight";
+	runtimeInputs = [ wlsunset ];
+	text = ''
+	  if pgrep -x "wlsunset" > /dev/null; then
+	  	pkill -x "wlsunset"
+	  else 
+	  	wlsunset -l 44.8 -L 20.4 &
+	  fi
+	'';
+      })
     ];
 
     variables.EDITOR = "nvim";
