@@ -27,5 +27,7 @@
     vesktop
     mono
     hyprpaper
+
+    unigine-valley
   ];
 }

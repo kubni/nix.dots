@@ -26,7 +26,10 @@
         inherit system;
         config.allowUnfree = true;
       };
-      pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+	config.allowUnfree = true;
+      };
       lib = nixpkgs.lib;
     in {
       nixosConfigurations = {
