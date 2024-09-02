@@ -7,6 +7,7 @@
     ./mako.nix
     ./starship.nix
     ./hyprland
+    ./mpv
   ];
 
 

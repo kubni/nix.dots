@@ -14,7 +14,8 @@
         "cpu",
         "temperature",
         "pulseaudio",
-	"custom/nightlight"
+	"custom/nightlight",
+	"custom/shutdown"
     ],
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -102,5 +103,12 @@
 	  "󰖔"
 	],
 	"on-click": "toggle-nightlight"
+    },
+    "custom/shutdown": {
+	"format": "{icon}",
+	"format-icons": [
+	  ""
+	],
+	"on-click": "shutdown now"
     }
 }

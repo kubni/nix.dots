@@ -25,10 +25,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use unstable kernel
-  #boot.kernelPackages = pkgs-unstable.linuxPackages_latest;
+  boot.kernelPackages = pkgs-unstable.linuxPackages_zen;
 
-  networking.hostName = "nixos"; # Define your hostname.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.hostName = "nixos"; 
+  networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Belgrade";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -129,16 +129,14 @@
       lm_sensors
       pulsemixer
       wl-clipboard
-
       wineWowPackages.stable
       winetricks
       mono
       qbittorrent
-
       wofi
       waybar
-
       starship
+      mpv
 
       (pkgs.writeShellApplication {
 	name = "toggle-nightlight";

@@ -1,4 +1,4 @@
-{pkgs, pkgs-unstable, lib, hyprland, hyprsplit, ...}: # TODO: Add a plugin here, either hyprsplit or split-monitor-workspaces, depending on what is in flake.nix
+{pkgs, pkgs-unstable, lib, hyprland, hyprsplit, ...}:
 
 {
   imports = [
@@ -14,7 +14,7 @@
 
      settings = {
        monitor = [
-	 "DP-3,preferred,auto,auto,bitdepth,10"
+	 "DP-2,preferred,auto,auto,bitdepth,10"
 	 "HDMI-A-1,preferred,auto-left,auto,bitdepth,10"
        ];
 
@@ -33,7 +33,7 @@
        env = [
 	 "HYPRCURSOR_SIZE, 40"
 	 "QT_QPA_PLATFORMTHEME, qt6ct"
-	 "WAYBAR_SCRIPTS_DIR, ~/nix.dots/home-manager/programs/hyprland/waybar/scripts"
+#	 "WLR_DRM_NO_ATOMIC, 1"
 
 	 # Nvidia stuff
 	 "LIBVA_DRIVER_NAME, nvidia"
@@ -61,8 +61,13 @@
 
 	 layout = "master";
 
+	 #allow_tearing = "true";
 	 allow_tearing = "false";
        };
+
+       #windowrulev2 = [
+       #  "immediate, class:^(cs2)$"
+       #];
 
        decoration = {
 	 rounding = "10";
