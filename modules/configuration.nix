@@ -8,7 +8,7 @@
   imports =
     [ 
       ./hardware-configuration.nix
-      ./doom.nix
+      ./emacs
     ];
 
   nixpkgs.config.allowUnfree = true;
