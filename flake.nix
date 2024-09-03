@@ -31,11 +31,16 @@
 	config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
+      vars = {
+        location = "$HOME/nix.dots";
+	terminal = "kitty";
+	editor = "nvim";
+      };
     in {
       nixosConfigurations = {
         nikola = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit pkgs-unstable hyprland; };  
+          specialArgs = { inherit pkgs-unstable vars hyprland; };  
           modules = [ 
             ./modules/configuration.nix
             home-manager.nixosModules.home-manager {

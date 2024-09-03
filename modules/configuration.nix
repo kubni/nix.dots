@@ -6,8 +6,9 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [ 
       ./hardware-configuration.nix
+      ./doom.nix
     ];
 
   nixpkgs.config.allowUnfree = true;

@@ -14,7 +14,7 @@
 
      settings = {
        monitor = [
-	 "DP-2,preferred,auto,auto,bitdepth,10"
+	 "DP-2,2560x1440@74.97,auto,auto,bitdepth,10"
 	 "HDMI-A-1,preferred,auto-left,auto,bitdepth,10"
        ];
 

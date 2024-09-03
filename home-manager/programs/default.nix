@@ -28,6 +28,8 @@
     vesktop
     mono
     hyprpaper
+    mangohud
+    jellyfin-media-player
 
     unigine-valley
   ];
