@@ -40,6 +40,10 @@
   
   services.xserver.videoDrivers = ["nvidia"];
 
+  services.openssh = {
+    enable = true;
+  };
+
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
