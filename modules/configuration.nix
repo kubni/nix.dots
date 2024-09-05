@@ -9,6 +9,7 @@
     [ 
       ./hardware-configuration.nix
       ./emacs
+      ./go
     ];
 
   nixpkgs.config.allowUnfree = true;
