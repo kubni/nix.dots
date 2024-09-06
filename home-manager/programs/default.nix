@@ -6,8 +6,10 @@
     ./kitty.nix
     ./mako.nix
     ./starship.nix
+    ./kdeconnect.nix
     ./hyprland
     ./mpv
+    
   ];
 
 

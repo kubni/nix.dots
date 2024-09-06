@@ -97,6 +97,10 @@
     enable = true;
   };
 
+  programs.kdeconnect = {
+    enable = true;
+  };
+
   fonts.packages = with pkgs; [
     noto-fonts
     nerdfonts
