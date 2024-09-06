@@ -8,6 +8,7 @@
   imports =
     [ 
       ./hardware-configuration.nix
+      ./wireguard.nix
       ./emacs
       ./go
     ];
