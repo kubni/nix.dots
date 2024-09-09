@@ -15,7 +15,7 @@
         "temperature",
         "pulseaudio",
 	"custom/nightlight",
-	"custom/shutdown"
+	"custom/vpn"
     ],
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -110,5 +110,12 @@
 	  ""
 	],
 	"on-click": "shutdown now"
+    },
+    "custom/vpn": {
+	"format": "{icon}",
+	"format-icons": [
+	  "󰩠"
+	],
+	"on-click": "toggle-vpn"
     }
 }

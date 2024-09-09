@@ -160,6 +160,17 @@
 	  fi
 	'';
       })
+
+      (pkgs.writeShellApplication {
+        name = "toggle-vpn";
+	text = ''
+	  if systemctl is-active --quiet wg-quick-wg0.service; then
+	  	systemctl stop wg-quick-wg0.service;
+	  else
+	        systemctl start wg-quick-wg0.service;
+	  fi
+	'';
+      })
     ];
 
     variables.EDITOR = "nvim";
