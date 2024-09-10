@@ -16,13 +16,15 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings = {
+  nix = {
+    settings = {
     experimental-features = ["nix-command" "flakes"];
     substituters = ["https://hyprland.cachix.org"];
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
+    optimise.automatic = true;
+  };
 
-  nix.optimise.automatic = true;
 
   boot = {
     loader = {
@@ -39,7 +41,6 @@
     hostName = "nixos";
     networkmanager.enable = true;
   };
-
 
   time.timeZone = "Europe/Belgrade";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -103,12 +104,52 @@
     nvf = {
       enable = true;
       settings = {
-        vim.viAlias = false;
-        vim.vimAlias = true;
-        vim.lsp = {
-          enable = true;
+        vim = {
+          viAlias = false;
+          vimAlias = true;
+          
+          lsp = {
+            enable = true;
+            lspSignature.enable = true;
+          };
+          
+          languages = {
+            enableLSP = true;
+            enableTreesitter = true;
+            nix.enable = true;
+          };
+
+          #theme = {
+          #  enable = true;
+          #  name = "rose-pine";
+          #  style = "main";
+          #  transparent = false;
+          #};
+
+          autopairs.enable = true;
+
+          autocomplete = {
+            enable = true;
+            type = "nvim-cmp";
+          };
+
+          visuals = {
+            nvimWebDevicons.enable = true;
+          };
+
+          tabline = {
+            nvimBufferline.enable = true;
+          };
+
+          extraPlugins = {
+            nord = {
+              package = pkgs.vimPlugins.nordic-nvim;
+              setup = "vim.cmd[[colorscheme nordic]]";
+            };
+          };
         };
       };
+
     };
   };
 
@@ -157,7 +198,7 @@
       cmake
       gnumake
       nixd
-
+  
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
         runtimeInputs = [wlsunset];
