@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
   config,
   lib,
@@ -27,9 +24,6 @@
 
   nix.optimise.automatic = true;
 
-  # Use the systemd-boot EFI boot loader.
-
-  # Use unstable kernel
   boot = {
     loader = {
       systemd-boot = {
@@ -105,6 +99,17 @@
     gamemode.enable = true;
     kdeconnect.enable = true;
     virt-manager.enable = true;
+
+    nvf = {
+      enable = true;
+      settings = {
+        vim.viAlias = false;
+        vim.vimAlias = true;
+        vim.lsp = {
+          enable = true;
+        };
+      };
+    };
   };
 
   fonts.packages = with pkgs; [
@@ -120,7 +125,6 @@
   environment = {
     systemPackages = with pkgs; [
       zsh
-      neovim
       wget
       curl
       git
