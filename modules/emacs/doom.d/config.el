@@ -125,3 +125,4 @@
 ;; TODO: How to make it so that $ is automatically added before and after \some_latex expression?
 (add-hook 'org-mode-hook 'org-fragtog-mode)
 (after! org (plist-put org-format-latex-options :scale 2))
+

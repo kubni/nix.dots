@@ -12,6 +12,7 @@
   imports = [
     ./hardware-configuration.nix
     ./wireguard.nix
+    ./virt.nix
     ./emacs
     ./go
   ];
@@ -37,6 +38,7 @@
       efi.canTouchEfiVariables = true;
     };
     kernelPackages = pkgs-unstable.linuxPackages_zen;
+    kernelModules = ["kvm-intel"];
   };
 
   networking = {
@@ -88,8 +90,7 @@
 
   users.users.nikola = {
     isNormalUser = true;
-    extraGroups = ["networkmanager" "wheel"]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [];
+    extraGroups = ["wheel" "networkmanager" "libvirtd"];
     shell = pkgs.zsh;
   };
 
@@ -103,6 +104,7 @@
     steam.enable = true;
     gamemode.enable = true;
     kdeconnect.enable = true;
+    virt-manager.enable = true;
   };
 
   fonts.packages = with pkgs; [
@@ -150,6 +152,7 @@
       mpv
       cmake
       gnumake
+      nixd
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
