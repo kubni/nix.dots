@@ -11,7 +11,7 @@
     ./wireguard.nix
     ./virt.nix
     ./emacs
-    ./go
+    ./coding
   ];
 
   nixpkgs.config.allowUnfree = true;
