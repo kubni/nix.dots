@@ -66,3 +66,6 @@
 
 ;; LateX fragment toggle
 (package! org-fragtog)
+
+;; envrc.el
+(package! envrc :recipe (:host github :repo "purcell/envrc"))

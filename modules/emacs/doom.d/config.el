@@ -126,3 +126,6 @@
 (add-hook 'org-mode-hook 'org-fragtog-mode)
 (after! org (plist-put org-format-latex-options :scale 2))
 
+
+;; Envrc.el config
+(add-hook 'after-init-hook 'envrc-global-mode)

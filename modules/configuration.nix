@@ -25,7 +25,6 @@
     optimise.automatic = true;
   };
 
-
   boot = {
     loader = {
       systemd-boot = {
@@ -198,6 +197,7 @@
       cmake
       gnumake
       nixd
+      direnv
   
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
