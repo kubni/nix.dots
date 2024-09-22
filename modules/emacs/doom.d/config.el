@@ -128,4 +128,4 @@
 
 
 ;; Envrc.el config
-(add-hook 'after-init-hook 'envrc-global-mode)
+;;(add-hook 'after-init-hook 'envrc-global-mode)

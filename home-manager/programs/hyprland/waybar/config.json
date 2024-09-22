@@ -14,8 +14,8 @@
         "cpu",
         "temperature",
         "pulseaudio",
-	"custom/nightlight",
-	"custom/vpn"
+    	"custom/nightlight",
+	    "custom/vpn"
     ],
     "hyprland/workspaces": {
         "disable-scroll": true,

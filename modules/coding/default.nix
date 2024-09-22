@@ -1,6 +1,6 @@
 {
   imports = [
     ./go
-    ./elixir
+    ./js
   ];
 }

@@ -26,13 +26,14 @@
     fuc # Provides cpz and rmz
     bat
     thunderbird
-
     vesktop
     mono
     hyprpaper
     mangohud
     jellyfin-media-player
-
     unigine-valley
+    libreoffice-qt6-fresh
+    yarn-berry
+    teams-for-linux
   ];
 }

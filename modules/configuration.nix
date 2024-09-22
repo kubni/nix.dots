@@ -198,6 +198,8 @@
       gnumake
       nixd
       direnv
+      nix-direnv
+      bitwarden
   
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
