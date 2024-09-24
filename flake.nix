@@ -13,11 +13,11 @@
     };
 
    hyprland ={
-	url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.41.2&submodules=1";
+	   url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.43.0&submodules=1";
    };
 
    hyprsplit = {
-     url = "github:shezdy/hyprsplit?ref=refs/tags/v0.41.2";
+     url = "github:shezdy/hyprsplit?ref=refs/tags/v0.43.0";
      inputs.hyprland.follows = "hyprland";
    };
 
@@ -27,7 +27,7 @@
    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, hyprsplit, nvf}: 
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, hyprsplit, nvf}:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {

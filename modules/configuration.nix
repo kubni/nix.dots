@@ -62,6 +62,10 @@
     fstrim = {
       enable = true;
     };
+    blueman = {
+      enable = true;
+    };
+
   };
 
   hardware.nvidia = {
@@ -199,8 +203,12 @@
       nixd
       direnv
       nix-direnv
-      bitwarden
-  
+      bitwarden 
+
+      keycloak
+      jdk21
+
+
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
         runtimeInputs = [wlsunset];

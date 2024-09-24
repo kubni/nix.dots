@@ -181,8 +181,8 @@
        ];
     };
 
-    plugins = [
-      hyprsplit.packages.${pkgs.system}.hyprsplit
-    ];
+    #plugins = [
+    #  hyprsplit.packages.${pkgs.system}.hyprsplit
+    #];
   };
 }
