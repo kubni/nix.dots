@@ -122,6 +122,10 @@
 	 no_hardware_cursors = "true";
        };
 
+       xwayland = {
+        use_nearest_neighbor = false;
+       };
+
        bind = [
 	 "$mainMod, Q, killactive"
 	 "$mainMod SHIFT, Q, exit"
