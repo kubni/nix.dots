@@ -61,6 +61,13 @@
     };
   };
 
+  virtualisation ={
+    docker.rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
+
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
@@ -81,7 +88,7 @@
 
   users.users.nikola = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = ["wheel" "networkmanager" "docker"];
     shell = pkgs.zsh;
   };
 

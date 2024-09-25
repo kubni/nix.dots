@@ -5,11 +5,12 @@
     settings = {
       splash = false;
       preload = [
-	"/home/nikola/Wallpapers/frieren.webp"
+#	"/home/nikola/Wallpapers/frieren.webp"
+  "/home/nikola/Wallpapers/nix.png"
       ];
       wallpaper = [
-	"DP-2,/home/nikola/Wallpapers/frieren.webp"
-	"HDMI-A-1,/home/nikola/Wallpapers/frieren.webp"
+	"eDP-1,/home/nikola/Wallpapers/nix.png"
+	"HDMI-A-1,/home/nikola/Wallpapers/nix.png"
       ];
     };
   };

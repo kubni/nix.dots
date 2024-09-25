@@ -14,8 +14,8 @@
 
      settings = {
        monitor = [
-	 "DP-2,2560x1440@74.97,auto,auto,bitdepth,10"
-	 "HDMI-A-1,preferred,auto-left,auto,bitdepth,10"
+	 "eDP-1,2560x1600@240.00,auto,auto,bitdepth,10"
+	 "HDMI-A-1,preferred,auto-up,auto,bitdepth,10"
        ];
 
        exec-once = [

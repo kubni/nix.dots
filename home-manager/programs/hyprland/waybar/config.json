@@ -15,7 +15,6 @@
         "temperature",
         "pulseaudio",
     	"custom/nightlight",
-	    "custom/vpn"
     ],
     "hyprland/workspaces": {
         "disable-scroll": true,
