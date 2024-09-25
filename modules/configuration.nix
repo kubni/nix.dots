@@ -8,8 +8,6 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./wireguard.nix
-    ./virt.nix
     ./emacs
     ./coding
   ];
@@ -33,7 +31,6 @@
       efi.canTouchEfiVariables = true;
     };
     kernelPackages = pkgs-unstable.linuxPackages_zen;
-    kernelModules = ["kvm-intel"];
   };
 
   networking = {
@@ -84,7 +81,7 @@
 
   users.users.nikola = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "libvirtd"];
+    extraGroups = ["wheel" "networkmanager"];
     shell = pkgs.zsh;
   };
 
