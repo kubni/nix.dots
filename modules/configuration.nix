@@ -44,8 +44,14 @@
   time.timeZone = "Europe/Belgrade";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  hardware.opengl = {
-    enable = true;
+  hardware = {
+    opengl = {
+      enable = true;
+    };
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
   };
 
   services = {
@@ -204,9 +210,8 @@
       direnv
       nix-direnv
       bitwarden 
-
-      keycloak
       jdk21
+      xorg.xeyes
 
 
       (pkgs.writeShellApplication {

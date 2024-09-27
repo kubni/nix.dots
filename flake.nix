@@ -13,13 +13,13 @@
     };
 
    hyprland ={
-	   url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.43.0&submodules=1";
+	   url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.41.2&submodules=1";
    };
 
-   # hyprsplit = {
-   #   url = "github:shezdy/hyprsplit?ref=refs/tags/v0.43.0";
-   #   inputs.hyprland.follows = "hyprland";
-   # };
+   hyprsplit = {
+     url = "github:shezdy/hyprsplit?ref=refs/tags/v0.41.2";
+     inputs.hyprland.follows = "hyprland";
+   };
 
    nvf = {
      url = "github:notashelf/nvf";  
@@ -27,8 +27,7 @@
    };
   };
 
-  # outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, nvf}: # TODO: hyprsplit
-  outputs = inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, nvf, hyprsplit}:
     let
       system = "x86_64-linux";
       
@@ -50,29 +49,25 @@
 	      editor = "nvim";
       };
 
-      pcSetup = import ./hosts/pc;
-      legionSetup = import ./hosts/legion;
-
     in {
       nixosConfigurations = {
-        # nikola = lib.nixosSystem {
-        #   inherit system;
-        #   specialArgs = { inherit pkgs-unstable vars hyprland; };
-        #   modules = [
-        #     ./modules/configuration.nix
-        #     nvf.nixosModules.default
-        #     home-manager.nixosModules.home-manager {
-        #       home-manager.useGlobalPkgs = true;
-        #       home-manager.useUserPackages = true;
-	      #       home-manager.extraSpecialArgs = { inherit pkgs-unstable hyprland;}; # TODO: Hyprsplit
-        #       home-manager.users.nikola = {
-        #         imports = [ ./home-manager ];
-        #       };
-        #     }
-        #   ];
-        # };
+         nikola = lib.nixosSystem {
+           inherit system;
+           specialArgs = { inherit pkgs-unstable vars hyprland; };
+           modules = [
+             ./modules/configuration.nix
+             nvf.nixosModules.default
+             home-manager.nixosModules.home-manager {
+               home-manager.useGlobalPkgs = true;
+               home-manager.useUserPackages = true;
+	             home-manager.extraSpecialArgs = { inherit pkgs-unstable hyprland hyprsplit;}; 
+               home-manager.users.nikola = {
+                 imports = [ ./home-manager ];
+               };
+             }
+           ];
+         };
 
-        pc = pcSetup inputs;
 
 
 
