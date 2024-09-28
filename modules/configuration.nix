@@ -212,6 +212,7 @@
       bitwarden 
       jdk21
       xorg.xeyes
+      brightnessctl
 
 
       (pkgs.writeShellApplication {

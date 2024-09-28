@@ -12,7 +12,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-   hyprland ={
+   nvf = {
+     url = "github:notashelf/nvf";  
+     inputs.nixpkgs.follows = "nixpkgs";
+   };
+
+   hyprland = {
 	   url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.41.2&submodules=1";
    };
 
@@ -21,10 +26,10 @@
      inputs.hyprland.follows = "hyprland";
    };
 
-   nvf = {
-     url = "github:notashelf/nvf";  
-     inputs.nixpkgs.follows = "nixpkgs";
-   };
+  # hyprspace = {
+  #   url = "github:KZDKM/hyprspace";
+  #   inputs.hyprland.follows = "hyprland";
+  # };
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, nvf, hyprsplit}:
@@ -60,7 +65,7 @@
              home-manager.nixosModules.home-manager {
                home-manager.useGlobalPkgs = true;
                home-manager.useUserPackages = true;
-	             home-manager.extraSpecialArgs = { inherit pkgs-unstable hyprland hyprsplit;}; 
+	             home-manager.extraSpecialArgs = { inherit pkgs-unstable hyprland hyprsplit ;};
                home-manager.users.nikola = {
                  imports = [ ./home-manager ];
                };

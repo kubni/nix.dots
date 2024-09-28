@@ -1,4 +1,4 @@
-{pkgs, pkgs-unstable, lib, hyprland, hyprsplit, ...}: # TODO: Hyprsplit
+{pkgs, pkgs-unstable, lib, hyprland, hyprsplit, hyprspace, ...}: # TODO: Hyprsplit
 
 {
   imports = [
@@ -14,7 +14,7 @@
 
      settings = {
        monitor = [
-	 "DP-2,2560x1440@74.97,auto,auto,bitdepth,10"
+	 "DP-3,2560x1440@74.97,auto,auto,bitdepth,10"
 	 "HDMI-A-1,preferred,auto-left,auto,bitdepth,10"
        ];
 
@@ -181,7 +181,8 @@
     };
 
     plugins = [
-      hyprsplit.packages.${pkgs.system}.hyprsplit
+      hyprsplit.packages.${pkgs.system}.hyprsplit 
+#      hyprspace.packages.${pkgs.system}.Hyprspace
     ];
   };
 }
