@@ -213,6 +213,9 @@
       jdk21
       xorg.xeyes
       brightnessctl
+      nix-prefetch-git
+      nurl
+
 
 
       (pkgs.writeShellApplication {
