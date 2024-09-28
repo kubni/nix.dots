@@ -1,14 +1,15 @@
 {
   inputs = {
-   nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+#   nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
    nixpkgs-unstable = {
-     url = "github:/NixOS/nixpkgs/nixpkgs-unstable";
+     url = "github:/NixOS/nixpkgs/nixos-unstable";
    };
 
    home-manager = {
-      #url = "github:nix-community/home-manager";
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager";
+#      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -18,11 +19,13 @@
    };
 
    hyprland = {
-	   url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.41.2&submodules=1";
+	   # url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.41.2&submodules=1";
+	   url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
    };
 
    hyprsplit = {
-     url = "github:shezdy/hyprsplit?ref=refs/tags/v0.41.2";
+     # url = "github:shezdy/hyprsplit?ref=refs/tags/v0.41.2";
+     url = "github:shezdy/hyprsplit";
      inputs.hyprland.follows = "hyprland";
    };
 

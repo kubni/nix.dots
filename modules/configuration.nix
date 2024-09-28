@@ -45,7 +45,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
     };
     bluetooth = {
@@ -164,7 +164,6 @@
 
   fonts.packages = with pkgs; [
     noto-fonts
-    nerdfonts
     commit-mono
   ];
 
