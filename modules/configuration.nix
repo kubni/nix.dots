@@ -32,7 +32,8 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs-unstable.linuxPackages_zen;
+#    kernelPackages = pkgs-unstable.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = ["kvm-intel"];
   };
 
@@ -45,9 +46,11 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   hardware = {
-    graphics = {
-      enable = true;
-    };
+    #opengl = {
+    #  enable = true;
+    #};
+    graphics.enable = true;
+
     bluetooth = {
       enable = true;
       powerOnBoot = true;
@@ -71,7 +74,6 @@
     blueman = {
       enable = true;
     };
-
   };
 
   hardware.nvidia = {
@@ -81,15 +83,15 @@
     open = false;
     nvidiaSettings = false;
 
-    #package = config.boot.kernelPackages.nvidiaPackages.beta;
-    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      version = "560.35.03";
-      sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
-      sha256_aarch64 = lib.fakeSha256;
-      openSha256 = lib.fakeSha256;
-      settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
-      persistencedSha256 = lib.fakeSha256;
-    };
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    #package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+    #  version = "560.35.03";
+    #  sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
+    #  sha256_aarch64 = lib.fakeSha256;
+    #  openSha256 = lib.fakeSha256;
+    #  settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
+    #  persistencedSha256 = lib.fakeSha256;
+    #};
   };
 
   users.users.nikola = {
@@ -158,7 +160,6 @@
           };
         };
       };
-
     };
   };
 
