@@ -1,9 +1,8 @@
-{ pkgs, ... }:
+{ pkgs-unstable, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    elixir
+  environment.systemPackages = with pkgs-unstable; [
     elixir-ls
-    erlang
+    beam.packages.erlang_27.elixir_1_16
   ];
 }

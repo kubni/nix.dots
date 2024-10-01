@@ -35,5 +35,6 @@
     libreoffice-qt6-fresh
     yarn-berry
     teams-for-linux
+    droidcam
   ];
 }

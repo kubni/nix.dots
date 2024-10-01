@@ -34,12 +34,20 @@
     };
 #    kernelPackages = pkgs-unstable.linuxPackages_zen;
     kernelPackages = pkgs.linuxPackages_latest;
+    #    kernelPackages = pkgs.linuxPackages_6_10;
     kernelModules = ["kvm-intel"];
   };
 
   networking = {
     hostName = "nixos";
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      dns = "none";
+    };
+    useDHCP = false;
+    dhcpcd.enable = false;
+    nameservers = [ "192.168.100.39" ];
+
   };
 
   time.timeZone = "Europe/Belgrade";
