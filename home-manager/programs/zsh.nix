@@ -12,6 +12,7 @@
       ls = "lsd";
       df = "duf";
       nightlight = "wlsunset -l 44.8 -L 20.4";
+      doom = "~/.emacs.d/doom-emacs/bin/doom run";
     };
 
     oh-my-zsh = {

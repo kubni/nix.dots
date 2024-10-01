@@ -1,7 +1,10 @@
 { config, pkgs, vars, ... }:
 
 {
-  services.emacs.enable = true;
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs29-pgtk;
+  };
 
   system.userActivationScripts = {
     # Installation Script on Rebuild

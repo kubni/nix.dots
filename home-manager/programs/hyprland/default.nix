@@ -14,8 +14,8 @@
 
      settings = {
        monitor = [
-	 "eDP-1,2560x1600@240.00,auto,auto,bitdepth,10"
-	 "HDMI-A-1,preferred,auto-up,auto,bitdepth,10"
+	 "eDP-1,2560x1600@60.00,auto,auto,bitdepth,10"
+	 "HDMI-A-1,preferred,auto-left,auto,bitdepth,10"
        ];
 
        exec-once = [
@@ -72,12 +72,12 @@
        decoration = {
 	 rounding = "10";
 	 blur = {
-	   enabled = "true";
+	   enabled = "false";
 	   size = "3";
 	   passes = "1";
 	   vibrancy = "0.1696";
 	 };
-	 drop_shadow = "true";
+	 drop_shadow = "false";
 	 shadow_range = "4";
 	 shadow_render_power = "3";
 	 "col.shadow" = "rgba(1a1a1aee)";
@@ -111,6 +111,7 @@
 	 force_default_wallpaper = "0";
 	 enable_swallow = "true";
 	 swallow_regex = "^(kitty)$";
+   vfr = true;
        };
 
        device = {
