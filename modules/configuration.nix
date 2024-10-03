@@ -41,8 +41,9 @@
   time.timeZone = "Europe/Belgrade";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  hardware.opengl = {
-    enable = true;
+  hardware = {
+    opengl.enable = true;
+    bluetooth.enable = true;
   };
 
   services = {
@@ -57,6 +58,9 @@
       pulse.enable = true;
     };
     fstrim = {
+      enable = true;
+    };
+    blueman = {
       enable = true;
     };
     tlp = {
@@ -224,6 +228,7 @@
       xorg.xeyes
       brightnessctl
       wev
+      qview
   
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
