@@ -32,10 +32,8 @@
       };
       efi.canTouchEfiVariables = true;
     };
-#    kernelPackages = pkgs-unstable.linuxPackages_zen;
-    kernelPackages = pkgs.linuxPackages_latest;
-    #    kernelPackages = pkgs.linuxPackages_6_10;
-    kernelModules = ["kvm-intel"];
+    #    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs-unstable.linuxPackages;
   };
 
   networking = {
@@ -54,10 +52,8 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   hardware = {
-    #opengl = {
-    #  enable = true;
-    #};
-    graphics.enable = true;
+    opengl.enable = true;
+    #    graphics.enable = true;
 
     bluetooth = {
       enable = true;
@@ -82,6 +78,10 @@
     blueman = {
       enable = true;
     };
+    ollama = {
+      enable = true;
+      acceleration = "cuda";
+    };
   };
 
   hardware.nvidia = {
@@ -91,15 +91,16 @@
     open = false;
     nvidiaSettings = false;
 
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
-    #package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-    #  version = "560.35.03";
-    #  sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
-    #  sha256_aarch64 = lib.fakeSha256;
-    #  openSha256 = lib.fakeSha256;
-    #  settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
-    #  persistencedSha256 = lib.fakeSha256;
-    #};
+    # package = config.boot.kernelPackages.nvidiaPackages.stable;
+#    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+      version = "560.35.03";
+      sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
+      sha256_aarch64 = lib.fakeSha256;
+      openSha256 = lib.fakeSha256;
+      settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
+      persistencedSha256 = lib.fakeSha256;
+    };
   };
 
   users.users.nikola = {
@@ -117,7 +118,7 @@
     zsh.enable = true;
     steam.enable = true;
     gamemode.enable = true;
-    kdeconnect.enable = true;
+    # kdeconnect.enable = true;
     virt-manager.enable = true;
 
     nvf = {
@@ -215,14 +216,13 @@
       cmake
       gnumake
       nixd
-      direnv
-      nix-direnv
       bitwarden 
       jdk21
       xorg.xeyes
       brightnessctl
       nix-prefetch-git
       nurl
+      pciutils
 
 
 
