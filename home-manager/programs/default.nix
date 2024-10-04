@@ -6,6 +6,7 @@
     ./kitty.nix
     ./mako.nix
     ./starship.nix
+    ./direnv.nix
     ./hyprland
     ./mpv
   ];
