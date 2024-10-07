@@ -41,11 +41,13 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        config.cudaSupport = true;
       };
 
       pkgs-unstable = import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
+        config.cudaSupport = true;
       };
 
       lib = nixpkgs.lib;

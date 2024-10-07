@@ -230,6 +230,7 @@
       nix-prefetch-git
       nurl
       pciutils
+      cudatoolkit
 
 
 
