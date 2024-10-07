@@ -1,7 +1,6 @@
 {
   imports = [
     ./go
-    ./js
     ./python
   ];
 }

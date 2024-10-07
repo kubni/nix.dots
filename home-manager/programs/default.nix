@@ -35,5 +35,6 @@
     yarn-berry
     teams-for-linux
     droidcam
+    pandoc
   ];
 }

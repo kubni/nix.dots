@@ -32,8 +32,15 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    #    kernelPackages = pkgs.linuxPackages_latest;
     kernelPackages = pkgs-unstable.linuxPackages;
+
+    kernelModules = [
+      "v4l2loopback"
+      "snd-aloop"
+    ];
+    extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback
+    ];
   };
 
   networking = {
