@@ -52,7 +52,6 @@
     useDHCP = false;
     dhcpcd.enable = false;
     nameservers = [ "192.168.100.39" ];
-
   };
 
   time.timeZone = "Europe/Belgrade";
@@ -231,7 +230,6 @@
       nurl
       pciutils
       cudatoolkit
-
 
 
       (pkgs.writeShellApplication {
