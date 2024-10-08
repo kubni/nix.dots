@@ -1,15 +1,16 @@
 {pkgs, ...}: {
 
   imports = [
+    ./hyprland
+    ./mpv
     ./browsers.nix
     ./zsh.nix
     ./kitty.nix
     ./mako.nix
     ./starship.nix
     ./kdeconnect.nix
-    ./hyprland
-    ./mpv
     ./vscodium.nix    
+    ./direnv.nix
   ];
 
   # Install some commonly found programs that don't need additional configs

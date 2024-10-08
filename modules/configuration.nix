@@ -81,6 +81,10 @@
         STOP_CHARGE_THRESH_BAT0 = 80;
       };
     };
+    ollama = {
+      enable = true;
+      acceleration = "cuda";
+    };
   };
 
   virtualisation ={
