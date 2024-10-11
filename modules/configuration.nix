@@ -234,6 +234,7 @@
       brightnessctl
       wev
       qview
+      pcmanfm
   
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
