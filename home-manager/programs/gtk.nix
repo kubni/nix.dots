@@ -9,7 +9,7 @@
     };
 
     theme = {
-      name = "nord";
+      name = "nordic";
       package = pkgs.nordic;
     };
 
@@ -26,5 +26,5 @@
     };
   };
 
-  home.sessionVariables.GTK_THEME = "nord";
+  home.sessionVariables.GTK_THEME = "nordic";
 }

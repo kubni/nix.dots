@@ -95,6 +95,8 @@
       package = pkgs-unstable.ollama;
       acceleration = "cuda";
     };
+    gvfs.enable = true;
+    udisks2.enable = true;
   };
 
   hardware.nvidia = {
@@ -237,6 +239,8 @@
       nurl
       pciutils
       cudatoolkit
+      pcmanfm
+      usbutils
 
 
       (pkgs.writeShellApplication {

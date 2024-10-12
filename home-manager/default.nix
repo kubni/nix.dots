@@ -3,7 +3,6 @@
 {
   imports = [
     ./programs
-    ./dconf.nix
   ];
 
   home.username = "nikola";

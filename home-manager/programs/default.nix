@@ -8,6 +8,7 @@
     ./starship.nix
     ./direnv.nix
     ./gtk.nix
+    ./dconf.nix
     ./hyprland
     ./mpv
   ];
