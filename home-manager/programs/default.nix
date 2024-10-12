@@ -39,5 +39,6 @@
     teams-for-linux
     droidcam
     pandoc
+    foliate
   ];
 }
