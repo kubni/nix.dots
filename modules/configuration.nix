@@ -190,8 +190,8 @@
   };
 
   fonts.packages = with pkgs; [
-    noto-fonts
     commit-mono
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly"]; })
   ];
 
   zramSwap = {
