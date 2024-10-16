@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, pkgs-unstable, ...}: {
 
   imports = [
     ./hyprland
@@ -36,5 +36,7 @@
     yarn-berry
     teams-for-linux
     obs-studio
+  ] ++ [
+    pkgs-unstable.lmstudio
   ];
 }
