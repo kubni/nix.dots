@@ -42,5 +42,6 @@
     droidcam
     pandoc
     foliate
+    qview
   ];
 }
