@@ -191,6 +191,8 @@
 
   fonts.packages = with pkgs; [
     commit-mono
+    intel-one-mono
+    atkinson-hyperlegible
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly"]; })
   ];
 
@@ -243,6 +245,7 @@
       cudatoolkit
       pcmanfm
       usbutils
+      xdg-utils
 
 
       (pkgs.writeShellApplication {
