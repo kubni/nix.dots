@@ -38,7 +38,7 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs-unstable.linuxPackages;
+    kernelPackages = pkgs-unstable.linuxPackages_6_11;
 
     kernelModules = [
       "v4l2loopback"
@@ -65,8 +65,8 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   hardware = {
-    opengl.enable = true;
-    #    graphics.enable = true;
+    #opengl.enable = true;
+    graphics.enable = true;
 
     bluetooth = {
       enable = true;
@@ -83,11 +83,11 @@
       # package = config.boot.kernelPackages.nvidiaPackages.stable;
       # package = config.boot.kernelPackages.nvidiaPackages.beta;
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-        version = "560.35.03";
-        sha256_64bit = "sha256-8pMskvrdQ8WyNBvkU/xPc/CtcYXCa7ekP73oGuKfH+M=";
+        version = "565.57.01";
+        sha256_64bit = "sha256-buvpTlheOF6IBPWnQVLfQUiHv4GcwhvZW3Ks0PsYLHo=";
         sha256_aarch64 = lib.fakeSha256;
         openSha256 = lib.fakeSha256;
-        settingsSha256 = "sha256-kQsvDgnxis9ANFmwIwB7HX5MkIAcpEEAHc8IBOLdXvk=";
+        settingsSha256 = lib.fakeSha256;
         persistencedSha256 = lib.fakeSha256;
       };
     };
@@ -118,6 +118,7 @@
     gvfs.enable = true;
     udisks2.enable = true;
     gnome.gnome-keyring.enable = true;
+    
   };
 
 
@@ -247,7 +248,8 @@
       pcmanfm
       usbutils
       xdg-utils
-      gnome.gnome-keyring
+      #gnome.gnome-keyring
+      gnome-keyring
 
 
       (pkgs.writeShellApplication {

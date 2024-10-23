@@ -1,4 +1,4 @@
-{pkgs, pkgs-unstable, lib, hyprland, hyprsplit, hyprspace, ...}: # TODO: Hyprsplit
+{pkgs, pkgs-unstable, lib, hyprland, ...}: # TODO: Hyprsplit
 
 {
   imports = [
@@ -153,27 +153,27 @@
 
 	 "SHIFT, Print, exec, grim -c - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of the whole screen taken\""
 
-	  "$mainMod, 1, split:workspace, 1"
-	  "$mainMod, 2, split:workspace, 2"
-	  "$mainMod, 3, split:workspace, 3"
-	  "$mainMod, 4, split:workspace, 4"
-	  "$mainMod, 5, split:workspace, 5"
-	  "$mainMod, 6, split:workspace, 6"
-	  "$mainMod, 7, split:workspace, 7"
-	  "$mainMod, 8, split:workspace, 8"
-	  "$mainMod, 9, split:workspace, 9"
-	  "$mainMod, 10, split:workspace, 10"
+	  "$mainMod, 1, workspace, 1"
+	  "$mainMod, 2, workspace, 2"
+	  "$mainMod, 3, workspace, 3"
+	  "$mainMod, 4, workspace, 4"
+	  "$mainMod, 5, workspace, 5"
+	  "$mainMod, 6, workspace, 6"
+	  "$mainMod, 7, workspace, 7"
+	  "$mainMod, 8, workspace, 8"
+	  "$mainMod, 9, workspace, 9"
+	  "$mainMod, 10, workspace, 10"
 
-	  "$mainMod SHIFT, 1,  split:movetoworkspace, 1"
-	  "$mainMod SHIFT, 2,  split:movetoworkspace, 2"
-	  "$mainMod SHIFT, 3,  split:movetoworkspace, 3"
-	  "$mainMod SHIFT, 4,  split:movetoworkspace, 4"
-	  "$mainMod SHIFT, 5,  split:movetoworkspace, 5"
-	  "$mainMod SHIFT, 6,  split:movetoworkspace, 6"
-	  "$mainMod SHIFT, 7,  split:movetoworkspace, 7"
-	  "$mainMod SHIFT, 8,  split:movetoworkspace, 8"
-	  "$mainMod SHIFT, 9,  split:movetoworkspace, 9"
-	  "$mainMod SHIFT, 10, split:movetoworkspace, 10"
+	  "$mainMod SHIFT, 1,  movetoworkspace, 1"
+	  "$mainMod SHIFT, 2,  movetoworkspace, 2"
+	  "$mainMod SHIFT, 3,  movetoworkspace, 3"
+	  "$mainMod SHIFT, 4,  movetoworkspace, 4"
+	  "$mainMod SHIFT, 5,  movetoworkspace, 5"
+	  "$mainMod SHIFT, 6,  movetoworkspace, 6"
+	  "$mainMod SHIFT, 7,  movetoworkspace, 7"
+	  "$mainMod SHIFT, 8,  movetoworkspace, 8"
+	  "$mainMod SHIFT, 9,  movetoworkspace, 9"
+	  "$mainMod SHIFT, 10, movetoworkspace, 10"
 
 	  "$mainMod, mouse_down, workspace, e+1"
 	  "$mainMod, mouse_up, workspace, e-1"
@@ -187,7 +187,7 @@
     };
 
     plugins = [
-      hyprsplit.packages.${pkgs.system}.hyprsplit 
+      #       hyprsplit.packages.${pkgs.system}.hyprsplit 
 #      hyprspace.packages.${pkgs.system}.Hyprspace
     ];
   };
