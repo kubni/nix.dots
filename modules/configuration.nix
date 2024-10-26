@@ -5,7 +5,8 @@
   pkgs-unstable,
   hyprland,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ./wireguard.nix
@@ -18,16 +19,19 @@
 
   nix = {
     settings = {
-    experimental-features = ["nix-command" "flakes"];
-    substituters = [
-      "https://hyprland.cachix.org"
-      "https://nix-community.cachix.org"
-    ];
-    trusted-public-keys = [
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
-  };
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      substituters = [
+        "https://hyprland.cachix.org"
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+    };
     optimise.automatic = true;
   };
 
@@ -93,6 +97,15 @@
     };
   };
 
+  virtualisation = {
+    docker = {
+      enable = true;
+      daemon.settings = {
+        data-root = "/home/nikola/docker-data-root";
+      };
+    };
+  };
+
   services = {
     xserver = {
       videoDrivers = [ "nvidia" ];
@@ -118,13 +131,17 @@
     gvfs.enable = true;
     udisks2.enable = true;
     gnome.gnome-keyring.enable = true;
-    
-  };
 
+  };
 
   users.users.nikola = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "libvirtd"];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "libvirtd"
+      "docker"
+    ];
     shell = pkgs.zsh;
   };
 
@@ -146,12 +163,13 @@
         vim = {
           viAlias = false;
           vimAlias = true;
-          
+          useSystemClipboard = true;
+
           lsp = {
             enable = true;
             lspSignature.enable = true;
           };
-          
+
           languages = {
             enableLSP = true;
             enableTreesitter = true;
@@ -195,7 +213,7 @@
     commit-mono
     intel-one-mono
     atkinson-hyperlegible
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly"]; })
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
   ];
 
   zramSwap = {
@@ -237,7 +255,7 @@
       cmake
       gnumake
       nixd
-      bitwarden 
+      bitwarden
       jdk21
       xorg.xeyes
       brightnessctl
@@ -251,10 +269,9 @@
       #gnome.gnome-keyring
       gnome-keyring
 
-
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
-        runtimeInputs = [wlsunset];
+        runtimeInputs = [ wlsunset ];
         text = ''
           if pgrep -x "wlsunset" > /dev/null; then
           	pkill -x "wlsunset"
@@ -279,7 +296,7 @@
     variables.EDITOR = "nvim";
     sessionVariables.NIXOS_OZONE_WL = "1";
 
-    pathsToLink = ["/share/zsh"];
+    pathsToLink = [ "/share/zsh" ];
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?
