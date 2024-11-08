@@ -42,7 +42,7 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs-unstable.linuxPackages_6_11;
+    kernelPackages = pkgs.linuxPackages;
 
     kernelModules = [
       "v4l2loopback"
@@ -56,6 +56,7 @@
 
   networking = {
     hostName = "nixos";
+    hostId = "dae119c6";
     networkmanager = {
       enable = true;
       dns = "none";
@@ -123,11 +124,11 @@
     blueman = {
       enable = true;
     };
-    ollama = {
-      enable = true;
-      package = pkgs-unstable.ollama;
-      acceleration = "cuda";
-    };
+    #ollama = {
+    #  enable = true;
+    #  package = pkgs-unstable.ollama;
+    #  acceleration = "cuda";
+    #};
     gvfs.enable = true;
     udisks2.enable = true;
     gnome.gnome-keyring.enable = true;
