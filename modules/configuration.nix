@@ -55,6 +55,7 @@
   };
 
   powerManagement = {
+    enable = true;
     cpuFreqGovernor = "ondemand";
   };
 
@@ -138,6 +139,9 @@
     udisks2.enable = true;
     gnome.gnome-keyring.enable = true;
 
+    zfs = {
+      autoScrub.enable = true;
+    };
   };
 
   users.users.nikola = {
