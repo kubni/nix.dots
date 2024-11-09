@@ -18,7 +18,7 @@
    };
    hyprland = {
       # url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.41.2&submodules=1";
-      #url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      # url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
       
       url = "git+https://github.com/hyprwm/Hyprland";
    };

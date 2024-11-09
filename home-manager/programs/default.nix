@@ -9,6 +9,7 @@
     ./direnv.nix
     ./gtk.nix
     ./dconf.nix
+    ./kdeconnect.nix
     ./hyprland
     ./mpv
   ];

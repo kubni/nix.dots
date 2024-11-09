@@ -54,6 +54,11 @@
     supportedFilesystems = [ "ntfs" ];
   };
 
+  powerManagement = {
+    cpuFreqGovernor = "ondemand";
+  };
+
+
   networking = {
     hostName = "nixos";
     hostId = "dae119c6";
@@ -149,13 +154,12 @@
   programs = {
     hyprland = {
       enable = true;
-      #package = pkgs-unstable.hyprland;
       package = hyprland.packages.${pkgs.system}.hyprland;
     };
     zsh.enable = true;
     steam.enable = true;
     gamemode.enable = true;
-    # kdeconnect.enable = true;
+    kdeconnect.enable = true;
     virt-manager.enable = true;
 
     nvf = {
