@@ -17,8 +17,8 @@
         disable_logs = false;
        };
        monitor = [
-	 "DP-3,2560x1440@74.97,auto,auto,bitdepth,10"
-	 "HDMI-A-1,preferred,auto-left,auto,bitdepth,10"
+	 "DP-3,2560x1440@74.97,auto,auto"
+	 "HDMI-A-1,preferred,auto-left,auto"
        ];
 
        exec-once = [
@@ -36,14 +36,13 @@
 	 "HYPRCURSOR_SIZE, 40"
    "QT_QPA_PLATFORM,wayland;xcb"
 	 "QT_QPA_PLATFORMTHEME, qt6ct"
-#	 "WLR_DRM_NO_ATOMIC, 1"
 
 	 # Nvidia stuff
 	 "LIBVA_DRIVER_NAME, nvidia"
 	 "XDG_SESSION_TYPE, wayland"
    "XDG_SESSION_DESKTOP, Hyprland"
    "XDG_CURRENT_DESKTOP, Hyprland"
-	 "GBM_BACKEND, nvidia-drm"
+	 #"GBM_BACKEND, nvidia-drm"
 	 "__GLX_VENDOR_LIBRARY_NAME, nvidia"
        ];
 
