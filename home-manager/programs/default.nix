@@ -44,5 +44,8 @@
     pandoc
     foliate
     qview
+    viber
+    freetube
+    zathura
   ];
 }

@@ -20,12 +20,13 @@
       # url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.41.2&submodules=1";
       # url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
       
-      url = "git+https://github.com/hyprwm/Hyprland";
+      # url = "git+https://github.com/hyprwm/Hyprland";
+      url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.45.0";
    };
 
    hyprsplit = {
-     # url = "github:shezdy/hyprsplit?ref=refs/tags/v0.41.2";
-     url = "github:shezdy/hyprsplit";
+     url = "github:shezdy/hyprsplit?ref=refs/tags/v0.45.0";
+     # url = "github:shezdy/hyprsplit";
      inputs.hyprland.follows = "hyprland";
    };
 

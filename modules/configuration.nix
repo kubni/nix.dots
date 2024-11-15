@@ -275,8 +275,9 @@
       pcmanfm
       usbutils
       xdg-utils
-      #gnome.gnome-keyring
       gnome-keyring
+      nvidia-vaapi-driver
+      libtool
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";

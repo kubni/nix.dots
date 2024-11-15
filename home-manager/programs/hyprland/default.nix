@@ -1,4 +1,4 @@
-{pkgs, pkgs-unstable, lib, hyprland, ...}: # TODO: Hyprsplit
+{pkgs, pkgs-unstable, lib, hyprland, hyprsplit, ...}: # TODO: Hyprsplit
 
 {
   imports = [
@@ -39,10 +39,13 @@
 
 	 # Nvidia stuff
 	 "LIBVA_DRIVER_NAME, nvidia"
+   "NVD_BACKEND, direct"
+   "MOZ_DISABLE_RDD_SANDBOX, 1"
+   "EGL_PLATFORM, wayland"
 	 "XDG_SESSION_TYPE, wayland"
    "XDG_SESSION_DESKTOP, Hyprland"
    "XDG_CURRENT_DESKTOP, Hyprland"
-	 #"GBM_BACKEND, nvidia-drm"
+	 #"GBM_BACKEND, nvidia-drm"  # Enabling this makes Hyprland crash when second monitor is plugged in
 	 "__GLX_VENDOR_LIBRARY_NAME, nvidia"
        ];
 
@@ -187,7 +190,7 @@
     };
 
     plugins = [
-      #       hyprsplit.packages.${pkgs.system}.hyprsplit 
+       hyprsplit.packages.${pkgs.system}.hyprsplit 
 #      hyprspace.packages.${pkgs.system}.Hyprspace
     ];
   };
