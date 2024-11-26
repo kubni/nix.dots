@@ -70,6 +70,11 @@
     useDHCP = false;
     dhcpcd.enable = false;
     nameservers = [ "192.168.100.39" ];
+    interfaces = {
+      enp0s31f6.wakeOnLan = {
+        enable = true;
+      };
+    };
   };
 
   time.timeZone = "Europe/Belgrade";
@@ -253,7 +258,7 @@
       lm_sensors
       pulsemixer
       wl-clipboard
-      wineWowPackages.stable
+      wineWowPackages.unstableFull
       winetricks
       mono
       qbittorrent
@@ -278,6 +283,7 @@
       gnome-keyring
       nvidia-vaapi-driver
       libtool
+      ethtool
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
