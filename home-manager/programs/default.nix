@@ -30,7 +30,6 @@
     duf
     fuc # Provides cpz and rmz
     bat
-    thunderbird
     vesktop
     mono
     hyprpaper
