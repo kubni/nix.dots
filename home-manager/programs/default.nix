@@ -46,5 +46,6 @@
     viber
     freetube
     zathura
+    lutris
   ];
 }

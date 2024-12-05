@@ -69,7 +69,7 @@
     };
     useDHCP = false;
     dhcpcd.enable = false;
-    nameservers = [ "192.168.100.39" ];
+    nameservers = [ "192.168.100.1" ];
     interfaces = {
       enp0s31f6.wakeOnLan = {
         enable = true;
@@ -227,7 +227,7 @@
     commit-mono
     intel-one-mono
     atkinson-hyperlegible
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    nerd-fonts.symbols-only
   ];
 
   zramSwap = {
