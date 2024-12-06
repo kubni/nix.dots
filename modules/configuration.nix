@@ -197,12 +197,12 @@
           #  transparent = false;
           #};
 
-          autopairs.enable = true;
+          # autopairs.enable = true;
 
-          autocomplete = {
-            enable = true;
-            type = "nvim-cmp";
-          };
+          # autocomplete = {
+          #   enable = true;
+          #   type = "nvim-cmp";
+          # };
 
           visuals = {
             nvimWebDevicons.enable = true;
