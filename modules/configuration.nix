@@ -45,16 +45,16 @@
     kernelPackages = pkgs.linuxPackages;
 
     kernelModules = [
-      "v4l2loopback"
-      "snd-aloop"
       "kvm-intel"
       "vfio-pci"
     ];
+
+    blacklistedKernelModules = [ "i915" ];
     
     kernelParams = [
       "intel_iommu=on"
       "iommu=pt"
-      "module_blacklist=i915"
+      "nvidia-drm.modeset=1"
     ];
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback
