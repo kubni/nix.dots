@@ -45,19 +45,15 @@
     kernelPackages = pkgs.linuxPackages;
 
     kernelModules = [
-      "kvm-intel"
       "vfio-pci"
+      "vfio"
+      "vfio_iommu_type1"
+      "kvm-intel"
     ];
 
-    blacklistedKernelModules = [ "i915" ];
-    
     kernelParams = [
       "intel_iommu=on"
       "iommu=pt"
-      "nvidia-drm.modeset=1"
-    ];
-    extraModulePackages = with config.boot.kernelPackages; [
-      v4l2loopback
     ];
     supportedFilesystems = [ "ntfs" ];
   };
@@ -89,6 +85,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   hardware = {
+    enableRedistributableFirmware = lib.mkDefault true;
     #opengl.enable = true;
     graphics.enable = true;
 
@@ -292,6 +289,8 @@
       nvidia-vaapi-driver
       libtool
       ethtool
+      lsof
+      virtio-win
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";

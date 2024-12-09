@@ -10,14 +10,16 @@
         swtpm.enable = true;
         ovmf = {
           enable = true;
-          packages = [(pkgs.OVMF.override {
-            secureBoot = true;
-            tpmSupport = true;
-          }).fd];
+          packages = [ pkgs.OVMF.fd ];
         };
+        #verbatimConfig = ''
+        #  nvram = [ "${pkgs.OVMF}/FV/OVMF.fd:${pkgs.OVMF}/FV/OVMF_VARS.fd" ]
+        #'';
       };
     };
     spiceUSBRedirection.enable = true;
   };
 
 }
+
+
