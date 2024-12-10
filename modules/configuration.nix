@@ -3,6 +3,7 @@
   lib,
   pkgs,
   pkgs-unstable,
+  pkgs-stable,
   hyprland,
   ...
 }:
@@ -45,9 +46,7 @@
     kernelPackages = pkgs.linuxPackages;
 
     kernelModules = [
-      "vfio-pci"
-      "vfio"
-      "vfio_iommu_type1"
+      # "vfio-pci"
       "kvm-intel"
     ];
 
@@ -101,16 +100,15 @@
       open = false;
       nvidiaSettings = false;
 
-      # package = config.boot.kernelPackages.nvidiaPackages.stable;
-      # package = config.boot.kernelPackages.nvidiaPackages.beta;
-      package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-        version = "565.77";
-        sha256_64bit = "sha256-CnqnQsRrzzTXZpgkAtF7PbH9s7wbiTRNcM0SPByzFHw=";
-        sha256_aarch64 = lib.fakeSha256;
-        openSha256 = lib.fakeSha256;
-        settingsSha256 = lib.fakeSha256;
-        persistencedSha256 = lib.fakeSha256;
-      };
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+      #   version = "565.77";
+      #   sha256_64bit = "sha256-CnqnQsRrzzTXZpgkAtF7PbH9s7wbiTRNcM0SPByzFHw=";
+      #   sha256_aarch64 = lib.fakeSha256;
+      #   openSha256 = lib.fakeSha256;
+      #   settingsSha256 = lib.fakeSha256;
+      #   persistencedSha256 = lib.fakeSha256;
+      # };
     };
   };
 
@@ -314,6 +312,8 @@
           fi
         '';
       })
+    ] ++ [
+      pkgs-stable.OVMF
     ];
 
     variables.EDITOR = "nvim";

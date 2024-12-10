@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, pkgs-stable, ...}:
 
 {
   virtualisation = {
@@ -10,7 +10,7 @@
         swtpm.enable = true;
         ovmf = {
           enable = true;
-          packages = [ pkgs.OVMF.fd ];
+          packages = [ pkgs-stable.OVMF.fd ];
         };
         #verbatimConfig = ''
         #  nvram = [ "${pkgs.OVMF}/FV/OVMF.fd:${pkgs.OVMF}/FV/OVMF_VARS.fd" ]
