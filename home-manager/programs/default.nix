@@ -28,7 +28,6 @@
     ranger
     lsd
     duf
-    fuc # Provides cpz and rmz
     bat
     vesktop
     mono
@@ -43,7 +42,7 @@
     pandoc
     foliate
     qview
-    viber
+    # viber
     freetube
     zathura
     lutris
