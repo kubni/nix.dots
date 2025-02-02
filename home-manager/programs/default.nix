@@ -46,5 +46,6 @@
     freetube
     zathura
     lutris
+    protonup-qt
   ];
 }

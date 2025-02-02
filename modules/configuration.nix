@@ -43,7 +43,7 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_6_12;
 
     kernelModules = [
       # "vfio-pci"
@@ -100,15 +100,15 @@
       open = false;
       nvidiaSettings = false;
 
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      #   version = "565.77";
-      #   sha256_64bit = "sha256-CnqnQsRrzzTXZpgkAtF7PbH9s7wbiTRNcM0SPByzFHw=";
-      #   sha256_aarch64 = lib.fakeSha256;
-      #   openSha256 = lib.fakeSha256;
-      #   settingsSha256 = lib.fakeSha256;
-      #   persistencedSha256 = lib.fakeSha256;
-      # };
+      # package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+        version = "570.86.16";
+        sha256_64bit = "sha256-RWPqS7ZUJH9JEAWlfHLGdqrNlavhaR1xMyzs8lJhy9U=";
+        sha256_aarch64 = lib.fakeSha256;
+        openSha256 = lib.fakeSha256;
+        settingsSha256 = lib.fakeSha256;
+        persistencedSha256 = lib.fakeSha256;
+      };
     };
   };
 
@@ -289,6 +289,7 @@
       ethtool
       lsof
       virtio-win
+      appimage-run
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
