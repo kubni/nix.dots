@@ -138,11 +138,11 @@
     blueman = {
       enable = true;
     };
-    ollama = {
-      enable = true;
-      package = pkgs-unstable.ollama;
-      acceleration = "cuda";
-    };
+    # ollama = {
+    #   enable = true;
+    #   package = pkgs-unstable.ollama;
+    #   acceleration = "cuda";
+    # };
     gvfs.enable = true;
     udisks2.enable = true;
     gnome.gnome-keyring.enable = true;

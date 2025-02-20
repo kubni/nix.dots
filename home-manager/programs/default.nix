@@ -47,5 +47,6 @@
     zathura
     lutris
     protonup-qt
+    thunderbird-latest
   ];
 }
