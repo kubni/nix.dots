@@ -48,5 +48,6 @@
     lutris
     protonup-qt
     thunderbird-latest
+    browsh
   ];
 }

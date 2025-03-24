@@ -31,9 +31,14 @@
      inputs.nixpkgs.follows = "nixpkgs";
    };
 
+   firefox-addons = {
+     url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+     inputs.nixpkgs.follows = "nixpkgs";
+   };
+
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-stable, home-manager, nvf, hyprland, hyprsplit, disko}:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-stable, home-manager, nvf, hyprland, hyprsplit, disko, firefox-addons}:
     let
       system = "x86_64-linux";
       
@@ -74,7 +79,7 @@
              home-manager.nixosModules.home-manager {
                home-manager.useGlobalPkgs = true;
                home-manager.useUserPackages = true;
-	             home-manager.extraSpecialArgs = { inherit hyprland hyprsplit ;};
+	             home-manager.extraSpecialArgs = { inherit hyprland hyprsplit firefox-addons;};
                home-manager.users.nikola = {
                  imports = [ ./home-manager ];
                };

@@ -43,7 +43,7 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages_6_12;
+    kernelPackages = pkgs.linuxPackages_6_13;
 
     kernelModules = [
       # "vfio-pci"
@@ -102,8 +102,8 @@
 
       # package = config.boot.kernelPackages.nvidiaPackages.stable;
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-        version = "570.86.16";
-        sha256_64bit = "sha256-RWPqS7ZUJH9JEAWlfHLGdqrNlavhaR1xMyzs8lJhy9U=";
+        version = "570.133.07";
+        sha256_64bit = "sha256-LUPmTFgb5e9VTemIixqpADfvbUX1QoTT2dztwI3E3CY=";
         sha256_aarch64 = lib.fakeSha256;
         openSha256 = lib.fakeSha256;
         settingsSha256 = lib.fakeSha256;
