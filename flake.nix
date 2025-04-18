@@ -18,11 +18,11 @@
      inputs.nixpkgs.follows = "nixpkgs";
    };
    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.47.0";
+      url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.48.0";
    };
 
    hyprsplit = {
-     url = "github:shezdy/hyprsplit?ref=refs/tags/v0.47.0";
+     url = "github:shezdy/hyprsplit?ref=refs/tags/v0.48.0";
      inputs.hyprland.follows = "hyprland";
    };
 
