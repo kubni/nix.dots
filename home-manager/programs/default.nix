@@ -49,5 +49,6 @@
     protonup-qt
     thunderbird-latest
     browsh
+    foot
   ];
 }
