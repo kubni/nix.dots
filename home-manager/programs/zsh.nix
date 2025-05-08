@@ -22,7 +22,7 @@
     };
 
     # These get added to .zshrc
-    initExtra = ''
+    initContent = ''
       source <(fzf --zsh) 
       eval "$(starship init zsh)"
     '';

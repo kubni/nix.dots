@@ -3,7 +3,6 @@
   imports = [
     ./browsers.nix
     ./zsh.nix
-    ./kitty.nix
     ./mako.nix
     ./starship.nix
     ./direnv.nix
@@ -12,6 +11,7 @@
     ./kdeconnect.nix
     ./hyprland
     ./mpv
+    ./terminals
   ];
 
   programs = {
@@ -49,6 +49,6 @@
     protonup-qt
     thunderbird-latest
     browsh
-    foot
+    wezterm
   ];
 }

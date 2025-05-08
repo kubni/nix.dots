@@ -102,8 +102,8 @@
 
       # package = config.boot.kernelPackages.nvidiaPackages.stable;
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-        version = "570.133.07";
-        sha256_64bit = "sha256-LUPmTFgb5e9VTemIixqpADfvbUX1QoTT2dztwI3E3CY=";
+        version = "575.51.02";
+        sha256_64bit = "sha256-XZ0N8ISmoAC8p28DrGHk/YN1rJsInJ2dZNL8O+Tuaa0=";
         sha256_aarch64 = lib.fakeSha256;
         openSha256 = lib.fakeSha256;
         settingsSha256 = lib.fakeSha256;
@@ -188,7 +188,6 @@
           };
 
           languages = {
-            enableLSP = true;
             enableTreesitter = true;
             nix.enable = true;
           };

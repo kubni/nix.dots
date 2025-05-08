@@ -1,7 +1,7 @@
 {pkgs, lib, ...}:
 
 {
-   programs.kitty = {
+  programs.kitty = { 
     enable = true;
     settings = {
       font_family = "CommitMono Regular";
