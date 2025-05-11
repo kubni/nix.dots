@@ -50,5 +50,6 @@
     thunderbird-latest
     browsh
     wezterm
+    bottles
   ];
 }
