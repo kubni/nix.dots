@@ -72,7 +72,8 @@
     };
     useDHCP = false;
     dhcpcd.enable = false;
-    nameservers = [ "192.168.100.1" ];
+    # nameservers = [ "192.168.100.1" ];
+    nameservers = [ "192.168.100.39" ];
     interfaces = {
       enp0s31f6.wakeOnLan = {
         enable = true;
@@ -180,7 +181,6 @@
         vim = {
           viAlias = false;
           vimAlias = true;
-          useSystemClipboard = true;
 
           lsp = {
             enable = true;
