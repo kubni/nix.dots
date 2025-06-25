@@ -42,7 +42,7 @@
     pandoc
     foliate
     qview
-    # viber
+    viber
     freetube
     zathura
     lutris
@@ -51,5 +51,6 @@
     browsh
     wezterm
     bottles
+    webcord-vencord
   ];
 }

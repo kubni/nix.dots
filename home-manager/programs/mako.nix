@@ -14,8 +14,6 @@
         textColor = "#5E81AC";
         layer = "overlay";
         sort = "-time";
-    };
-    criteria = {
         "urgency=low" = {
             border-color = "#A3BE8C";
         };
