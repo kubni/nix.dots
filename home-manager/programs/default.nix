@@ -52,5 +52,6 @@
     wezterm
     bottles
     webcord-vencord
+    signal-desktop
   ];
 }

@@ -56,6 +56,9 @@ in
           "sidebar.revamp" = true;
           "sidebar.verticalTabs" = true;
 
+          # Disable suggestions
+          "browser.search.suggest.enabled" = false;
+
         };
         userChrome = ''
           #titlebar { display: none; }
