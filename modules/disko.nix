@@ -1,4 +1,4 @@
-{ config, lib, pkgs, disko, ... }:
+{}:
 
 {
   disko.devices = {
@@ -50,27 +50,31 @@
     zpool = {
       zroot = {
           type = "zpool";
-          options.cachefile = "none";
           rootFsOptions = {
             compression = "zstd";
+            acltype = "posixacl";
+            xattr = "sa";
             "com.sun:auto-snapshot" = "false";
           };
-          mountpoint = "/";
-          postCreateHook = "zfs list -t snapshot -H -o name | grep -E '^zroot@blank$' || zfs snapshot zroot@blank";
+          options.ashift = "12";
+          mountpoint = "none";
           datasets = {
-            root = {
+            "root" = {
               type = "zfs_fs";
-              mountpoint = "/root";
-              options."com.sun:auto-snapshot" = "true";
+              mountpoint = "/";
+              options = {
+                encryption = "aes-256-gcm";
+                keyformat = "passphrase";
+                keylocation = "prompt";
+              };
             };
-            nix = {
+            "root/nix" = {
               type = "zfs_fs";
               mountpoint = "/nix";
             };
-            home = {
+            "root/home" = {
               type = "zfs_fs";
               mountpoint = "/home";
-              options."com.sun:auto-snapshot" = "true";
             };
           };
         };
