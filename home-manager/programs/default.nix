@@ -9,7 +9,7 @@
     ./gtk.nix
     ./dconf.nix
     ./kdeconnect.nix
-    ./hyprland
+    # ./hyprland
     ./mpv
     ./terminals
   ];

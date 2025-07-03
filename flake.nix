@@ -17,14 +17,14 @@
      url = "github:notashelf/nvf";  
      inputs.nixpkgs.follows = "nixpkgs";
    };
-   hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.49.0";
-   };
+   # hyprland = {
+   #    url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.49.0";
+   # };
 
-   hyprsplit = {
-     url = "github:shezdy/hyprsplit?ref=refs/tags/v0.49.0";
-     inputs.hyprland.follows = "hyprland";
-   };
+   # hyprsplit = {
+   #   url = "github:shezdy/hyprsplit?ref=refs/tags/v0.49.0";
+   #   inputs.hyprland.follows = "hyprland";
+   # };
 
    disko = {
      url = "github:nix-community/disko/latest";
@@ -38,7 +38,8 @@
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-stable, home-manager, nvf, hyprland, hyprsplit, disko, firefox-addons}:
+  # outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-stable, home-manager, nvf, hyprland, hyprsplit, disko, firefox-addons}:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-stable, home-manager, nvf, disko, firefox-addons}:
     let
       system = "x86_64-linux";
       
@@ -72,14 +73,16 @@
       nixosConfigurations = {
          nikola = lib.nixosSystem {
            inherit system;
-           specialArgs = { inherit vars pkgs-unstable pkgs-stable hyprland; };
+           # specialArgs = { inherit vars pkgs-unstable pkgs-stable hyprland; };
+           specialArgs = { inherit vars pkgs-unstable pkgs-stable; };
            modules = [
              ./modules/configuration.nix
              nvf.nixosModules.default
              home-manager.nixosModules.home-manager {
                home-manager.useGlobalPkgs = true;
                home-manager.useUserPackages = true;
-	             home-manager.extraSpecialArgs = { inherit hyprland hyprsplit firefox-addons;};
+	             # home-manager.extraSpecialArgs = { inherit hyprland hyprsplit firefox-addons;};
+	             home-manager.extraSpecialArgs = { inherit firefox-addons;};
                home-manager.users.nikola = {
                  imports = [ ./home-manager ];
                };
