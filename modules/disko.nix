@@ -1,4 +1,4 @@
-{}:
+{lib, ...}:
 
 {
   disko.devices = {
@@ -57,7 +57,6 @@
             "com.sun:auto-snapshot" = "false";
           };
           options.ashift = "12";
-          mountpoint = "none";
           datasets = {
             "root" = {
               type = "zfs_fs";
