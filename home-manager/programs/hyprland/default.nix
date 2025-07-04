@@ -9,8 +9,13 @@
   wayland.windowManager.hyprland = {
      enable = true;
 
-     package = hyprland.packages.${pkgs.system}.hyprland;
-     #package = pkgs-unstable.hyprland; 
+     # package = hyprland.packages.${pkgs.system}.hyprland;
+
+     # package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+     # portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+
+     package = null;
+     portalPackage = null;
 
      settings = {
        debug = {

@@ -4,7 +4,7 @@
   pkgs,
   pkgs-unstable,
   pkgs-stable,
-  # hyprland,
+  hyprland,
   ...
 }:
 {
@@ -165,10 +165,10 @@
   };
 
   programs = {
-    # hyprland = {
-    #   enable = true;
-    #   package = hyprland.packages.${pkgs.system}.hyprland;
-    # };
+    hyprland = {
+      enable = true;
+      # package = hyprland.packages.${pkgs.system}.hyprland;
+    };
     zsh.enable = true;
     steam.enable = true;
     gamemode.enable = true;
