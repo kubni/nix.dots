@@ -53,5 +53,6 @@
     bottles
     webcord-vencord
     signal-desktop
+    discordo
   ];
 }
