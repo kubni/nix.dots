@@ -5,7 +5,7 @@
     disk = {
       wd-ssd = {
         # When using disko-install, we will overwrite this value from the commandline
-        device = "/dev/disk/by-id/ata-WDC_WDS500G2B0A-00SM50_21105U805083";
+        device = "/dev/disk/by-id/changeme";
         type = "disk";
         content = {
           type = "gpt";
@@ -32,7 +32,7 @@
       };
       evo-ssd = {
       type = "disk";
-      device = "/dev/disk/by-id/ata-Samsung_SSD_840_EVO_120GB_S1D5NSCF572384K";
+      device = "/dev/disk/by-id/changeme2";
         content = {
           type = "gpt";
           partitions = {
@@ -54,7 +54,7 @@
             compression = "zstd";
             acltype = "posixacl";
             xattr = "sa";
-            "com.sun:auto-snapshot" = "false";
+            "com.sun:auto-snapshot" = "true";
           };
           options.ashift = "12";
           datasets = {

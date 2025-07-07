@@ -160,6 +160,7 @@
       "networkmanager"
       "libvirtd"
       "docker"
+      "adbusers"
     ];
     shell = pkgs.zsh;
   };
@@ -174,6 +175,7 @@
     gamemode.enable = true;
     kdeconnect.enable = true;
     virt-manager.enable = true;
+    adb.enable = true;
 
     nvf = {
       enable = true;
@@ -289,6 +291,7 @@
       lsof
       virtio-win
       appimage-run
+      libxml2
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
