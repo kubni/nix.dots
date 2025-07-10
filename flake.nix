@@ -1,10 +1,6 @@
 {
   inputs = {
-   # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-   # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-   nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-   nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
    home-manager = {
       url = "github:nix-community/home-manager";
@@ -38,59 +34,63 @@
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-stable, home-manager, nvf, hyprland, hyprsplit, disko, firefox-addons}:
-  # outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-stable, home-manager, nvf, disko, firefox-addons}:
+  outputs = { self, nixpkgs, home-manager, nvf, hyprland, hyprsplit, disko, firefox-addons}:
     let
-      system = "x86_64-linux";
-      
-      pkgs = import nixpkgs {
-        inherit system;
+      pkgs-desktop = import nixpkgs {
+        system="x86_64-linux";
         config.allowUnfree = true;
         config.cudaSupport = true;
       };
 
-      pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-        config.cudaSupport = true;
-      };
-
-      pkgs-stable = import nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-        config.cudaSupport = true;
-      };
+      # TODO: This will break things when commented, fix them to use pkgs-desktop
+      # pkgs-unstable = import nixpkgs-unstable {
+      #   inherit system;
+      #   config.allowUnfree = true;
+      #   config.cudaSupport = true;
+      # };
+      #
+      # pkgs-stable = import nixpkgs-stable {
+      #   inherit system;
+      #   config.allowUnfree = true;
+      #   config.cudaSupport = true;
+      # };
 
       lib = nixpkgs.lib;
       
       vars = {
         location = "$HOME/nix.dots";
-	      terminal = "kitty";
-	      editor = "nvim";
+        terminal = "wezterm";
+	editor = "nvim";
       };
 
     in {
       nixosConfigurations = {
-         nikola = lib.nixosSystem {
-           inherit system;
-           specialArgs = { inherit vars pkgs-unstable pkgs-stable hyprland; };
-           # specialArgs = { inherit vars pkgs-unstable pkgs-stable; };
-           modules = [
-             ./modules/configuration.nix
-             nvf.nixosModules.default
-             home-manager.nixosModules.home-manager {
-               home-manager.useGlobalPkgs = true;
-               home-manager.useUserPackages = true;
-	             home-manager.extraSpecialArgs = { inherit hyprland hyprsplit firefox-addons;};
-	             # home-manager.extraSpecialArgs = { inherit firefox-addons;};
-               home-manager.users.nikola = {
-                 imports = [ ./home-manager ];
-               };
-             }
-             disko.nixosModules.disko
-             ./modules/disko.nix
-           ];
-         };
+         homepc = lib.nixosSystem {
+	    system = "x86_64-linux";
+	    specialArgs = { inherit vars hyprland; };
+	    # specialArgs = { inherit vars pkgs-unstable pkgs-stable; };
+	    modules = [
+		./configs/homepc/configuration.nix
+		nvf.nixosModules.default
+            	home-manager.nixosModules.home-manager {
+		    home-manager.useGlobalPkgs = true;
+		    home-manager.useUserPackages = true;
+		    home-manager.extraSpecialArgs = { inherit hyprland hyprsplit firefox-addons;};
+		    home-manager.users.nikola = {
+			imports = [ ./home-manager ];
+		    };
+		}
+		disko.nixosModules.disko
+		./modules/disko.nix
+	    ];
+	 };
+	 piserver = lib.nixosSystem {
+	    system = "aarch64-linux";
+	    modules = [
+		./configs/piserver/configuration.nix
+		nvf.nixosModules.default
+	    ];
+	 };
       };
     };
 }

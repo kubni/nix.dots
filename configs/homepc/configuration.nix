@@ -2,14 +2,12 @@
   config,
   lib,
   pkgs,
-  pkgs-unstable,
-  pkgs-stable,
   hyprland,
   ...
 }:
 {
   imports = [
-    ./hardware-configuration.nix
+    ./homeserver-hardware-configuration.nix
     ./wireguard.nix
     ./virt.nix
     ./emacs
@@ -139,11 +137,6 @@
     blueman = {
       enable = true;
     };
-    # ollama = {
-    #   enable = true;
-    #   package = pkgs-unstable.ollama;
-    #   acceleration = "cuda";
-    # };
     gvfs.enable = true;
     udisks2.enable = true;
     gnome.gnome-keyring.enable = true;
@@ -292,6 +285,7 @@
       virtio-win
       appimage-run
       libxml2
+      OVMF
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
@@ -315,9 +309,10 @@
           fi
         '';
       })
-    ] ++ [
-      pkgs-stable.OVMF
     ];
+    # ] ++ [
+    #   pkgs-stable.OVMF
+    # ];
 
     variables.EDITOR = "nvim";
     sessionVariables.NIXOS_OZONE_WL = "1";
