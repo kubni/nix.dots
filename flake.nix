@@ -36,24 +36,11 @@
 
   outputs = { self, nixpkgs, home-manager, nvf, hyprland, hyprsplit, disko, firefox-addons}:
     let
-      pkgs-desktop = import nixpkgs {
+      pkgs = import nixpkgs {
         system="x86_64-linux";
         config.allowUnfree = true;
         config.cudaSupport = true;
       };
-
-      # TODO: This will break things when commented, fix them to use pkgs-desktop
-      # pkgs-unstable = import nixpkgs-unstable {
-      #   inherit system;
-      #   config.allowUnfree = true;
-      #   config.cudaSupport = true;
-      # };
-      #
-      # pkgs-stable = import nixpkgs-stable {
-      #   inherit system;
-      #   config.allowUnfree = true;
-      #   config.cudaSupport = true;
-      # };
 
       lib = nixpkgs.lib;
       
@@ -77,11 +64,11 @@
 		    home-manager.useUserPackages = true;
 		    home-manager.extraSpecialArgs = { inherit hyprland hyprsplit firefox-addons;};
 		    home-manager.users.nikola = {
-			imports = [ ./home-manager ];
+			imports = [ ./configs/homepc/home-manager ];
 		    };
 		}
 		disko.nixosModules.disko
-		./modules/disko.nix
+		./configs/homepc/disko.nix
 	    ];
 	 };
 	 piserver = lib.nixosSystem {

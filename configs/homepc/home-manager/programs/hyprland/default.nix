@@ -1,4 +1,4 @@
-{pkgs, pkgs-unstable, lib, hyprland, hyprsplit, ...}: # TODO: Hyprsplit
+{pkgs, lib, hyprland, hyprsplit, ...}: # TODO: Hyprsplit
 
 {
   imports = [
@@ -8,12 +8,6 @@
 	
   wayland.windowManager.hyprland = {
      enable = true;
-
-     # package = hyprland.packages.${pkgs.system}.hyprland;
-
-     # package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-     # portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-
      package = null;
      portalPackage = null;
 

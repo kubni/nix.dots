@@ -7,7 +7,7 @@
 }:
 {
   imports = [
-    ./homeserver-hardware-configuration.nix
+    ./hardware-configuration.nix
     ./wireguard.nix
     ./virt.nix
     ./emacs
@@ -41,7 +41,7 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages_6_13;
+    kernelPackages = pkgs.linuxPackages_6_15;
 
     kernelModules = [
       # "vfio-pci"
