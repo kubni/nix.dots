@@ -187,20 +187,6 @@
             nix.enable = true;
           };
 
-          #theme = {
-          #  enable = true;
-          #  name = "rose-pine";
-          #  style = "main";
-          #  transparent = false;
-          #};
-
-          # autopairs.enable = true;
-
-          # autocomplete = {
-          #   enable = true;
-          #   type = "nvim-cmp";
-          # };
-
           visuals = {
             nvim-web-devicons.enable = true;
           };
@@ -217,6 +203,12 @@
           };
         };
       };
+    };
+    ssh = {
+      extraConfig = "
+        Host *
+        ServerAliveInterval 100
+      ";
     };
   };
 
@@ -286,6 +278,8 @@
       appimage-run
       libxml2
       OVMF
+      nix-search-cli
+      mosh
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";

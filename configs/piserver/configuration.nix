@@ -141,6 +141,8 @@
         };
       };
     };
+    ssh = {
+    };
   };
 
   fonts.packages = with pkgs; [

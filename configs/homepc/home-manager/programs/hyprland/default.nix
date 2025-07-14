@@ -27,8 +27,8 @@
        ];
 
        "$mainMod" = "SUPER";
-       "$terminal" = "kitty";
-       "$fileManager" = "kitty ranger";
+       "$terminal" = "wezterm";
+       "$fileManager" = "wezterm ranger";
        "$menu" = "wofi --show drun";
 
        env = [
