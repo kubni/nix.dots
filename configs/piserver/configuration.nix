@@ -93,6 +93,7 @@
 
   programs = {
     starship.enable = true;
+    mosh.enable = true;
 
     zsh = {
       enable = true;
@@ -178,6 +179,7 @@
       nixd
       usbutils
       ripgrep
+      nix-search-cli
     ];
 
     variables.EDITOR = "nvim";
