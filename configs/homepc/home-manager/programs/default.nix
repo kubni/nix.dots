@@ -2,7 +2,6 @@
 
   imports = [
     ./browsers.nix
-    ./zsh.nix
     ./mako.nix
     ./starship.nix
     ./direnv.nix
@@ -10,6 +9,7 @@
     ./dconf.nix
     ./kdeconnect.nix
     ./hyprland
+    ./zsh
     ./mpv
     ./terminals
   ];

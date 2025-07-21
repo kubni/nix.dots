@@ -1,6 +1,13 @@
 {pkgs, lib, ...}:
 
+
+
 {
+  # imports = [
+  #   ./zsh-plugins.nix
+  # ];
+
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -14,12 +21,19 @@
       nightlight = "wlsunset -l 44.8 -L 20.4";
     };
 
-    oh-my-zsh = {
-      enable = true;
-      plugins = [
-	"git"
-      ];
-    };
+    plugins = [
+        {
+            name = "fzf-tab";
+            src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
+        }
+    ];
+
+	#    oh-my-zsh = {
+	#      enable = true;
+	#      plugins = [
+	# "git"
+	#      ];
+	#    };
 
     # These get added to .zshrc
     initContent = ''
