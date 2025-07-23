@@ -33,7 +33,29 @@
       };
       efi.canTouchEfiVariables = true;
     };
+
+    kernelParams = [ "ip=dhcp" ];
+    initrd.kernelModules = [
+      "e1000e" # Found with nix run nixpkgs#lshw -- -C network | grep -Poh 'driver=[[:alnum:]]+'
+    ];
+    initrd.network = {
+      enable = true;
+      ssh = {
+        enable = true;
+        port = 2222;
+        hostKeys = [
+          "/etc/secrets/initrd/ssh_host_ed25519_key"
+        ];
+        authorizedKeyFiles = [
+          ./ssh/authorized_keys 
+        ];
+      };
+      postCommands = ''
+        echo "zfs load-key -a; killall zfs >> /root/.profile"
+      '';
+    };
   };
+ 
 
   powerManagement = {
     enable = true;
@@ -183,6 +205,7 @@
       ethtool
       lsof
       nix-search-cli
+      zoxide
     ];
 
     variables.EDITOR = "nvim";
