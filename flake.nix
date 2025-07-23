@@ -78,6 +78,15 @@
 		nvf.nixosModules.default
 	    ];
 	 };
+	 thinkcentre = lib.nixosSystem {
+	    system = "x86_64-linux";
+	    modules = [
+		./configs/thinkcentre/configuration.nix
+		nvf.nixosModules.default
+		disko.nixosModules.disko
+		./configs/thinkcentre/disko.nix
+	    ];
+	 };
       };
     };
 }
