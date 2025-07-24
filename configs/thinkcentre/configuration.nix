@@ -51,7 +51,9 @@
         ];
       };
       postCommands = ''
-        echo "zfs load-key -a; killall zfs >> /root/.profile"
+        touch /root/.profile
+        echo "zfs load-key -a" >> /root/.profile   # This gives us a decryption passphrase prompt after we ssh into the server.
+        echo "killall zfs" >> /root/.profile       # This kills the initrd ssh connection and allows the server to unlock itself.
       '';
     };
   };
@@ -154,12 +156,6 @@
           };
         };
       };
-    };
-    ssh = {
-      extraConfig = "
-        Host *
-        ServerAliveInterval 100
-      ";
     };
   };
 
