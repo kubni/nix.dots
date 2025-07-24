@@ -121,7 +121,24 @@
   };
 
   programs = {
-    zsh.enable = true;
+    starship.enable = true;
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+
+      histSize = 10000;
+      histFile = "$HOME/.zsh_history";
+      setOptions = [
+        "HIST_IGNORE_ALL_DUPS"
+      ];
+    };
+
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
 
     nvf = {
       enable = true;
