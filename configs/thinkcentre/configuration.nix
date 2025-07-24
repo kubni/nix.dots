@@ -6,6 +6,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../shared/packages
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -189,41 +190,17 @@
   environment = {
     systemPackages = with pkgs; [
       mesa
-      zsh
-      wget
-      curl
-      git
-      cliphist
-      unrar
-      unzip
-      p7zip
-      fzf
-      fd
-      rsync
-      tree
-      ncdu
-      ranger
-      wlsunset
-      btop
       lm_sensors
-      starship
-      cmake
-      gnumake
-      nixd
-      nix-prefetch-git
       nurl
       pciutils
       usbutils
       libtool
       ethtool
-      lsof
-      nix-search-cli
-      zoxide
     ];
 
-    variables.EDITOR = "nvim";
-
-    pathsToLink = [ "/share/zsh" ];
+    # variables.EDITOR = "nvim";
+    #
+    # pathsToLink = [ "/share/zsh" ];
   };
 
   system.stateVersion = "25.05"; 
