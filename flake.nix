@@ -1,6 +1,6 @@
 {
   inputs = {
-   nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+   nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
    home-manager = {
       url = "github:nix-community/home-manager";
@@ -12,11 +12,11 @@
      inputs.nixpkgs.follows = "nixpkgs";
    };
    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.49.0";
+      url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.50.1";
    };
 
    hyprsplit = {
-     url = "github:shezdy/hyprsplit?ref=refs/tags/v0.49.0";
+     url = "github:shezdy/hyprsplit?ref=refs/tags/v0.50.1";
      inputs.hyprland.follows = "hyprland";
    };
 

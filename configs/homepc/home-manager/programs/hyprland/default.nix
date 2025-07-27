@@ -66,9 +66,6 @@
 	 "col.inactive_border" = "rgba(595959aa)";
 
 	 layout = "master";
-
-	 #allow_tearing = "true";
-	 allow_tearing = "false";
        };
 
        #windowrulev2 = [
