@@ -80,8 +80,11 @@
   time.timeZone = "Europe/Belgrade";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  hardware = {
-    # graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+    ];
   };
 
   virtualisation = {
@@ -197,10 +200,8 @@
       libtool
       ethtool
     ];
+    sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
-    # variables.EDITOR = "nvim";
-    #
-    # pathsToLink = [ "/share/zsh" ];
   };
 
   system.stateVersion = "25.05"; 
