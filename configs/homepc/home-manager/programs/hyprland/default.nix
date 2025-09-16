@@ -28,7 +28,7 @@
 
        "$mainMod" = "SUPER";
        "$terminal" = "wezterm";
-       "$fileManager" = "wezterm ranger";
+       "$fileManager" = "wezterm start ranger";
        "$menu" = "wofi --show drun";
 
        env = [
@@ -145,8 +145,8 @@
 	 "$mainMod, up, movefocus, u" 
 	 "$mainMod, down, movefocus, d" 
 
-	 "ALT, F, exec, $fileManager"
-	 "ALT, P, exec, $terminal pulsemixer"
+	 "ALT, F, exec, $terminal start ranger"
+	 "ALT, P, exec, $terminal start pulsemixer"
 	 
 	 ", Print, exec, grim -g \"$(slurp)\" - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of the region taken\" -t 1000"
 
