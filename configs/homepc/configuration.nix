@@ -41,7 +41,7 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages_6_15;
+    kernelPackages = pkgs.linuxPackages_6_16;
 
     kernelModules = [
       # "vfio-pci"
@@ -280,6 +280,7 @@
       OVMF
       nix-search-cli
       mosh
+      nix-tree
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
@@ -293,6 +294,7 @@
         '';
       })
 
+      # TODO: How to allow interactive password input for sudo which is needed for this to run?
       (pkgs.writeShellApplication {
         name = "toggle-vpn";
         text = ''

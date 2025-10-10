@@ -33,9 +33,9 @@
     mono
     hyprpaper
     mangohud
-    jellyfin-media-player
+    # jellyfin-media-player
     unigine-valley
-    libreoffice-qt6-fresh
+    # libreoffice-qt6-fresh
     yarn-berry
     teams-for-linux
     droidcam
@@ -46,7 +46,6 @@
     freetube
     zathura
     lutris
-    protonup-qt
     thunderbird-latest
     browsh
     wezterm
