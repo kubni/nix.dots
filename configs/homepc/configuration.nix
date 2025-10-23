@@ -43,15 +43,6 @@
     };
     kernelPackages = pkgs.linuxPackages_6_16;
 
-    kernelModules = [
-      # "vfio-pci"
-      "kvm-intel"
-    ];
-
-    kernelParams = [
-      "intel_iommu=on"
-      "iommu=pt"
-    ];
     supportedFilesystems = [ "ntfs" ];
   };
 
@@ -72,11 +63,6 @@
     dhcpcd.enable = false;
     nameservers = [ "192.168.100.1" ];
     # nameservers = [ "192.168.100.39" ];
-    interfaces = {
-      enp0s31f6.wakeOnLan = {
-        enable = true;
-      };
-    };
   };
 
   time.timeZone = "Europe/Belgrade";
@@ -91,24 +77,6 @@
       enable = true;
       powerOnBoot = true;
     };
-
-    nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = true;
-      powerManagement.finegrained = false;
-      open = false;
-      nvidiaSettings = false;
-
-      package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-        version = "580.65.06";
-        # sha256_64bit = "sha256-XZ0N8ISmoAC8p28DrGHk/YN1rJsInJ2dZNL8O+Tuaa0=";
-        sha256_64bit = "sha256-BLEIZ69YXnZc+/3POe1fS9ESN1vrqwFy6qGHxqpQJP8=";
-        sha256_aarch64 = lib.fakeSha256;
-        openSha256 = lib.fakeSha256;
-        settingsSha256 = lib.fakeSha256;
-        persistencedSha256 = lib.fakeSha256;
-      };
-    };
   };
 
   virtualisation = {
@@ -121,18 +89,12 @@
   };
 
   services = {
-    xserver = {
-      videoDrivers = [ "nvidia" ];
-    };
     openssh = {
       enable = true;
     };
     pipewire = {
       enable = true;
       pulse.enable = true;
-    };
-    fstrim = {
-      enable = true;
     };
     blueman = {
       enable = true;
@@ -265,7 +227,6 @@
       nix-prefetch-git
       nurl
       pciutils
-      cudatoolkit
       pcmanfm
       usbutils
       xdg-utils
@@ -281,6 +242,7 @@
       nix-search-cli
       mosh
       nix-tree
+      mesa 
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
@@ -306,9 +268,6 @@
         '';
       })
     ];
-    # ] ++ [
-    #   pkgs-stable.OVMF
-    # ];
 
     variables.EDITOR = "nvim";
     sessionVariables.NIXOS_OZONE_WL = "1";

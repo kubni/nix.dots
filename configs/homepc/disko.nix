@@ -3,16 +3,16 @@
 {
   disko.devices = {
     disk = {
-      wd-ssd = {
+      wd-sn770 = {
         # When using disko-install, we will overwrite this value from the commandline
-        device = "/dev/disk/by-id/changeme";
+        device = "/dev/disk/by-id/nvme-WD_BLACK_SN770_2TB_24496D800089";
         type = "disk";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
               type = "EF00";
-              size = "550M";
+              size = "1G";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -20,22 +20,6 @@
                 mountOptions = [ "umask=0077" ];
               };
             };
-            zfs = {
-              size = "100%";
-              content = {
-                type = "zfs";
-                pool = "zroot";
-              };
-            };
-          };
-        };
-      };
-      evo-ssd = {
-      type = "disk";
-      device = "/dev/disk/by-id/changeme2";
-        content = {
-          type = "gpt";
-          partitions = {
             zfs = {
               size = "100%";
               content = {
@@ -70,6 +54,10 @@
             "root/nix" = {
               type = "zfs_fs";
               mountpoint = "/nix";
+            };
+            "root/var" = {
+              type = "zfs_fs";
+              mountpoint = "/var";
             };
             "root/home" = {
               type = "zfs_fs";
