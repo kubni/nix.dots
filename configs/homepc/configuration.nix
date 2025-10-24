@@ -125,6 +125,8 @@
       enable = true;
       # package = hyprland.packages.${pkgs.system}.hyprland;
       # portalPackage = hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+      # package = null;
+      # portalPackage = null;
     };
     zsh.enable = true;
     steam.enable = true;
