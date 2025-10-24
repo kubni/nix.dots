@@ -1,4 +1,4 @@
-{pkgs, lib, hyprland, hyprsplit, ...}: # TODO: Hyprsplit
+{pkgs, lib, hyprland, hyprsplit, ...}:
 
 {
   imports = [
@@ -33,19 +33,8 @@
 
        env = [
 	 "HYPRCURSOR_SIZE, 40"
-   "QT_QPA_PLATFORM,wayland;xcb"
+           "QT_QPA_PLATFORM,wayland;xcb"
 	 "QT_QPA_PLATFORMTHEME, qt6ct"
-
-	 # Nvidia stuff
-	 "LIBVA_DRIVER_NAME, nvidia"
-   "NVD_BACKEND, direct"
-   "MOZ_DISABLE_RDD_SANDBOX, 1"
-   "EGL_PLATFORM, wayland"
-	 "XDG_SESSION_TYPE, wayland"
-   "XDG_SESSION_DESKTOP, Hyprland"
-   "XDG_CURRENT_DESKTOP, Hyprland"
-	 #"GBM_BACKEND, nvidia-drm"  # Enabling this makes Hyprland crash when second monitor is plugged in
-	 "__GLX_VENDOR_LIBRARY_NAME, nvidia"
        ];
 
        input = {

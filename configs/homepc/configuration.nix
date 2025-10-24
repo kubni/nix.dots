@@ -70,8 +70,8 @@
 
   hardware = {
     enableRedistributableFirmware = lib.mkDefault true;
-    #opengl.enable = true;
     graphics.enable = true;
+    graphics.enable32Bit = true;
 
     bluetooth = {
       enable = true;
@@ -124,6 +124,7 @@
     hyprland = {
       enable = true;
       # package = hyprland.packages.${pkgs.system}.hyprland;
+      # portalPackage = hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     };
     zsh.enable = true;
     steam.enable = true;
