@@ -5,6 +5,8 @@
   hyprland,
   ...
 }:
+let pkgs-unstable = hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -41,7 +43,7 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages_6_16;
+    kernelPackages = pkgs.linuxPackages;
 
     supportedFilesystems = [ "ntfs" ];
   };
@@ -70,9 +72,11 @@
 
   hardware = {
     enableRedistributableFirmware = lib.mkDefault true;
-    graphics.enable = true;
-    graphics.enable32Bit = true;
-
+    graphics = {
+      package = pkgs-unstable.mesa;
+      enable32Bit = true;
+      package32 = pkgs-unstable.pkgsi686Linux.mesa;
+    };
     bluetooth = {
       enable = true;
       powerOnBoot = true;
@@ -123,10 +127,8 @@
   programs = {
     hyprland = {
       enable = true;
-      # package = hyprland.packages.${pkgs.system}.hyprland;
-      # portalPackage = hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-      # package = null;
-      # portalPackage = null;
+      package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
     zsh.enable = true;
     steam.enable = true;
@@ -188,8 +190,19 @@
     enable = true;
   };
 
-  environment = {
+  environment = let 
+                winePkg = pkgs.wineWow64Packages.stagingFull;
+                wineSymlink = pkgs.runCommand "wine-symlink" {
+                  nativeBuildInputs = [ pkgs.makeWrapper ];
+                } ''
+                    mkdir -p $out/bin
+                    ln -s ${winePkg}/bin/wine $out/bin/wine64
+                  '';
+                in {
     systemPackages = with pkgs; [
+      winePkg
+      wineSymlink
+      winetricks
       zsh
       wget
       curl
@@ -212,8 +225,6 @@
       lm_sensors
       pulsemixer
       wl-clipboard
-      wineWowPackages.unstableFull
-      winetricks
       mono
       qbittorrent
       wofi
@@ -234,7 +245,6 @@
       usbutils
       xdg-utils
       gnome-keyring
-      nvidia-vaapi-driver
       libtool
       ethtool
       lsof
@@ -245,7 +255,6 @@
       nix-search-cli
       mosh
       nix-tree
-      mesa 
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";

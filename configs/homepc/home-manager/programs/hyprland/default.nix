@@ -1,4 +1,4 @@
-{pkgs, lib, hyprland, ...}:
+{pkgs, lib, hyprland, hyprsplit, ...}:
 
 {
   imports = [
@@ -175,9 +175,9 @@
     };
 
     plugins = [
-       # hyprsplit.packages.${pkgs.system}.hyprsplit 
+       hyprsplit.packages.${pkgs.system}.hyprsplit 
 #      hyprspace.packages.${pkgs.system}.Hyprspace
-       pkgs.hyprlandPlugins.hyprsplit
+       # pkgs.hyprlandPlugins.hyprsplit
     ];
   };
 }

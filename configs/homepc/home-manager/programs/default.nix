@@ -45,13 +45,18 @@
     viber
     freetube
     zathura
-    lutris
     thunderbird-latest
     browsh
     wezterm
     bottles
     webcord-vencord
     signal-desktop
-    discordo
+
+    (pkgs.lutris.override {
+        extraPkgs = pkgs: [
+          pkgs.wineWowPackages.stagingFull
+          pkgs.winetricks
+        ];
+    })
   ];
 }

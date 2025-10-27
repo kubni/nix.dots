@@ -15,10 +15,10 @@
       url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.51.1";
    };
 
-   # hyprsplit = {
-   #   url = "github:shezdy/hyprsplit?ref=refs/tags/v0.51.1";
-   #   inputs.hyprland.follows = "hyprland";
-   # };
+   hyprsplit = {
+     url = "github:shezdy/hyprsplit?ref=refs/tags/v0.51.1";
+     inputs.hyprland.follows = "hyprland";
+   };
 
    disko = {
      url = "github:nix-community/disko/latest";
@@ -32,7 +32,7 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, nvf, hyprland, disko, firefox-addons}:
+  outputs = { self, nixpkgs, home-manager, nvf, hyprland, hyprsplit, disko, firefox-addons}:
     let
       pkgs = import nixpkgs {
         system="x86_64-linux";
@@ -44,46 +44,46 @@
       vars = {
         location = "$HOME/nix.dots";
         terminal = "wezterm";
-	editor = "nvim";
+	      editor = "nvim";
       };
 
     in {
       nixosConfigurations = {
-         homepc = lib.nixosSystem {
-	    system = "x86_64-linux";
-	    specialArgs = { inherit vars hyprland; };
-	    # specialArgs = { inherit vars pkgs-unstable pkgs-stable; };
-	    modules = [
-		./configs/homepc/configuration.nix
-		nvf.nixosModules.default
-            	home-manager.nixosModules.home-manager {
-		    home-manager.useGlobalPkgs = true;
-		    home-manager.useUserPackages = true;
-		    home-manager.extraSpecialArgs = { inherit hyprland firefox-addons;};
-		    home-manager.users.nikola = {
-			imports = [ ./configs/homepc/home-manager ];
-		    };
-		}
-		disko.nixosModules.disko
-		./configs/homepc/disko.nix
-	    ];
-	 };
-	 piserver = lib.nixosSystem {
-	    system = "aarch64-linux";
-	    modules = [
-		./configs/piserver/configuration.nix
-		nvf.nixosModules.default
-	    ];
-	 };
-	 thinkcentre = lib.nixosSystem {
-	    system = "x86_64-linux";
-	    modules = [
-		./configs/thinkcentre/configuration.nix
-		nvf.nixosModules.default
-		disko.nixosModules.disko
-		./configs/thinkcentre/disko.nix
-	    ];
-	 };
+        homepc = lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit vars hyprland; };
+          modules = [
+            ./configs/homepc/configuration.nix
+            ./configs/homepc/disko.nix
+            disko.nixosModules.disko
+            nvf.nixosModules.default
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit hyprland hyprsplit firefox-addons;};
+              home-manager.users.nikola = {
+                imports = [ ./configs/homepc/home-manager ];
+              };
+            }
+            
+          ];
+	      };
+        piserver = lib.nixosSystem {
+            system = "aarch64-linux";
+            modules = [
+              ./configs/piserver/configuration.nix
+              nvf.nixosModules.default
+            ];
+        };
+        thinkcentre = lib.nixosSystem {
+            system = "x86_64-linux";
+            modules = [
+              ./configs/thinkcentre/configuration.nix
+              nvf.nixosModules.default
+              disko.nixosModules.disko
+              ./configs/thinkcentre/disko.nix
+            ];
+        };
       };
     };
 }
