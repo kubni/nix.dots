@@ -2,6 +2,11 @@
   inputs = {
    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+   agenix = {
+      url = "github:ryantm/agenix";
+      inputs.agenix.inputs.nixpkgs.follows = "nixpkgs";
+   };
+
    home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,7 +37,7 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, nvf, hyprland, hyprsplit, disko, firefox-addons}:
+  outputs = { self, nixpkgs, agenix, home-manager, nvf, hyprland, hyprsplit, disko, firefox-addons}:
     let
       pkgs = import nixpkgs {
         system="x86_64-linux";
@@ -77,8 +82,10 @@
         };
         thinkcentre = lib.nixosSystem {
             system = "x86_64-linux";
+            specialArgs = { inherit agenix; };
             modules = [
               ./configs/thinkcentre/configuration.nix
+              agenix.nixosModules.default
               nvf.nixosModules.default
               disko.nixosModules.disko
               ./configs/thinkcentre/disko.nix
