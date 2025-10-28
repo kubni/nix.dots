@@ -118,8 +118,10 @@
         };
         thinkcentre = lib.nixosSystem {
             system = "x86_64-linux";
+#            specialArgs = { inherit agenix; };
             modules = [
               ./configs/thinkcentre/configuration.nix
+#              agenix.nixosModules.default
               nvf.nixosModules.default
               disko.nixosModules.disko
               ./configs/thinkcentre/disko.nix

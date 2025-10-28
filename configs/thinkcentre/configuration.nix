@@ -1,11 +1,13 @@
 {
   pkgs,
   lib,
+  agenix,
   ...
 }:
 {
   imports = [
     ./hardware-configuration.nix
+    ./wireguard-server.nix
     ../shared/packages
   ];
 
@@ -125,7 +127,11 @@
   };
 
   programs = {
+    mosh.enable = true;
     starship.enable = true;
+    tmux = {
+      enable = true;
+    };
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -199,6 +205,8 @@
       usbutils
       libtool
       ethtool
+      wireguard-tools
+      agenix.packages."${system}".default      
     ];
     sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
