@@ -14,6 +14,7 @@ in
     ./virt.nix
     ./emacs
     ./coding
+    ../shared/packages
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -234,7 +235,7 @@ in
       cmake
       gnumake
       nixd
-      bitwarden
+      bitwarden-desktop
       jdk21
       xorg.xeyes
       brightnessctl
@@ -255,6 +256,7 @@ in
       nix-search-cli
       mosh
       nix-tree
+      cpu-x
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";

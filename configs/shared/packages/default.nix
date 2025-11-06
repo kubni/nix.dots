@@ -27,6 +27,7 @@
       ripgrep
       lsof
       zoxide
+      lm_sensors
     ];
     variables.EDITOR = "nvim";
     pathsToLink = [ "/share/zsh" ];

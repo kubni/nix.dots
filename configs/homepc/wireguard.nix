@@ -2,7 +2,7 @@
 
 {
   networking.wg-quick.interfaces = let
-    server_ip = "185.183.34.27";
+    server_ip = "109.236.81.166";
   in {
     wg0 = {
       # IP address of this machine in the *tunnel network*
@@ -16,7 +16,7 @@
       privateKeyFile = "/etc/proton-vpn.key";
 
       peers = [{
-	publicKey = "Ky8glqH9vHhIoSgiKcNv0q6o0qRsjCMV5S3I2v/j6w4=";
+	publicKey = "g6DkXWKI/68RsLjROIwCEcyB/ZhyK5Q7OWcz1TtqER0=";
         allowedIPs = [ "0.0.0.0/0" ];
         endpoint = "${server_ip}:51820";
       }];
