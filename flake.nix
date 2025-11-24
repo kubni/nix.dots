@@ -12,11 +12,11 @@
      inputs.nixpkgs.follows = "nixpkgs";
    };
    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.51.1";
+      url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.52.0";
    };
 
    hyprsplit = {
-     url = "github:shezdy/hyprsplit?ref=refs/tags/v0.51.1";
+     url = "github:shezdy/hyprsplit?ref=refs/tags/v0.52.0";
      inputs.hyprland.follows = "hyprland";
    };
 
@@ -29,16 +29,16 @@
      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
      inputs.nixpkgs.follows = "nixpkgs";
    };
+   
+   mango = {
+      url = "github:DreamMaoMao/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+   };
 
   };
 
-  outputs = { self, nixpkgs, home-manager, nvf, hyprland, hyprsplit, disko, firefox-addons}:
+  outputs = { self, nixpkgs, home-manager, nvf, hyprland, hyprsplit, disko, firefox-addons, mango}:
     let
-      pkgs = import nixpkgs {
-        system="x86_64-linux";
-        config.allowUnfree = true;
-      };
-
       lib = nixpkgs.lib;
       
       vars = {
@@ -62,7 +62,25 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit hyprland hyprsplit firefox-addons;};
               home-manager.users.nikola = {
-                imports = [ ./configs/homepc/home-manager ];
+                imports = [ 
+                  ./configs/homepc/home-manager 
+                  # TODO: What does this do?
+                  (
+                    { ... }:
+                    {
+                      wayland.windowManager.mango = {
+                        enable = true;
+                        settings = ''
+                          # see config.conf
+                        '';
+                        autostart_sh = ''
+                          # see autostart.sh
+                          # Note: here no need to add shebang
+                        '';
+                      };
+                    }
+                  )
+                ] ++ [mango.hmModules.mango];
               };
             }
             

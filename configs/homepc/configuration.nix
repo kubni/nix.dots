@@ -12,9 +12,11 @@ in
     ./hardware-configuration.nix
     ./wireguard.nix
     ./virt.nix
+    ./sanoid.nix
     ./emacs
-    ./coding
+    # ./coding
     ../shared/packages
+
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -192,6 +194,8 @@ in
   };
 
   environment = let 
+                # NOTE: Creates a `wine64` symlink thats just pointing to our wine, this fixes winetricks which seemingly has hardcoded calls to wine64, even though not all wine builds ship with it.
+                # winePkg = pkgs.wineWow64Packages.waylandFull;
                 winePkg = pkgs.wineWow64Packages.stagingFull;
                 wineSymlink = pkgs.runCommand "wine-symlink" {
                   nativeBuildInputs = [ pkgs.makeWrapper ];
@@ -235,7 +239,7 @@ in
       cmake
       gnumake
       nixd
-      bitwarden-desktop
+      # bitwarden-desktop
       jdk21
       xorg.xeyes
       brightnessctl

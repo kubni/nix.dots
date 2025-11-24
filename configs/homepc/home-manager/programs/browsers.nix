@@ -9,6 +9,7 @@ in
     # librewolf = {
     #   enable = true;
     # };
+    chromium.enable = true;
     firefox = {
       enable = true;
       profiles.default = {

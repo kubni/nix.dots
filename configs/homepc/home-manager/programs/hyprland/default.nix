@@ -55,11 +55,13 @@
 	 "col.inactive_border" = "rgba(595959aa)";
 
 	 layout = "master";
+         allow_tearing = "true";
        };
 
-       #windowrulev2 = [
-       #  "immediate, class:^(cs2)$"
-       #];
+       windowrulev2 = [
+         "immediate, class:^(cs2)$"
+         "immediate, class:^(horizonzerodawnremastered.exe)$"
+       ];
 
        decoration = {
      rounding = "10";

@@ -34,8 +34,9 @@
     hyprpaper
     mangohud
     # jellyfin-media-player
+    jellyfin-mpv-shim
     unigine-valley
-    # libreoffice-qt6-fresh
+    libreoffice-qt6-fresh
     yarn-berry
     teams-for-linux
     droidcam
@@ -49,8 +50,9 @@
     browsh
     wezterm
     bottles
-    webcord-vencord
+    # webcord-vencord
     signal-desktop
+    prismlauncher
 
     (pkgs.lutris.override {
         extraPkgs = pkgs: [
