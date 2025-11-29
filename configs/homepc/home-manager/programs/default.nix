@@ -8,6 +8,7 @@
     ./gtk.nix
     ./dconf.nix
     ./kdeconnect.nix
+    ./mangowc.nix
     ./hyprland
     ./zsh
     ./mpv

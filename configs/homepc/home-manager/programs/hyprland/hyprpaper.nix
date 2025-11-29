@@ -5,12 +5,11 @@
     settings = {
       splash = false;
       preload = [
-      "/home/nikola/Wallpapers/torii.jpg"
-      "/home/nikola/Wallpapers/2b.jpeg"
+      "/home/nikola/Wallpapers/2b.png"
       ];
       wallpaper = [
-	"DP-3,/home/nikola/Wallpapers/2b.jpeg"
-	"HDMI-A-1,/home/nikola/Wallpapers/2b.jpeg"
+	"DP-2,/home/nikola/Wallpapers/2b.png"
+	"HDMI-A-1,/home/nikola/Wallpapers/2b.png"
       ];
     };
   };

@@ -15,7 +15,7 @@
         "temperature",
         "pulseaudio",
     	"custom/nightlight",
-	    "custom/vpn"
+        "hyprland/language"
     ],
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -44,6 +44,12 @@
             "19": "",
             "20": ""
         }
+    },
+    "hyprland/language": {
+      "format": "{}",
+      "format-en": " EN",
+      "format-sr": " RS",
+      "on-click": "hyprctl switchxkblayout $SET_KB next"
     },
     "idle_inhibitor": {
         "format": "{icon}",

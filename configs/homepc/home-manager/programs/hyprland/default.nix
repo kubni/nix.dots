@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./waybar
+    ../waybar
     ./hyprpaper.nix
   ]; 
 	
@@ -16,7 +16,7 @@
         disable_logs = false;
        };
        monitor = [
-	 "DP-3,2560x1440@74.97,auto,auto"
+	 "DP-2,2560x1440@74.97,auto,auto"
 	 "HDMI-A-1,preferred,auto-left,auto"
        ];
 
@@ -24,6 +24,7 @@
 	 "mako &"
 	 "wl-paste --type text --watch cliphist store"
 	 "wl-paste --type image --watch cliphist store"
+         "waybar &"
        ];
 
        "$mainMod" = "SUPER";
