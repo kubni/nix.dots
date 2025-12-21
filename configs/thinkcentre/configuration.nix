@@ -29,6 +29,11 @@
     optimise.automatic = true;
   };
 
+  fileSystems."/mnt/external-hdd" = 
+    {
+      device = "/dev/disk/by-uuid/df0f8195-0a31-4596-ad2c-ffde9b2747dd";
+      fsType = "ext4";
+    };
   boot = {
     loader = {
       systemd-boot = {
@@ -77,6 +82,9 @@
     useDHCP = false;
     dhcpcd.enable = false;
     nameservers = [ "192.168.100.1" ];
+    # firewall.allowedTCPPorts = [
+    #   25565
+    # ];
   };
 
   time.timeZone = "Europe/Belgrade";
