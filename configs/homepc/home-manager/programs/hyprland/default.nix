@@ -24,7 +24,6 @@
 	 "mako &"
 	 "wl-paste --type text --watch cliphist store"
 	 "wl-paste --type image --watch cliphist store"
-         "waybar &"
        ];
 
        "$mainMod" = "SUPER";
@@ -33,8 +32,9 @@
        "$menu" = "wofi --show drun";
 
        env = [
-	 "HYPRCURSOR_SIZE, 40"
-           "QT_QPA_PLATFORM,wayland;xcb"
+         "HYPRCURSOR_THEME, Nordzy-hyprcursors-white"
+	 "HYPRCURSOR_SIZE,32"
+         "QT_QPA_PLATFORM,wayland;xcb"
 	 "QT_QPA_PLATFORMTHEME, qt6ct"
        ];
 
@@ -52,16 +52,16 @@
 	 gaps_in = "5";
 	 gaps_out = "10";
 	 border_size = "2";
-	 "col.active_border" = "rgba(8fbcbbaa) rgba(88c0d0aa) rgba(81a1c1aa) rgba(5e81acaa) 45deg";
-	 "col.inactive_border" = "rgba(595959aa)";
+	 # "col.active_border" = "rgba(8fbcbbaa) rgba(88c0d0aa) rgba(81a1c1aa) rgba(5e81acaa) 45deg";
+	 # "col.inactive_border" = "rgba(595959aa)";
 
 	 layout = "master";
          allow_tearing = "true";
        };
 
-       windowrulev2 = [
-         "immediate, class:^(cs2)$"
-         "immediate, class:^(horizonzerodawnremastered.exe)$"
+       windowrule = [
+         "match:class cs2, immediate on"
+         "match:class horizonzerodawnremastered.exe, immediate on"
        ];
 
        decoration = {
@@ -76,7 +76,7 @@
        enabled = "true";
        range = "4";
        render_power = "3";
-       color = "rgba(1a1a1aee)";
+       # color = "rgba(1a1a1aee)";
      };
    };
        animations = {
@@ -178,8 +178,8 @@
     };
 
     plugins = [
-       hyprsplit.packages.${pkgs.system}.hyprsplit 
-#      hyprspace.packages.${pkgs.system}.Hyprspace
+       hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit 
+#      hyprspace.packages.${pkgs.stdenv.hostPlatform.system}.Hyprspace
        # pkgs.hyprlandPlugins.hyprsplit
     ];
   };

@@ -12,11 +12,11 @@
      inputs.nixpkgs.follows = "nixpkgs";
    };
    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.52.0";
+      url = "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.53.1";
    };
 
    hyprsplit = {
-     url = "github:shezdy/hyprsplit?ref=refs/tags/v0.52.0";
+     url = "github:shezdy/hyprsplit?ref=refs/tags/v0.53.1";
      inputs.hyprland.follows = "hyprland";
    };
 
@@ -34,10 +34,15 @@
       url = "github:DreamMaoMao/mango";
       inputs.nixpkgs.follows = "nixpkgs";
    };
+ 
+   stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+   };
 
   };
 
-  outputs = { self, nixpkgs, home-manager, nvf, hyprland, hyprsplit, disko, firefox-addons, mango}:
+  outputs = { self, nixpkgs, home-manager, nvf, hyprland, hyprsplit, disko, firefox-addons, mango, stylix}:
     let
       lib = nixpkgs.lib;
       
@@ -57,6 +62,7 @@
             ./configs/homepc/disko.nix
             disko.nixosModules.disko
             nvf.nixosModules.default
+            stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

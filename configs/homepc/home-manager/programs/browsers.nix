@@ -1,14 +1,17 @@
-{ pkgs, firefox-addons, lib, ... }: let
+{ stylix, pkgs, firefox-addons, lib, ... }: let
   customAddons = pkgs.callPackage ./addons.nix {
     inherit lib;
-    inherit (firefox-addons.lib.${pkgs.system}) buildFirefoxXpiAddon;
+    inherit (firefox-addons.lib.${pkgs.stdenv.hostPlatform.system}) buildFirefoxXpiAddon;
   };
 in
-{
+{ 
+  stylix.targets.firefox.profileNames = [ "default" ];
+  stylix.targets.librewolf.profileNames = [ "default" ];
   programs = {
-    # librewolf = {
-    #   enable = true;
-    # };
+    librewolf = {
+      enable = true;
+    };
+    qutebrowser.enable = true;
     chromium.enable = true;
     firefox = {
       enable = true;
@@ -96,7 +99,7 @@ in
               }
           }
         '';
-        extensions.packages = with firefox-addons.packages.${pkgs.system}; [
+        extensions.packages = with firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
           bitwarden
           darkreader
           ublock-origin

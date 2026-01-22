@@ -5,7 +5,6 @@
     ./mako.nix
     ./starship.nix
     ./direnv.nix
-    ./gtk.nix
     ./dconf.nix
     ./kdeconnect.nix
     ./mangowc.nix

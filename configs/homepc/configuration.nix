@@ -51,12 +51,6 @@ in
     supportedFilesystems = [ "ntfs" ];
   };
 
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "ondemand";
-  };
-
-
   networking = {
     hostName = "nixos";
     hostId = "dae119c6";
@@ -67,7 +61,6 @@ in
     useDHCP = false;
     dhcpcd.enable = false;
     nameservers = [ "192.168.100.1" ];
-    # nameservers = [ "192.168.100.39" ];
   };
 
   time.timeZone = "Europe/Belgrade";
@@ -113,7 +106,15 @@ in
     zfs = {
       autoScrub.enable = true;
     };
+    udev = {
+     packages = [
+      pkgs.vial 
+      pkgs.qmk-udev-rules
+     ];
+    };
   };
+
+
 
   users.users.nikola = {
     isNormalUser = true;
@@ -127,6 +128,24 @@ in
     shell = pkgs.zsh;
   };
 
+
+    stylix = {
+      enable = true;
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+      fonts = {
+        serif = config.stylix.fonts.sansSerif;
+        sansSerif = {
+          package = pkgs.atkinson-hyperlegible;
+          name = "Atkinson Hyperlegible";
+        };
+        monospace = {
+          package = pkgs.atkinson-hyperlegible-mono;
+          name = "Atkinson Hyperlegible Mono";
+        };
+      };
+    };
+
+
   programs = {
     hyprland = {
       enable = true;
@@ -138,7 +157,7 @@ in
     gamemode.enable = true;
     kdeconnect.enable = true;
     virt-manager.enable = true;
-    adb.enable = true;
+
 
     nvf = {
       enable = true;
@@ -261,6 +280,10 @@ in
       mosh
       nix-tree
       cpu-x
+      vial
+      qmk 
+      qmk-udev-rules
+      android-tools
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";

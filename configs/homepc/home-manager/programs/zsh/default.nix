@@ -19,6 +19,7 @@
       ls = "lsd";
       df = "duf";
       nightlight = "wlsunset -l 44.8 -L 20.4";
+      ec = "emacsclient -c -a";
     };
 
     plugins = [
