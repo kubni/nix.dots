@@ -20,7 +20,7 @@
 
   # Install some commonly found programs that don't need additional configs
   home.packages = with pkgs; [
-    neofetch
+    fastfetch
     zip
     unzip
     ripgrep
@@ -33,13 +33,9 @@
     mono
     hyprpaper
     mangohud
-    # jellyfin-media-player
+    jellyfin-media-player
     jellyfin-mpv-shim
-    unigine-valley
     libreoffice-qt6-fresh
-    yarn-berry
-    teams-for-linux
-    droidcam
     pandoc
     foliate
     qview
@@ -56,7 +52,7 @@
 
     (pkgs.lutris.override {
         extraPkgs = pkgs: [
-          pkgs.wineWowPackages.stagingFull
+          pkgs.wineWow64Packages.stagingFull
           pkgs.winetricks
         ];
     })

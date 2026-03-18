@@ -123,7 +123,7 @@
 	 "$mainMod SHIFT, Q, exit"
 	 "$mainMod SHIFT, F, fullscreen"
 	 "$mainMod, P, pseudo"
-	 "$mainMod, J, togglesplit"
+	 "$mainMod, J, layoutmsg, togglesplit"
 	 "$mainMod, T, togglefloating"
 	 
 	 "$mainMod, RETURN, exec, $terminal"

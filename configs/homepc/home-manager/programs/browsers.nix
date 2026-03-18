@@ -8,9 +8,9 @@ in
   stylix.targets.firefox.profileNames = [ "default" ];
   stylix.targets.librewolf.profileNames = [ "default" ];
   programs = {
-    librewolf = {
-      enable = true;
-    };
+    # librewolf = {
+    #   enable = true;
+    # };
     qutebrowser.enable = true;
     chromium.enable = true;
     firefox = {

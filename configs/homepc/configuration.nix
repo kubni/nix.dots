@@ -60,7 +60,7 @@ in
     };
     useDHCP = false;
     dhcpcd.enable = false;
-    nameservers = [ "192.168.100.1" ];
+    nameservers = [ "192.168.100.65" ];
   };
 
   time.timeZone = "Europe/Belgrade";
@@ -260,7 +260,7 @@ in
       nixd
       # bitwarden-desktop
       jdk21
-      xorg.xeyes
+      xeyes
       brightnessctl
       nix-prefetch-git
       nurl
