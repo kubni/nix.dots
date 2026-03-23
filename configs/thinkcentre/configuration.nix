@@ -29,11 +29,11 @@
     optimise.automatic = true;
   };
 
-  fileSystems."/mnt/external-hdd" = 
-    {
-      device = "/dev/disk/by-uuid/df0f8195-0a31-4596-ad2c-ffde9b2747dd";
-      fsType = "ext4";
-    };
+  # fileSystems."/mnt/external-hdd" = 
+  #   {
+  #     device = "/dev/disk/by-uuid/e31f1517-5ffa-445f-86b7-0b60764ffb6b";
+  #     fsType = "ext4";
+  #   };
   boot = {
     loader = {
       systemd-boot = {
@@ -81,7 +81,7 @@
     };
     useDHCP = false;
     dhcpcd.enable = false;
-    nameservers = [ "192.168.100.1" ];
+    nameservers = [ "192.168.100.65" ];
     # firewall.allowedTCPPorts = [
     #   25565
     # ];
@@ -214,6 +214,8 @@
       libtool
       ethtool
       wireguard-tools
+      qrencode
+      dig
       agenix.packages."${system}".default      
     ];
     sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };

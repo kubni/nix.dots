@@ -30,6 +30,11 @@
           publicKey = "onfssbLZFtZXVOiHVNFYGDxm2S4sKdbMWVDsINePnDM=";
           allowedIPs = [ "10.10.0.4/32" ];
         }
+        {
+          name = "pixel";
+          publicKey = "KF4n0dlHds91rVv/HZGtNNgflgY6X2SsbJPUL/ATA1I=";
+          allowedIPs = [ "10.10.0.6/32" ];
+        }
       ];
 
       postSetup = ''
