@@ -137,9 +137,10 @@
 	 "$mainMod, up, movefocus, u" 
 	 "$mainMod, down, movefocus, d" 
 
+	 "$mainMod, M, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+
 	 "ALT, F, exec, $terminal start ranger"
 	 "ALT, P, exec, $terminal start pulsemixer"
-	 
 	 ", Print, exec, grim -g \"$(slurp)\" - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of the region taken\" -t 1000"
 
 	 "SHIFT, Print, exec, grim -c - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of the whole screen taken\""
