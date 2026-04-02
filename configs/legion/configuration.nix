@@ -78,6 +78,10 @@ in
         nvidiaBusId = "PCI:5@0:0:0";
         amdgpuBusId = "PCI:1@0:0:0";
       };
+      powerManagement = {
+        enable = true;
+        finegrained = true;
+      };
 
       # TODO: powerManagement.enable and powerManagement.finegrained
     };
@@ -110,6 +114,7 @@ in
     gvfs.enable = true;
     udisks2.enable = true;
     gnome.gnome-keyring.enable = true;
+    libinput.enable = true;
 
     udev = {
      packages = [

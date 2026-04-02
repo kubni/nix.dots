@@ -42,13 +42,13 @@
        ];
 
        input = {
-	 kb_layout = "us,rs,";
-	 kb_variant = ",latin";
-	 kb_model = ",qwerty";
-	 kb_options = "grp:alt_shift_toggle";
+         kb_layout = "us,rs,";
+         kb_variant = ",latin";
+         kb_model = ",qwerty";
+         kb_options = "grp:alt_shift_toggle";
 
-	 follow_mouse = "1";
-	 sensitivity = "0";
+         follow_mouse = "1";
+         sensitivity = "0";
        };
 
        general = {

@@ -15,7 +15,7 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      switch = "sudo nixos-rebuild switch --flake .#homepc";
+      switch = "sudo nixos-rebuild switch --flake .#legion";
       ls = "lsd";
       df = "duf";
       nightlight = "wlsunset -l 44.8 -L 20.4";
