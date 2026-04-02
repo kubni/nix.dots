@@ -1,0 +1,127 @@
+{
+    "layer": "top",
+    "position": "right",
+    "spacing": 20,
+    "modules-left": [
+        "clock",
+        "tray"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "memory",
+        "cpu",
+        "temperature",
+        "pulseaudio",
+    	"custom/nightlight",
+        "hyprland/language"
+    ],
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{icon} ",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": "",
+            "10": "",
+            "11": "",
+            "12": "",
+            "13": "",
+            "14": "",
+            "15": "",
+            "16": "",
+            "17": "",
+            "18": "",
+            "19": "",
+            "20": ""
+        }
+    },
+    "hyprland/language": {
+      "format": "{}",
+      "format-en": " EN",
+      "format-sr": " RS",
+      "on-click": "hyprctl switchxkblayout $SET_KB next"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "timezone": "Europe/Belgrade",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{percentage}% "
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pulsemixer"
+    },
+    "custom/nightlight": {
+	"format": "{icon}",
+	"format-icons": [
+	  "󰖔"
+	],
+	"on-click": "toggle-nightlight"
+    },
+    "custom/shutdown": {
+	"format": "{icon}",
+	"format-icons": [
+	  ""
+	],
+	"on-click": "shutdown now"
+    },
+    "custom/vpn": {
+	"format": "{icon}",
+	"format-icons": [
+	  "󰩠"
+	],
+	"on-click": "toggle-vpn"
+    }
+}

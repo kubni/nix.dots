@@ -103,6 +103,43 @@
             
           ];
 	      };
+        legion = lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit vars hyprland; };
+          modules = [
+            ./configs/legion/configuration.nix
+            nixos-hardware.nixosModules.gigabyte-b650
+            nvf.nixosModules.default
+            stylix.nixosModules.stylix
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit hyprland hyprsplit firefox-addons;};
+              home-manager.users.nikola = {
+                imports = [ 
+                  ./configs/legion/home-manager 
+                  # TODO: What does this do?
+                  (
+                    { ... }:
+                    {
+                      wayland.windowManager.mango = {
+                        enable = true;
+                        settings = ''
+                          # see config.conf
+                        '';
+                        autostart_sh = ''
+                          # see autostart.sh
+                          # Note: here no need to add shebang
+                        '';
+                      };
+                    }
+                  )
+                ] ++ [mango.hmModules.mango];
+              };
+            }
+            
+          ];
+        };
         piserver = lib.nixosSystem {
             system = "aarch64-linux";
             modules = [
@@ -120,6 +157,7 @@
               overlaysModule
             ];
         };
+        
       };
     };
 }
