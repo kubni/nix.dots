@@ -108,7 +108,6 @@
           specialArgs = { inherit vars hyprland; };
           modules = [
             ./configs/legion/configuration.nix
-            nixos-hardware.nixosModules.gigabyte-b650
             nvf.nixosModules.default
             stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {
