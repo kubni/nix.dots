@@ -1,0 +1,112 @@
+path '/home/nikola/nix.dots/configs/legion/home-manager/programs' does not contain a 'flake.nix', searching up
+warning: Git tree '/home/nikola/nix.dots' is dirty
+building the system configuration...
+path '/home/nikola/nix.dots/configs/legion/home-manager/programs' does not contain a 'flake.nix', searching up
+warning: Git tree '/home/nikola/nix.dots' is dirty
+these 40 derivations will be built:
+  /nix/store/wj2i5scdysqbpdm6xnj505agcv9irfnm-steam-1.0.0.85-fhsenv-rootfs.drv
+  /nix/store/f7jkbx6yvjpc559v5sim740yfzgj31jq-steam-1.0.0.85-bwrap.drv
+  /nix/store/5zpivkr0bx8nrf7qi23g75rkgsp659rn-steam-1.0.0.85.drv
+  /nix/store/az70fp8mxbdchkqlkdyxjl0a8h1i9qiv-hyprland-0.54.0+date=2026-04-05_aaa2fc3.drv
+  /nix/store/dfw53p5nbr1j431sf5lx5ahpb28n0nsm-xdg-desktop-portal-hyprland-1.3.11+date=2026-03-15_a9b862d.drv
+  /nix/store/33qcpxq69h7k683nf96zp56d2p66d046-steam-run-1.0.0.85-fhsenv-rootfs.drv
+  /nix/store/d80lpz95zrzixzpxgfj25bn2wszq3y29-steam-run-1.0.0.85-bwrap.drv
+  /nix/store/fnsrjyf4ba45x84l0ypz2bk864nsxdp0-steam-run-1.0.0.85.drv
+  /nix/store/hgpjmmg9l84gx79niaa4nw8g8jzkyx09-nvidia-settings-595.58.03.drv
+  /nix/store/gksj2mzcxrrb1n9v22zhbq18109f1q6m-system-path.drv
+  /nix/store/ff3bj5c7a8a50qk0wlis1n5yz52y9a0x-X-Restart-Triggers-polkit.drv
+  /nix/store/07xzir023kgcnyx8w7ahp4060j7l2q8b-unit-polkit.service.drv
+  /nix/store/c1jw6vh4hcrdpv5agri7m1kq9w3nxv31-linux-zen-6.19.9-modules-shrunk.drv
+  /nix/store/xm07gcq1shswlbrgff860h3mzz2svcmg-closure-info.drv
+  /nix/store/1d0jjfmy6w4nmxd8yq454h4x6vmsh1q4-initrd-linux-zen-6.19.9.drv
+  /nix/store/237my83xm341y5w8srqvssj3dx4pxvas-tmpfiles.d.drv
+  /nix/store/8xih68r18h9z9y5fx3yvh0xaisvzdxvl-hyprsplit-flakeRev=2d8cfc8_srcRev=git.drv
+  /nix/store/5261rkn6xk6w59i35h18yn6wl02wf7vl-hm_hyprhyprland.conf.drv
+  /nix/store/lxjcza5gajsvv6y5nac9xn309laf3xc8-dbus-1.drv
+  /nix/store/br4rdm20l5h2rx7milhvl93vrkhypc42-X-Restart-Triggers-dbus.drv
+  /nix/store/6h0wxr75680mzpj3pl1q6gihljl463vc-unit-dbus.service.drv
+  /nix/store/6mqybxnk9z2zb033w8w2rp8v76iflhpn-home-manager-path.drv
+  /nix/store/c6fp2dqlsgckl8qlyazxx9adpc20kfi3-system-shutdown.drv
+  /nix/store/d7m3h3d5731hvfvriavds57ldf856kiq-system-generators.drv
+  /nix/store/gpyf7dxzkdjs1rkgrf4x738515vgldyn-user-units.drv
+  /nix/store/j2w25blf7z471v8069bnd78xmdsrmbrk-user-generators.drv
+  /nix/store/rsxd626cxhfq1g36hrvmq7f4vbymlph1-user-environment.drv
+  /nix/store/p1lagcv4aw8jshb81kq2s02wj3kpdzpz-mango-config.conf.drv
+  /nix/store/vfmjfpbx8ickizsiy9ab7m8q82q3iggg-hm_fontconfigconf.d10hmfonts.conf.drv
+  /nix/store/m1cq4dwfa6fkfncvjav4sgwnsjzzwlhy-home-manager-files.drv
+  /nix/store/vfmwd97bq18xhf0pp78h88b0mnhdr1mi-home-manager-generation.drv
+  /nix/store/xigpg69h4iwaf1k4a3c50vbj9jkc599c-unit-home-manager-nikola.service.drv
+  /nix/store/rpf3g80hz1w56wfyz24xsyyram08xdyn-X-Restart-Triggers-systemd-tmpfiles-resetup.drv
+  /nix/store/z32kz65r2h3cqxsiwf8yh2i76i6qc2ci-unit-systemd-tmpfiles-resetup.service.drv
+  /nix/store/zml90bj1sa5v9vp1lpplccxsvhspr4pc-unit-dbus.service.drv
+  /nix/store/xv5ms0m9xxi0cr1rfgvr9cqwwzzi4hnc-system-units.drv
+  /nix/store/fyhcxfcq1jmr4nxsrz16xac8kg8s0nbr-etc.drv
+  /nix/store/nbbj894bmd0snfa9p6agz10kpivx3nwr-activate.drv
+  /nix/store/r6bnaxdzbd51mbcf7vqxgmp97ymi7q7s-boot.json.drv
+  /nix/store/jmxlaivhl67c01n8k3wy076955zx5246-nixos-system-legion-26.05.20260401.6201e20.drv
+building '/nix/store/237my83xm341y5w8srqvssj3dx4pxvas-tmpfiles.d.drv'...
+building '/nix/store/az70fp8mxbdchkqlkdyxjl0a8h1i9qiv-hyprland-0.54.0+date=2026-04-05_aaa2fc3.drv'...
+building '/nix/store/hgpjmmg9l84gx79niaa4nw8g8jzkyx09-nvidia-settings-595.58.03.drv'...
+building '/nix/store/6mqybxnk9z2zb033w8w2rp8v76iflhpn-home-manager-path.drv'...
+building '/nix/store/c1jw6vh4hcrdpv5agri7m1kq9w3nxv31-linux-zen-6.19.9-modules-shrunk.drv'...
+building '/nix/store/wj2i5scdysqbpdm6xnj505agcv9irfnm-steam-1.0.0.85-fhsenv-rootfs.drv'...
+building '/nix/store/33qcpxq69h7k683nf96zp56d2p66d046-steam-run-1.0.0.85-fhsenv-rootfs.drv'...
+building '/nix/store/p1lagcv4aw8jshb81kq2s02wj3kpdzpz-mango-config.conf.drv'...
+building '/nix/store/rpf3g80hz1w56wfyz24xsyyram08xdyn-X-Restart-Triggers-systemd-tmpfiles-resetup.drv'...
+error: Cannot build '/nix/store/p1lagcv4aw8jshb81kq2s02wj3kpdzpz-mango-config.conf.drv'.
+       Reason: builder failed with exit code 1.
+       Output paths:
+         /nix/store/0v8xhsi74zy0s5rr753l975666ggpbgv-mango-config.conf
+       Last 25 log lines:
+       > 
+       >
+       > [ERROR]: Monitor rule must have at least one of the following options: name, make, model, serial
+       > ╰─[Index] /nix/store/0v8xhsi74zy0s5rr753l975666ggpbgv-mango-config.conf:20
+       >    ╰─monitorrule=HDMI-A-1,0.55,1,tile,0,1,0,0,1920,1080,60
+       > 
+       >
+       > [ERROR]: Monitor rule must have at least one of the following options: name, make, model, serial
+       > ╰─[Index] /nix/store/0v8xhsi74zy0s5rr753l975666ggpbgv-mango-config.conf:21
+       >    ╰─monitorrule=DP-2,0.55,1,tile,0,1,1920,0,2560,1440,74.97
+       > 
+       >
+       > [ERROR]: Unknown key: spawn_shell
+       > [ERROR]: Unknown modifier: Print
+       > [ERROR]: Unknown dispatch in bind: grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify "Screenshot of the region taken" -t 1000"
+       > ╰─[Index] /nix/store/0v8xhsi74zy0s5rr753l975666ggpbgv-mango-config.conf:33
+       >    ╰─bind=Print,spawn_shell,grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify "Screenshot of the region taken" -t 1000"
+       > 
+       >
+       > [ERROR]: Unknown key: spawn_shell
+       > [ERROR]: Unknown dispatch in bind: grim -c - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify "Screenshot of the whole screen taken"
+       > ╰─[Index] /nix/store/0v8xhsi74zy0s5rr753l975666ggpbgv-mango-config.conf:34
+       >    ╰─bind=SHIFT+Print,spawn_shell,grim -c - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify "Screenshot of the whole screen taken"
+       > 
+       >
+       For full logs, run:
+         nix log /nix/store/p1lagcv4aw8jshb81kq2s02wj3kpdzpz-mango-config.conf.drv
+error: Cannot build '/nix/store/m1cq4dwfa6fkfncvjav4sgwnsjzzwlhy-home-manager-files.drv'.
+       Reason: 1 dependency failed.
+       Output paths:
+         /nix/store/3kv59gzqgmlqrnx4v6zmm3kcmb516aaj-home-manager-files
+error: Cannot build '/nix/store/vfmwd97bq18xhf0pp78h88b0mnhdr1mi-home-manager-generation.drv'.
+       Reason: 1 dependency failed.
+       Output paths:
+         /nix/store/pm9r7nryx9gmf08nal8khv4pspkhlj7y-home-manager-generation
+error: Cannot build '/nix/store/xigpg69h4iwaf1k4a3c50vbj9jkc599c-unit-home-manager-nikola.service.drv'.
+       Reason: 1 dependency failed.
+       Output paths:
+         /nix/store/60w89mjiqwb11xm4x15qny47fsk0nw0c-unit-home-manager-nikola.service
+error: Cannot build '/nix/store/xv5ms0m9xxi0cr1rfgvr9cqwwzzi4hnc-system-units.drv'.
+       Reason: 1 dependency failed.
+       Output paths:
+         /nix/store/as04qdgjapvp0amrm48qvnqw0hr7kp1v-system-units
+error: Cannot build '/nix/store/fyhcxfcq1jmr4nxsrz16xac8kg8s0nbr-etc.drv'.
+       Reason: 1 dependency failed.
+       Output paths:
+         /nix/store/rqd6xlyx43rj82xpm1mlvx0ykvicidp9-etc
+error: Cannot build '/nix/store/jmxlaivhl67c01n8k3wy076955zx5246-nixos-system-legion-26.05.20260401.6201e20.drv'.
+       Reason: 1 dependency failed.
+       Output paths:
+         /nix/store/pk4m1zh5qdg2mri6ak2mbbz92qzkvany-nixos-system-legion-26.05.20260401.6201e20
+Command 'nix --extra-experimental-features 'nix-command flakes' build --print-out-paths '.#nixosConfigurations."legion".config.system.build.toplevel' --no-link' returned non-zero exit status 1.

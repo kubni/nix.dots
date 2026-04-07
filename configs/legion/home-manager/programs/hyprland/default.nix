@@ -49,6 +49,11 @@
 
          follow_mouse = "1";
          sensitivity = "0";
+
+         touchpad = {
+          natural_scroll = true;
+          tap-to-click = true;
+         };
        };
 
        general = {

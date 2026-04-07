@@ -7,7 +7,7 @@
     ./direnv.nix
     ./dconf.nix
     ./kdeconnect.nix
-    ./mangowc.nix
+    # ./mangowc.nix
     ./hyprland
     ./zsh
     ./mpv

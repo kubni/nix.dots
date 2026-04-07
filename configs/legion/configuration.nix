@@ -44,7 +44,11 @@ in
       };
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages;
+    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelModules = [ "lenovo-legion-module" ];
+    # kernelModules = [ "i2c_hid" "i2c_hid_acpi" "lenovo-legion-module" "hid_multitouch" ];
+
+    kernelModules = [ "i2c-hid-acpi" ];
 
     supportedFilesystems = [ "ntfs" ];
   };
@@ -115,6 +119,7 @@ in
     udisks2.enable = true;
     gnome.gnome-keyring.enable = true;
     libinput.enable = true;
+    fwupd.enable = true;
 
     udev = {
      packages = [
@@ -300,6 +305,8 @@ in
       qmk 
       qmk-udev-rules
       android-tools
+      libinput
+      lenovo-legion
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
