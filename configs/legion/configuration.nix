@@ -48,7 +48,7 @@ in
     # kernelModules = [ "lenovo-legion-module" ];
     # kernelModules = [ "i2c_hid" "i2c_hid_acpi" "lenovo-legion-module" "hid_multitouch" ];
 
-    kernelModules = [ "i2c-hid-acpi" ];
+    # kernelModules = [ "i2c-hid-acpi" ];
 
     supportedFilesystems = [ "ntfs" ];
   };
@@ -79,8 +79,8 @@ in
       prime = {
         offload.enable = true;
         offload.enableOffloadCmd = true;
-        nvidiaBusId = "PCI:5@0:0:0";
-        amdgpuBusId = "PCI:1@0:0:0";
+        nvidiaBusId = "PCI:1@0:0:0";
+        amdgpuBusId = "PCI:5@0:0:0";
       };
       powerManagement = {
         enable = true;
