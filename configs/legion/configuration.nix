@@ -45,10 +45,7 @@ in
       efi.canTouchEfiVariables = true;
     };
     kernelPackages = pkgs.linuxPackages_latest;
-    # kernelModules = [ "lenovo-legion-module" ];
-    # kernelModules = [ "i2c_hid" "i2c_hid_acpi" "lenovo-legion-module" "hid_multitouch" ];
-
-    # kernelModules = [ "i2c-hid-acpi" ];
+    kernelModules = [ "amdgpu" ];
 
     supportedFilesystems = [ "ntfs" ];
   };
@@ -70,6 +67,7 @@ in
   i18n.defaultLocale = "en_US.UTF-8";
 
   hardware = {
+    amdgpu.initrd.enable = false;
     enableRedistributableFirmware = lib.mkDefault true;
     graphics.enable = true;
     nvidia = {
@@ -128,7 +126,7 @@ in
      ];
     };
 
-    xserver.videoDrivers = [ "nvidia" ];
+    xserver.videoDrivers = [ "amdgpu" "nvidia" ];
   };
 
 
@@ -307,6 +305,7 @@ in
       android-tools
       libinput
       lenovo-legion
+      devenv
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";

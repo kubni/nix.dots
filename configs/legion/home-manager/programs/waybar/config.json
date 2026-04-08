@@ -12,9 +12,10 @@
     "modules-right": [
         "memory",
         "cpu",
+        "battery",
         "temperature",
         "pulseaudio",
-    	"custom/nightlight",
+        "custom/nightlight",
         "hyprland/language"
     ],
     "hyprland/workspaces": {
@@ -70,6 +71,10 @@
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
+    },
+    "battery": {
+      "format": "{capacity}% {icon}",
+      "format-icons": ["▁","▂","▃","▄","█"]
     },
     "memory": {
         "format": "{percentage}% "

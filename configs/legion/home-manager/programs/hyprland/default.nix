@@ -16,10 +16,10 @@
         disable_logs = false;
         gl_debugging = true;
        };
-	 #      monitor = [
-	 # "DP-2,2560x1440@74.97,auto,auto"
-	 # "HDMI-A-1,preferred,auto-left,auto"
-       # ];
+	      monitor = [
+	 "DP-1,2560x1440@240.00,auto,auto"
+	 "DP-2,2560x1440@74.97,auto-up,auto"
+       ];
 
        exec-once = [
 	 "mako &"
@@ -37,8 +37,8 @@
 	 "HYPRCURSOR_SIZE,32"
          "QT_QPA_PLATFORM,wayland;xcb"
 	 "QT_QPA_PLATFORMTHEME, qt6ct"
-        "LIBVA_DRIVER_NAME,nvidia"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        # "LIBVA_DRIVER_NAME,nvidia"
+        # "__GLX_VENDOR_LIBRARY_NAME,nvidia"
        ];
 
        input = {
@@ -51,7 +51,7 @@
          sensitivity = "0";
 
          touchpad = {
-          natural_scroll = true;
+          natural_scroll = false;
           tap-to-click = true;
          };
        };
