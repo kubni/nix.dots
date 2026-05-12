@@ -74,6 +74,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit hyprland hyprsplit firefox-addons;};
+              home-manager.backupFileExtension = "backup"; 
               home-manager.users.nikola = {
                 imports = [ 
                   ./configs/homepc/home-manager 

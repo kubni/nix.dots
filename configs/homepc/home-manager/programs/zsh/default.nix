@@ -20,6 +20,7 @@
       df = "duf";
       nightlight = "wlsunset -l 44.8 -L 20.4";
       ec = "emacsclient -c -a";
+
     };
 
     plugins = [
@@ -38,6 +39,16 @@
 
     # These get added to .zshrc
     initContent = ''
+      wcp() {
+        wl-copy < "$1"
+      }
+      dcud() {
+        local name
+        name=$(basename "$PWD")
+
+        echo "Building act/$name:latest and composing a daemon..."
+        docker build . -t "act/$name:latest" && docker compose up -d
+      }
       source <(fzf --zsh) 
       eval "$(starship init zsh)"
     '';

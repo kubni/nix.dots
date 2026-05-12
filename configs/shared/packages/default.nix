@@ -28,6 +28,7 @@
       lsof
       zoxide
       lm_sensors
+      net-tools
     ];
     variables.EDITOR = "nvim";
     pathsToLink = [ "/share/zsh" ];

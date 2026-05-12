@@ -120,12 +120,21 @@
 ;; (setq matlab-shell-command "/home/nikola/Programs/matlab/bin/matlab")
 ;; (setq matlab-shell-command-switches (list "-nodesktop"))
 
-;; LateX fragment preview
-;; IMPORTANT: This may slow down org buffer loading significantly if there are a lot of LateX fragments
-;; TODO: How to make it so that $ is automatically added before and after \some_latex expression?
+;; Envrc.el config
+(add-hook 'after-init-hook 'envrc-global-mode)
+
+;; Latex
+;; Latex fragment preview
 (add-hook 'org-mode-hook 'org-fragtog-mode)
 (after! org (plist-put org-format-latex-options :scale 2))
 
+;; Use cdlatex snippets desipte having yasnippet
+(map! :map cdlatex-mode-map :i "TAB" #'cdlatex-tab)
 
-;; Envrc.el config
-(add-hook 'after-init-hook 'envrc-global-mode)
+;; Use zathura as latex pdf viewer
+(setq +latex-viewers '(zathura))
+
+
+;; evil-multiedit config
+(require 'evil-multiedit)
+(evil-multiedit-default-keybinds)

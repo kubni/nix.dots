@@ -47,6 +47,8 @@ in
       efi.canTouchEfiVariables = true;
     };
     kernelPackages = pkgs.linuxPackages;
+    kernelModules = [ "ntsync" ];
+
 
     supportedFilesystems = [ "ntfs" ];
   };
@@ -60,7 +62,8 @@ in
     };
     useDHCP = false;
     dhcpcd.enable = false;
-    nameservers = [ "192.168.100.65" ];
+    nameservers = [ "192.168.1.1" ];
+    enableIPv6 = false;
   };
 
   time.timeZone = "Europe/Belgrade";
@@ -112,19 +115,25 @@ in
       pkgs.qmk-udev-rules
      ];
     };
+    hardware.openrgb = { 
+      enable = true; 
+      package = pkgs.openrgb-with-all-plugins; 
+      motherboard = "amd"; 
+      server.port = 6742; 
+    };
   };
 
 
 
-  users.users.nikola = {
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-      "libvirtd"
-      "docker"
-      "adbusers"
-    ];
+    users.users.nikola = {
+      isNormalUser = true;
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+        "libvirtd"
+        "docker"
+        "adbusers"
+      ];
     shell = pkgs.zsh;
   };
 
@@ -165,6 +174,10 @@ in
         vim = {
           viAlias = false;
           vimAlias = true;
+          options = {
+            tabstop = 2;
+            shiftwidth = 2;
+          };
 
           lsp = {
             enable = true;
@@ -284,6 +297,11 @@ in
       qmk 
       qmk-udev-rules
       android-tools
+      texlive.combined.scheme-medium
+      texlab
+      openrgb-with-all-plugins
+      amdgpu_top
+      devenv
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
