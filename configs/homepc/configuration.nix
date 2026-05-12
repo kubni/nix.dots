@@ -48,9 +48,8 @@ in
     };
     kernelPackages = pkgs.linuxPackages;
     kernelModules = [ "ntsync" ];
-
-
     supportedFilesystems = [ "ntfs" ];
+    zfs.forceImportRoot = false;
   };
 
   networking = {

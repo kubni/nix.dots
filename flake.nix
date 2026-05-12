@@ -57,6 +57,11 @@
         terminal = "wezterm";
 	      editor = "nvim";
       };
+      overlaysModule = {
+        nixpkgs.overlays = [
+           (import ./overlays/openldap.nix)
+        ];
+      };
 
     in {
       nixosConfigurations = {
@@ -66,6 +71,7 @@
           modules = [
             ./configs/homepc/configuration.nix
             ./configs/homepc/disko.nix
+            overlaysModule
             nixos-hardware.nixosModules.gigabyte-b650
             disko.nixosModules.disko
             nvf.nixosModules.default
@@ -84,9 +90,6 @@
                     {
                       wayland.windowManager.mango = {
                         enable = true;
-                        settings = ''
-                          # see config.conf
-                        '';
                         autostart_sh = ''
                           # see autostart.sh
                           # Note: here no need to add shebang
@@ -114,6 +117,7 @@
               nvf.nixosModules.default
               disko.nixosModules.disko
               ./configs/thinkcentre/disko.nix
+              overlaysModule
             ];
         };
       };
