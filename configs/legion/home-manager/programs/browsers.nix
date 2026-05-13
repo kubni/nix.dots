@@ -1,4 +1,4 @@
-{ stylix, pkgs, firefox-addons, lib, ... }: 
+{ stylix, config, pkgs, firefox-addons, lib, ... }: 
 # let
   # customAddons = pkgs.callPackage ./addons.nix {
   #   inherit lib;
@@ -14,6 +14,7 @@
     chromium.enable = true;
     firefox = {
       enable = true;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
       profiles.default = {
         id = 0;
         name = "default";

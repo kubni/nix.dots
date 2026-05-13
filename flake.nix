@@ -110,6 +110,7 @@
             ./configs/legion/configuration.nix
             nvf.nixosModules.default
             stylix.nixosModules.stylix
+            overlaysModule
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
