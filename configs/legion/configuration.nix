@@ -5,14 +5,10 @@
   hyprland,
   ...
 }:
-let pkgs-unstable = hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in
 {
   imports = [
     ./hardware-configuration.nix
-    # ./wireguard.nix
     ./emacs
-    # ./coding
     ../shared/packages
 
   ];
@@ -67,9 +63,12 @@ in
   i18n.defaultLocale = "en_US.UTF-8";
 
   hardware = {
+
     amdgpu.initrd.enable = false;
     enableRedistributableFirmware = lib.mkDefault true;
     graphics.enable = true;
+
+    nvidia-container-toolkit.enable = true;
     nvidia = {
       open = true;
       modesetting.enable = true;
@@ -96,6 +95,7 @@ in
   virtualisation = {
     docker = {
       enable = true;
+      # enableNvidia = true; # DEPRECATED
       daemon.settings = {
         data-root = "/home/nikola/docker-data-root";
       };
@@ -183,6 +183,14 @@ in
           options = {
             tabstop = 2;
             shiftwidth = 2;
+          };
+
+          clipboard = {
+            enable = true;
+            providers = {
+              wl-copy.enable = true;
+            };
+            registers = "unnamedplus";
           };
 
           lsp = {
@@ -306,6 +314,7 @@ in
       libinput
       lenovo-legion
       devenv
+      wireguard-tools
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";
