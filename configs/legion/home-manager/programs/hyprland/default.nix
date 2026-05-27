@@ -18,7 +18,7 @@
        };
 	      monitor = [
 	 "DP-1,2560x1440@240.00,auto,auto"
-	 "DP-2,2560x1440@74.97,auto-up,auto"
+	 "HDMI-A-1,2560x1440@74.97,auto-up,auto"
        ];
 
        exec-once = [

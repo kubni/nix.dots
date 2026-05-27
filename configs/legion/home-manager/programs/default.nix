@@ -49,6 +49,7 @@
     # webcord-vencord
     signal-desktop
     prismlauncher
+   # tailscale
 
     (pkgs.lutris.override {
         extraPkgs = pkgs: [

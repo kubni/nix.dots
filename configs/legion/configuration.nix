@@ -44,19 +44,27 @@
     kernelModules = [ "amdgpu" ];
 
     supportedFilesystems = [ "ntfs" ];
+
+    initrd.systemd.network.wait-online.enable = false;
   };
 
   networking = {
     hostName = "legion";
     hostId = "781678cc";
-    # networkmanager = {
-    #   enable = true;
-    #   dns = "none";
-    # };
-    # useDHCP = false;
-    # dhcpcd.enable = false;
-    # nameservers = [ "192.168.100.65" ];
+    nftables.enable = true;
+    firewall = {
+      enable = true;
+      trustedInterfaces = [ config.services.tailscale.interfaceName ];
+      allowedUDPPorts = [ config.services.tailscale.port ];
+    };
     networkmanager.enable = true;
+  };
+
+  systemd = {
+    services.tailscaled.serviceConfig.Environment = [ 
+      "TS_DEBUG_FIREWALL_MODE=nftables" 
+    ];
+    network.wait-online.enable = false; 
   };
 
   time.timeZone = "Europe/Belgrade";
@@ -74,14 +82,15 @@
       modesetting.enable = true;
       nvidiaSettings = true;
       prime = {
-        offload.enable = true;
-        offload.enableOffloadCmd = true;
+        sync.enable = true;
+        # offload.enable = true;
+        # offload.enableOffloadCmd = true;
         nvidiaBusId = "PCI:1@0:0:0";
         amdgpuBusId = "PCI:5@0:0:0";
       };
       powerManagement = {
         enable = true;
-        finegrained = true;
+        # finegrained = true;
       };
 
       # TODO: powerManagement.enable and powerManagement.finegrained
@@ -103,6 +112,9 @@
   };
 
   services = {
+    tailscale = {
+      enable = true;
+    };
     openssh = {
       enable = true;
     };
@@ -315,6 +327,15 @@
       lenovo-legion
       devenv
       wireguard-tools
+      powertop
+      ### Claude Desktop stuff
+      claude-desktop
+      bubblewrap
+      qemu_kvm
+      socat
+      virtiofsd
+      nodejs
+      ###
 
       (pkgs.writeShellApplication {
         name = "toggle-nightlight";

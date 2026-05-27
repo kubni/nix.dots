@@ -41,14 +41,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
    };
  
-   stylix = {
+    stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
-   };
+    };
+
+    claude-desktop = {
+      url = "github:aaddrick/claude-desktop-debian";
+    };
 
   };
 
-  outputs = { self, nixpkgs, home-manager, nvf, hyprland, hyprsplit, disko, firefox-addons, mango, stylix, nixos-hardware}:
+  outputs = { self, nixpkgs, home-manager, nvf, hyprland, hyprsplit, disko, firefox-addons, mango, stylix, nixos-hardware, claude-desktop }:
     let
       lib = nixpkgs.lib;
       
@@ -105,16 +109,19 @@
 	      };
         legion = lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit vars hyprland; };
+          specialArgs = { inherit vars hyprland claude-desktop; };
           modules = [
             ./configs/legion/configuration.nix
             nvf.nixosModules.default
             stylix.nixosModules.stylix
             overlaysModule
+            {
+              nixpkgs.overlays = [ claude-desktop.overlays.default ];
+            }
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit hyprland hyprsplit firefox-addons;};
+              home-manager.extraSpecialArgs = { inherit hyprland hyprsplit firefox-addons claude-desktop; };
               home-manager.users.nikola = {
                 imports = [ 
                   ./configs/legion/home-manager 
