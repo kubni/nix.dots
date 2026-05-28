@@ -61,7 +61,7 @@ in
     };
     useDHCP = false;
     dhcpcd.enable = false;
-    nameservers = [ "192.168.1.1" ];
+    nameservers = [ "192.168.1.112" ];
     enableIPv6 = false;
   };
 
