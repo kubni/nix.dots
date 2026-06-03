@@ -329,7 +329,7 @@
       wireguard-tools
       powertop
       ### Claude Desktop stuff
-      claude-desktop
+      claude-desktop-fhs
       bubblewrap
       qemu_kvm
       socat

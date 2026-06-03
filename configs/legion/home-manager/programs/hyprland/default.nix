@@ -17,8 +17,8 @@
         gl_debugging = true;
        };
 	      monitor = [
-	 "DP-1,2560x1440@240.00,auto,auto"
-	 "HDMI-A-1,2560x1440@74.97,auto-up,auto"
+	        "eDP-1,2560x1600@240.00,auto,auto"
+	        "HDMI-A-1,2560x1440@74.97,auto-up,auto"
        ];
 
        exec-once = [

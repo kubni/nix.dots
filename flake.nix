@@ -42,13 +42,12 @@
    };
  
     stylix = {
-      url = "github:nix-community/stylix";
+      # url = "github:nix-community/stylix";
+      url = "github:nix-community/stylix/pull/2337/head";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    claude-desktop = {
-      url = "github:aaddrick/claude-desktop-debian";
-    };
+    claude-desktop.url = "github:aaddrick/claude-desktop-debian/5dd948e96d853ed37636bc0e2368fc2665cd1104";
 
   };
 
@@ -116,7 +115,10 @@
             stylix.nixosModules.stylix
             overlaysModule
             {
-              nixpkgs.overlays = [ claude-desktop.overlays.default ];
+              nixpkgs.overlays = [ 
+                claude-desktop.overlays.default
+                (import ./overlays/claude-desktop-fhs.nix)
+              ];
             }
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
