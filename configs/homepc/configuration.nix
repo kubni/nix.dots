@@ -10,13 +10,13 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    ./wireguard.nix
+    # ./proton-wireguard.nix
+    ./mullvad-wireguard.nix
     ./virt.nix
     ./sanoid.nix
     ./emacs
-    # ./coding
+    ./claude-desktop.nix
     ../shared/packages
-
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -310,18 +310,6 @@ in
           	pkill -x "wlsunset"
           else
           	wlsunset -l 44.8 -L 20.4 &
-          fi
-        '';
-      })
-
-      # TODO: How to allow interactive password input for sudo which is needed for this to run?
-      (pkgs.writeShellApplication {
-        name = "toggle-vpn";
-        text = ''
-          if systemctl is-active --quiet wg-quick-wg0.service; then
-          	systemctl stop wg-quick-wg0.service;
-          else
-                systemctl start wg-quick-wg0.service;
           fi
         '';
       })
