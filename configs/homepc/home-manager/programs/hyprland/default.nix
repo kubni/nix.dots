@@ -11,19 +11,21 @@
      package = null;
      portalPackage = null;
 
+     configType = "hyprlang";
+
      settings = {
        debug = {
         disable_logs = true;
        };
        monitor = [
-	 "DP-2,2560x1440@74.97,auto,auto"
-	 "HDMI-A-1,preferred,auto-left,auto"
+         "DP-2,2560x1440@74.97,auto,auto"
+         "HDMI-A-1,preferred,auto-left,auto"
        ];
 
        exec-once = [
-	 "mako &"
-	 "wl-paste --type text --watch cliphist store"
-	 "wl-paste --type image --watch cliphist store"
+         "mako &"
+         "wl-paste --type text --watch cliphist store"
+         "wl-paste --type image --watch cliphist store"
        ];
 
        "$mainMod" = "SUPER";

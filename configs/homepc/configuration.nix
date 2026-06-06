@@ -55,7 +55,6 @@ in
 
   networking = {
     hostName = "homepc";
-    domain = "lan";
     hostId = "dae119c6";
     networkmanager = {
       enable = true;
