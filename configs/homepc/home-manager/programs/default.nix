@@ -9,7 +9,6 @@
     ./kdeconnect.nix
     # ./mangowc.nix
     ./hyprland
-    ./zsh
     ./mpv
     ./terminals
   ];
