@@ -9,14 +9,15 @@ let pkgs-unstable = hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPla
 in
 {
   imports = [
+    ./emacs
     ./hardware-configuration.nix
     # ./proton-wireguard.nix
     ./mullvad-wireguard.nix
     ./virt.nix
     ./sanoid.nix
-    ./emacs
     ./claude-desktop.nix
-    ../shared/packages
+    ./zsh.nix # Zsh related things, specific to this configuration
+    ../shared
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -53,7 +54,8 @@ in
   };
 
   networking = {
-    hostName = "nixos";
+    hostName = "homepc";
+    domain = "lan";
     hostId = "dae119c6";
     networkmanager = {
       enable = true;
@@ -160,51 +162,12 @@ in
       package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
-    zsh.enable = true;
     steam.enable = true;
     gamemode.enable = true;
     kdeconnect.enable = true;
     virt-manager.enable = true;
 
 
-    nvf = {
-      enable = true;
-      settings = {
-        vim = {
-          viAlias = false;
-          vimAlias = true;
-          options = {
-            tabstop = 2;
-            shiftwidth = 2;
-          };
-
-          lsp = {
-            enable = true;
-            lspSignature.enable = true;
-          };
-
-          languages = {
-            enableTreesitter = true;
-            nix.enable = true;
-          };
-
-          visuals = {
-            nvim-web-devicons.enable = true;
-          };
-
-          tabline = {
-            nvimBufferline.enable = true;
-          };
-
-          extraPlugins = {
-            nord = {
-              package = pkgs.vimPlugins.nordic-nvim;
-              setup = "vim.cmd[[colorscheme nordic]]";
-            };
-          };
-        };
-      };
-    };
     ssh = {
       extraConfig = "
         Host *
@@ -239,42 +202,22 @@ in
       winePkg
       wineSymlink
       winetricks
-      zsh
-      wget
-      curl
-      git
       mako
       libnotify
       grim
       slurp
       cliphist
-      unrar
-      unzip
-      p7zip
-      fzf
-      fd
-      rsync
-      tree
-      ncdu
       wlsunset
-      btop
-      lm_sensors
       pulsemixer
       wl-clipboard
       mono
       qbittorrent
       wofi
       waybar
-      starship
       mpv
-      cmake
-      gnumake
-      nixd
-      # bitwarden-desktop
       jdk21
       xeyes
       brightnessctl
-      nix-prefetch-git
       nurl
       pciutils
       pcmanfm
@@ -288,7 +231,6 @@ in
       appimage-run
       libxml2
       OVMF
-      nix-search-cli
       mosh
       nix-tree
       cpu-x
@@ -314,11 +256,7 @@ in
         '';
       })
     ];
-
-    variables.EDITOR = "nvim";
     sessionVariables.NIXOS_OZONE_WL = "1";
-
-    pathsToLink = [ "/share/zsh" ];
   };
 
   system.stateVersion = "24.05"; # Did you read the comment?
