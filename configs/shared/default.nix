@@ -5,7 +5,7 @@
      ./packages
      ./zsh.nix
      ./nvf.nix
-     # ./tmux.nix
+     ./tmux.nix
   ];
 
 }
