@@ -1,14 +1,14 @@
 {
   config,
   pkgs,
-  agenix,
+  # agenix,
   ...
 }:
 {
   imports = [
     ./hardware-configuration.nix
     ./wireguard-server.nix
-    ../shared/packages
+    ../shared
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -41,25 +41,30 @@
     initrd.kernelModules = [
       "e1000e" # Found with nix run nixpkgs#lshw -- -C network | grep -Poh 'driver=[[:alnum:]]+'
     ];
-    initrd.network = {
-      enable = true;
-      ssh = {
+
+    initrd ={
+      network = {
         enable = true;
-        port = 2222;
-        hostKeys = [
-          "/etc/secrets/initrd/ssh_host_ed25519_key"
-        ];
-        authorizedKeyFiles = [
-          ./ssh/authorized_keys 
-        ];
+        ssh = {
+          enable = true;
+          port = 2222;
+          hostKeys = [
+            "/etc/secrets/initrd/ssh_host_ed25519_key"
+          ];
+          authorizedKeyFiles = [
+            ./ssh/authorized_keys 
+          ];
+        };
+        postCommands = ''
+          touch /root/.profile
+          echo "zfs load-key -a" >> /root/.profile   # This gives us a decryption passphrase prompt after we ssh into the server.
+          echo "killall zfs" >> /root/.profile       # This kills the initrd ssh connection and allows the server to unlock itself.
+        '';
       };
-      postCommands = ''
-        touch /root/.profile
-        echo "zfs load-key -a" >> /root/.profile   # This gives us a decryption passphrase prompt after we ssh into the server.
-        echo "killall zfs" >> /root/.profile       # This kills the initrd ssh connection and allows the server to unlock itself.
-      '';
+      systemd.enable = false;
     };
-    initrd.systemd.network.wait-online.enable = false;
+
+    zfs.forceImportRoot = false;
   };
  
   networking = {
@@ -67,9 +72,9 @@
     hostId = "f14e8e97";
     networkmanager = {
       enable = true;
-      dns = "systemd-resolved";
+      dns = "none";
     };
-    nameservers = [ "127.0.0.1" ];
+    nameservers = [ "192.168.1.1" ];
     useDHCP = false;
     dhcpcd.enable = false;
     nftables.enable = true;
@@ -104,9 +109,6 @@
     network.wait-online.enable = false;
   };
   services = {
-    resolved = {
-      enable = true;
-    };
     xserver = {
       videoDrivers = [ "mesa" ];
     };
@@ -139,62 +141,6 @@
 
   programs = {
     mosh.enable = true;
-    starship.enable = true;
-    tmux = {
-      enable = true;
-    };
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-
-      histSize = 10000;
-      histFile = "$HOME/.zsh_history";
-      setOptions = [
-        "HIST_IGNORE_ALL_DUPS"
-      ];
-    };
-
-    zoxide = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-
-    nvf = {
-      enable = true;
-      settings = {
-        vim = {
-          viAlias = false;
-          vimAlias = true;
-
-          lsp = {
-            enable = true;
-            lspSignature.enable = true;
-          };
-
-          languages = {
-            enableTreesitter = true;
-            nix.enable = true;
-          };
-
-          visuals = {
-            nvim-web-devicons.enable = true;
-          };
-
-          tabline = {
-            nvimBufferline.enable = true;
-          };
-
-          extraPlugins = {
-            nord = {
-              package = pkgs.vimPlugins.nordic-nvim;
-              setup = "vim.cmd[[colorscheme nordic]]";
-            };
-          };
-        };
-      };
-    };
   };
 
   fonts.packages = with pkgs; [
@@ -219,7 +165,7 @@
       wireguard-tools
       qrencode
       dig
-      agenix.packages."${system}".default      
+      # agenix.packages."${system}".default      
     ];
     sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
