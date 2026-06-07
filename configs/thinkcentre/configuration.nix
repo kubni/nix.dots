@@ -1,6 +1,6 @@
 {
+  config,
   pkgs,
-  lib,
   agenix,
   ...
 }:
@@ -29,11 +29,6 @@
     optimise.automatic = true;
   };
 
-  # fileSystems."/mnt/external-hdd" = 
-  #   {
-  #     device = "/dev/disk/by-uuid/e31f1517-5ffa-445f-86b7-0b60764ffb6b";
-  #     fsType = "ext4";
-  #   };
   boot = {
     loader = {
       systemd-boot = {
@@ -64,27 +59,25 @@
         echo "killall zfs" >> /root/.profile       # This kills the initrd ssh connection and allows the server to unlock itself.
       '';
     };
+    initrd.systemd.network.wait-online.enable = false;
   };
  
-
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "ondemand";
-  };
-
-
   networking = {
     hostName = "thinkcentre";
     hostId = "f14e8e97";
     networkmanager = {
       enable = true;
+      dns = "systemd-resolved";
     };
+    nameservers = [ "127.0.0.1" ];
     useDHCP = false;
     dhcpcd.enable = false;
-    nameservers = [ "192.168.100.65" ];
-    # firewall.allowedTCPPorts = [
-    #   25565
-    # ];
+    nftables.enable = true;
+    firewall = {
+      enable = true;
+      trustedInterfaces = [ "tailscale0" ];
+      allowedUDPPorts = [ config.services.tailscale.port ];
+    };
   };
 
   time.timeZone = "Europe/Belgrade";
@@ -106,11 +99,21 @@
     };
   };
 
+  systemd = {
+    services.tailscaled.serviceConfig.Environment = [ "TS_DEBUG_FIREWALL_MODE=nftables"];
+    network.wait-online.enable = false;
+  };
   services = {
+    resolved = {
+      enable = true;
+    };
     xserver = {
       videoDrivers = [ "mesa" ];
     };
     openssh = {
+      enable = true;
+    };
+    tailscale = {
       enable = true;
     };
     fstrim = {
