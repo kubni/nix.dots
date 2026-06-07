@@ -16,18 +16,13 @@
       privateKeyFile = "/var/wireguard/wg0";
       peers = [
         {
-          name = "pocophone";
-          publicKey = "mXkGVmujt+/glLeI2tuVS83+KdtrEZX2H0onF2bUnX8=";
-          allowedIPs = [ "10.10.0.2/32" ];
-        }
-        {
           name = "debian";
           publicKey = "/UphPjmK59RE4aaZRaMJJoux3c6l5M0f9CG60FAFNXQ=";
           allowedIPs = [ "10.10.0.3/32" ];
         }
         {
           name = "legion";
-          publicKey = "onfssbLZFtZXVOiHVNFYGDxm2S4sKdbMWVDsINePnDM=";
+          publicKey = "xkwJCFSxnXJVVsOi53teVQd/8dFfXGDsfcLt6mmauyA=";
           allowedIPs = [ "10.10.0.4/32" ];
         }
         {
