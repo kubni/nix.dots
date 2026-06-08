@@ -63,7 +63,6 @@ in
     useDHCP = false;
     dhcpcd.enable = false;
     nameservers = [ "192.168.1.112" ];
-    # resolvconf.extraOptions = [ "no-aaaa" ];
   };
 
   time.timeZone = "Europe/Belgrade";
