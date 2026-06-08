@@ -61,10 +61,10 @@
   };
 
   systemd = {
-    services.tailscaled.serviceConfig.Environment = [ 
-      "TS_DEBUG_FIREWALL_MODE=nftables" 
+    services.tailscaled.serviceConfig.Environment = [
+      "TS_DEBUG_FIREWALL_MODE=nftables"
     ];
-    network.wait-online.enable = false; 
+    network.wait-online.enable = false;
   };
 
   time.timeZone = "Europe/Belgrade";
@@ -132,16 +132,17 @@
     fwupd.enable = true;
 
     udev = {
-     packages = [
-      pkgs.vial 
-      pkgs.qmk-udev-rules
-     ];
+      packages = [
+        pkgs.vial
+        pkgs.qmk-udev-rules
+      ];
     };
 
-    xserver.videoDrivers = [ "amdgpu" "nvidia" ];
+    xserver.videoDrivers = [
+      "amdgpu"
+      "nvidia"
+    ];
   };
-
-
 
   users.users.nikola = {
     isNormalUser = true;
@@ -155,23 +156,21 @@
     shell = pkgs.zsh;
   };
 
-
-    stylix = {
-      enable = true;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
-      fonts = {
-        serif = config.stylix.fonts.sansSerif;
-        sansSerif = {
-          package = pkgs.atkinson-hyperlegible;
-          name = "Atkinson Hyperlegible";
-        };
-        monospace = {
-          package = pkgs.atkinson-hyperlegible-mono;
-          name = "Atkinson Hyperlegible Mono";
-        };
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+    fonts = {
+      serif = config.stylix.fonts.sansSerif;
+      sansSerif = {
+        package = pkgs.atkinson-hyperlegible;
+        name = "Atkinson Hyperlegible";
+      };
+      monospace = {
+        package = pkgs.atkinson-hyperlegible-mono;
+        name = "Atkinson Hyperlegible Mono";
       };
     };
-
+  };
 
   programs = {
     hyprland = {
@@ -184,7 +183,6 @@
     gamemode.enable = true;
     kdeconnect.enable = true;
     virt-manager.enable = true;
-
 
     nvf = {
       enable = true;
@@ -240,121 +238,115 @@
     };
   };
 
-  fonts.packages = with pkgs; [
-    commit-mono
-    intel-one-mono
-    atkinson-hyperlegible
-    nerd-fonts.symbols-only
-  ];
+  environment =
+    let
+      # NOTE: Creates a `wine64` symlink thats just pointing to our wine, this fixes winetricks which seemingly has hardcoded calls to wine64, even though not all wine builds ship with it.
+      # winePkg = pkgs.wineWow64Packages.waylandFull;
+      winePkg = pkgs.wineWow64Packages.stagingFull;
+      wineSymlink =
+        pkgs.runCommand "wine-symlink"
+          {
+            nativeBuildInputs = [ pkgs.makeWrapper ];
+          }
+          ''
+            mkdir -p $out/bin
+            ln -s ${winePkg}/bin/wine $out/bin/wine64
+          '';
+    in
+    {
+      systemPackages = with pkgs; [
+        winePkg
+        wineSymlink
+        winetricks
+        zsh
+        wget
+        curl
+        git
+        mako
+        libnotify
+        grim
+        slurp
+        cliphist
+        unrar
+        unzip
+        p7zip
+        fzf
+        fd
+        rsync
+        tree
+        ncdu
+        wlsunset
+        btop
+        lm_sensors
+        pulsemixer
+        wl-clipboard
+        mono
+        qbittorrent
+        wofi
+        waybar
+        starship
+        mpv
+        cmake
+        gnumake
+        nixd
+        # bitwarden-desktop
+        jdk21
+        xeyes
+        brightnessctl
+        nix-prefetch-git
+        nurl
+        pciutils
+        pcmanfm
+        usbutils
+        xdg-utils
+        gnome-keyring
+        libtool
+        ethtool
+        lsof
+        virtio-win
+        appimage-run
+        libxml2
+        OVMF
+        nix-search-cli
+        mosh
+        nix-tree
+        cpu-x
+        vial
+        qmk
+        qmk-udev-rules
+        android-tools
+        libinput
+        lenovo-legion
+        devenv
+        wireguard-tools
+        powertop
+        ### Claude Desktop stuff
+        claude-desktop-fhs
+        bubblewrap
+        qemu_kvm
+        socat
+        virtiofsd
+        nodejs
+        ###
 
-  zramSwap = {
-    enable = true;
-  };
+        (pkgs.writeShellApplication {
+          name = "toggle-nightlight";
+          runtimeInputs = [ wlsunset ];
+          text = ''
+            if pgrep -x "wlsunset" > /dev/null; then
+            	pkill -x "wlsunset"
+            else
+            	wlsunset -l 44.8 -L 20.4 &
+            fi
+          '';
+        })
+      ];
 
-  environment = let 
-                # NOTE: Creates a `wine64` symlink thats just pointing to our wine, this fixes winetricks which seemingly has hardcoded calls to wine64, even though not all wine builds ship with it.
-                # winePkg = pkgs.wineWow64Packages.waylandFull;
-                winePkg = pkgs.wineWow64Packages.stagingFull;
-                wineSymlink = pkgs.runCommand "wine-symlink" {
-                  nativeBuildInputs = [ pkgs.makeWrapper ];
-                } ''
-                    mkdir -p $out/bin
-                    ln -s ${winePkg}/bin/wine $out/bin/wine64
-                  '';
-                in {
-    systemPackages = with pkgs; [
-      winePkg
-      wineSymlink
-      winetricks
-      zsh
-      wget
-      curl
-      git
-      mako
-      libnotify
-      grim
-      slurp
-      cliphist
-      unrar
-      unzip
-      p7zip
-      fzf
-      fd
-      rsync
-      tree
-      ncdu
-      wlsunset
-      btop
-      lm_sensors
-      pulsemixer
-      wl-clipboard
-      mono
-      qbittorrent
-      wofi
-      waybar
-      starship
-      mpv
-      cmake
-      gnumake
-      nixd
-      # bitwarden-desktop
-      jdk21
-      xeyes
-      brightnessctl
-      nix-prefetch-git
-      nurl
-      pciutils
-      pcmanfm
-      usbutils
-      xdg-utils
-      gnome-keyring
-      libtool
-      ethtool
-      lsof
-      virtio-win
-      appimage-run
-      libxml2
-      OVMF
-      nix-search-cli
-      mosh
-      nix-tree
-      cpu-x
-      vial
-      qmk 
-      qmk-udev-rules
-      android-tools
-      libinput
-      lenovo-legion
-      devenv
-      wireguard-tools
-      powertop
-      ### Claude Desktop stuff
-      claude-desktop-fhs
-      bubblewrap
-      qemu_kvm
-      socat
-      virtiofsd
-      nodejs
-      ###
+      variables.EDITOR = "nvim";
+      sessionVariables.NIXOS_OZONE_WL = "1";
 
-      (pkgs.writeShellApplication {
-        name = "toggle-nightlight";
-        runtimeInputs = [ wlsunset ];
-        text = ''
-          if pgrep -x "wlsunset" > /dev/null; then
-          	pkill -x "wlsunset"
-          else
-          	wlsunset -l 44.8 -L 20.4 &
-          fi
-        '';
-      })
-    ];
-     
-    variables.EDITOR = "nvim";
-    sessionVariables.NIXOS_OZONE_WL = "1";
-
-    pathsToLink = [ "/share/zsh" ];
-  };
+      pathsToLink = [ "/share/zsh" ];
+    };
 
   system.stateVersion = "25.11"; # Did you read the comment?
 }

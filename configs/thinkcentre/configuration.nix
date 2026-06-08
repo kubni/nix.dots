@@ -17,7 +17,7 @@
       "e1000e" # Found with nix run nixpkgs#lshw -- -C network | grep -Poh 'driver=[[:alnum:]]+'
     ];
 
-    initrd ={
+    initrd = {
       network = {
         enable = true;
         ssh = {
@@ -27,9 +27,10 @@
             "/etc/secrets/initrd/ssh_host_ed25519_key"
           ];
           authorizedKeyFiles = [
-            ./ssh/authorized_keys 
+            ./ssh/authorized_keys
           ];
         };
+        # TODO: Will be removed in 26.11, migrate to systemd equivalent
         postCommands = ''
           touch /root/.profile
           echo "zfs load-key -a" >> /root/.profile   # This gives us a decryption passphrase prompt after we ssh into the server.
@@ -39,7 +40,7 @@
       systemd.enable = false;
     };
   };
- 
+
   networking = {
     hostName = "thinkcentre";
     hostId = "f14e8e97";
@@ -69,9 +70,10 @@
   };
 
   systemd = {
-    services.tailscaled.serviceConfig.Environment = [ "TS_DEBUG_FIREWALL_MODE=nftables"];
+    services.tailscaled.serviceConfig.Environment = [ "TS_DEBUG_FIREWALL_MODE=nftables" ];
     network.wait-online.enable = false;
   };
+
   services = {
     # TODO: Why? Because of GPU acceleration for video decoding? Does that even make sense?
     xserver = {
@@ -101,22 +103,18 @@
     mosh.enable = true;
   };
 
-  fonts.packages = with pkgs; [
-    commit-mono
-    atkinson-hyperlegible
-    nerd-fonts.symbols-only
-  ];
-
   environment = {
     systemPackages = with pkgs; [
       mesa
       wireguard-tools
       qrencode
-      # agenix.packages."${system}".default      
+      # agenix.packages."${system}".default
     ];
-    sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+    sessionVariables = {
+      LIBVA_DRIVER_NAME = "iHD";
+    };
 
   };
 
-  system.stateVersion = "25.05"; 
+  system.stateVersion = "25.05";
 }

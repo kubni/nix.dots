@@ -106,7 +106,6 @@
               home-manager.users.nikola = {
                 imports = [
                   ./configs/homepc/home-manager
-                  # TODO: What does this do?
                   (
                     { ... }:
                     {
@@ -196,3 +195,7 @@
       };
     };
 }
+
+# TODO:
+# 1) Give mango its own config files
+# 2) Declarative ssh

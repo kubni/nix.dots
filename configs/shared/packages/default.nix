@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, ... }:
 
 {
 
@@ -32,7 +32,6 @@
       net-tools
       lsd
       duf
-      #
       nurl
       pciutils
       usbutils
