@@ -32,6 +32,13 @@
       net-tools
       lsd
       duf
+      #
+      nurl
+      pciutils
+      usbutils
+      libtool
+      ethtool
+      dig
     ];
     variables.EDITOR = "nvim";
     pathsToLink = [ "/share/zsh" ];

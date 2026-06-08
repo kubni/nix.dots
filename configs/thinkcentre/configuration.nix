@@ -156,15 +156,8 @@
   environment = {
     systemPackages = with pkgs; [
       mesa
-      lm_sensors
-      nurl
-      pciutils
-      usbutils
-      libtool
-      ethtool
       wireguard-tools
       qrencode
-      dig
       # agenix.packages."${system}".default      
     ];
     sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };

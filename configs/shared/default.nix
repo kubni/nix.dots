@@ -6,6 +6,7 @@
      ./zsh.nix
      ./nvf.nix
      ./tmux.nix
+     ./system.nix
   ];
 
 }

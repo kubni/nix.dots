@@ -20,26 +20,6 @@ in
     ../shared
   ];
 
-  nixpkgs.config.allowUnfree = true;
-
-  nix = {
-    settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      substituters = [
-        "https://hyprland.cachix.org"
-        "https://nix-community.cachix.org"
-      ];
-      trusted-public-keys = [
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
-    };
-    optimise.automatic = true;
-  };
-
   boot = {
     loader = {
       systemd-boot = {
@@ -50,23 +30,13 @@ in
     kernelPackages = pkgs.linuxPackages;
     kernelModules = [ "ntsync" ];
     supportedFilesystems = [ "ntfs" ];
-    zfs.forceImportRoot = false;
   };
 
   networking = {
     hostName = "homepc";
     hostId = "dae119c6";
-    networkmanager = {
-      enable = true;
-      dns = "none";
-    };
-    useDHCP = false;
-    dhcpcd.enable = false;
     nameservers = [ "192.168.1.112" ];
   };
-
-  time.timeZone = "Europe/Belgrade";
-  i18n.defaultLocale = "en_US.UTF-8";
 
   hardware = {
     enableRedistributableFirmware = lib.mkDefault true;
@@ -91,9 +61,6 @@ in
   };
 
   services = {
-    openssh = {
-      enable = true;
-    };
     pipewire = {
       enable = true;
       pulse.enable = true;
@@ -102,12 +69,8 @@ in
       enable = true;
     };
     gvfs.enable = true;
-    udisks2.enable = true;
     gnome.gnome-keyring.enable = true;
 
-    zfs = {
-      autoScrub.enable = true;
-    };
     udev = {
      packages = [
       pkgs.vial 
@@ -181,10 +144,6 @@ in
     nerd-fonts.symbols-only
   ];
 
-  zramSwap = {
-    enable = true;
-  };
-
   environment = let 
                 # NOTE: Creates a `wine64` symlink thats just pointing to our wine, this fixes winetricks which seemingly has hardcoded calls to wine64, even though not all wine builds ship with it.
                 # winePkg = pkgs.wineWow64Packages.waylandFull;
@@ -216,15 +175,9 @@ in
       jdk21
       xeyes
       brightnessctl
-      nurl
-      pciutils
       pcmanfm
-      usbutils
       xdg-utils
       gnome-keyring
-      libtool
-      ethtool
-      lsof
       virtio-win
       appimage-run
       libxml2
