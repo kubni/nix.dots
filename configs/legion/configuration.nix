@@ -9,8 +9,7 @@
   imports = [
     ./hardware-configuration.nix
     ./emacs
-    ../shared/packages
-
+    ../shared
   ];
 
   nixpkgs.config.allowUnfree = true;
