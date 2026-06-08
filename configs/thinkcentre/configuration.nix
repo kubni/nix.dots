@@ -11,32 +11,7 @@
     ../shared
   ];
 
-  nixpkgs.config.allowUnfree = true;
-
-  nix = {
-    settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      substituters = [
-        "https://nix-community.cachix.org"
-      ];
-      trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
-    };
-    optimise.automatic = true;
-  };
-
   boot = {
-    loader = {
-      systemd-boot = {
-        enable = true;
-      };
-      efi.canTouchEfiVariables = true;
-    };
-
     kernelParams = [ "ip=dhcp" ];
     initrd.kernelModules = [
       "e1000e" # Found with nix run nixpkgs#lshw -- -C network | grep -Poh 'driver=[[:alnum:]]+'
@@ -63,20 +38,12 @@
       };
       systemd.enable = false;
     };
-
-    zfs.forceImportRoot = false;
   };
  
   networking = {
     hostName = "thinkcentre";
     hostId = "f14e8e97";
-    networkmanager = {
-      enable = true;
-      dns = "none";
-    };
-    nameservers = [ "192.168.1.1" ];
-    useDHCP = false;
-    dhcpcd.enable = false;
+    nameservers = [ "192.168.1.112" ];
     nftables.enable = true;
     firewall = {
       enable = true;
@@ -84,9 +51,6 @@
       allowedUDPPorts = [ config.services.tailscale.port ];
     };
   };
-
-  time.timeZone = "Europe/Belgrade";
-  i18n.defaultLocale = "en_US.UTF-8";
 
   hardware.graphics = {
     enable = true;
@@ -109,21 +73,15 @@
     network.wait-online.enable = false;
   };
   services = {
+    # TODO: Why? Because of GPU acceleration for video decoding? Does that even make sense?
     xserver = {
       videoDrivers = [ "mesa" ];
-    };
-    openssh = {
-      enable = true;
     };
     tailscale = {
       enable = true;
     };
     fstrim = {
       enable = true;
-    };
-    udisks2.enable = true;
-    zfs = {
-      autoScrub.enable = true;
     };
   };
 
@@ -148,10 +106,6 @@
     atkinson-hyperlegible
     nerd-fonts.symbols-only
   ];
-
-  zramSwap = {
-    enable = true;
-  };
 
   environment = {
     systemPackages = with pkgs; [
