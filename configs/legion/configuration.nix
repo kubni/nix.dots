@@ -17,29 +17,16 @@
 
   nix = {
     settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
       substituters = [
         "https://hyprland.cachix.org"
-        "https://nix-community.cachix.org"
       ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
     };
-    optimise.automatic = true;
   };
 
   boot = {
-    loader = {
-      systemd-boot = {
-        enable = true;
-      };
-      efi.canTouchEfiVariables = true;
-    };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "amdgpu" ];
 
@@ -57,21 +44,16 @@
       trustedInterfaces = [ config.services.tailscale.interfaceName ];
       allowedUDPPorts = [ config.services.tailscale.port ];
     };
-    networkmanager.enable = true;
   };
 
   systemd = {
     services.tailscaled.serviceConfig.Environment = [
       "TS_DEBUG_FIREWALL_MODE=nftables"
     ];
-    network.wait-online.enable = false;
+    # network.wait-online.enable = false;
   };
 
-  time.timeZone = "Europe/Belgrade";
-  i18n.defaultLocale = "en_US.UTF-8";
-
   hardware = {
-
     amdgpu.initrd.enable = false;
     enableRedistributableFirmware = lib.mkDefault true;
     graphics.enable = true;
@@ -83,17 +65,13 @@
       nvidiaSettings = true;
       prime = {
         sync.enable = true;
-        # offload.enable = true;
-        # offload.enableOffloadCmd = true;
         nvidiaBusId = "PCI:1@0:0:0";
         amdgpuBusId = "PCI:5@0:0:0";
       };
       powerManagement = {
         enable = true;
-        # finegrained = true;
       };
 
-      # TODO: powerManagement.enable and powerManagement.finegrained
     };
     bluetooth = {
       enable = true;
@@ -104,7 +82,6 @@
   virtualisation = {
     docker = {
       enable = true;
-      # enableNvidia = true; # DEPRECATED
       daemon.settings = {
         data-root = "/home/nikola/docker-data-root";
       };
@@ -115,9 +92,6 @@
     tailscale = {
       enable = true;
     };
-    openssh = {
-      enable = true;
-    };
     pipewire = {
       enable = true;
       pulse.enable = true;
@@ -126,7 +100,6 @@
       enable = true;
     };
     gvfs.enable = true;
-    udisks2.enable = true;
     gnome.gnome-keyring.enable = true;
     libinput.enable = true;
     fwupd.enable = true;
@@ -178,58 +151,11 @@
       package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
-    zsh.enable = true;
     steam.enable = true;
     gamemode.enable = true;
     kdeconnect.enable = true;
     virt-manager.enable = true;
 
-    nvf = {
-      enable = true;
-      settings = {
-        vim = {
-          viAlias = false;
-          vimAlias = true;
-          options = {
-            tabstop = 2;
-            shiftwidth = 2;
-          };
-
-          clipboard = {
-            enable = true;
-            providers = {
-              wl-copy.enable = true;
-            };
-            registers = "unnamedplus";
-          };
-
-          lsp = {
-            enable = true;
-            lspSignature.enable = true;
-          };
-
-          languages = {
-            enableTreesitter = true;
-            nix.enable = true;
-          };
-
-          visuals = {
-            nvim-web-devicons.enable = true;
-          };
-
-          tabline = {
-            nvimBufferline.enable = true;
-          };
-
-          extraPlugins = {
-            nord = {
-              package = pkgs.vimPlugins.nordic-nvim;
-              setup = "vim.cmd[[colorscheme nordic]]";
-            };
-          };
-        };
-      };
-    };
     ssh = {
       extraConfig = "
         Host *
@@ -258,56 +184,31 @@
         winePkg
         wineSymlink
         winetricks
-        zsh
-        wget
-        curl
-        git
         mako
         libnotify
         grim
         slurp
         cliphist
-        unrar
-        unzip
-        p7zip
-        fzf
-        fd
-        rsync
-        tree
-        ncdu
         wlsunset
-        btop
-        lm_sensors
         pulsemixer
         wl-clipboard
         mono
         qbittorrent
         wofi
         waybar
-        starship
         mpv
-        cmake
-        gnumake
         nixd
         # bitwarden-desktop
         jdk21
         xeyes
         brightnessctl
-        nix-prefetch-git
-        nurl
-        pciutils
         pcmanfm
-        usbutils
         xdg-utils
         gnome-keyring
-        libtool
-        ethtool
-        lsof
         virtio-win
         appimage-run
         libxml2
         OVMF
-        nix-search-cli
         mosh
         nix-tree
         cpu-x
