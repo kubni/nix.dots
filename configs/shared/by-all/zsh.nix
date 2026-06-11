@@ -33,9 +33,6 @@
   };
 
   # environment.systemPackages = [ pkgs.zsh pkgs.zsh-fzf-tab ];
-
-  programs.starship.enable = true;
-
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
