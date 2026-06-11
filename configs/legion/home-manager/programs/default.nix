@@ -1,17 +1,9 @@
 {pkgs, ...}: {
 
   imports = [
-    ./browsers.nix
-    ./mako.nix
-    ./starship.nix
-    ./direnv.nix
-    ./dconf.nix
     ./kdeconnect.nix
-    # ./mangowc.nix
     ./hyprland
-    ./zsh
     ./mpv
-    ./terminals
   ];
 
   programs = {

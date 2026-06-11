@@ -150,11 +150,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1780977789,
-        "narHash": "sha256-UFJfQlvInbsVaTK5XC2lafdqWlwiNP5LuQFYfDKq6Dc=",
+        "lastModified": 1781064146,
+        "narHash": "sha256-HjjvV8nCE6/sTgghlTW1ht8Rs3VZB55tV8wWces8DwY=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "0b627f105ea3baa2fa10308a6a67a8f8cbbb3e2a",
+        "rev": "5213e7922ccfed3b070bf125c103504bc37852eb",
         "type": "gitlab"
       },
       "original": {
@@ -352,11 +352,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781009359,
-        "narHash": "sha256-w/mZkRscTatf8NWyUstli8ROzM/eopxZzi0WRjoeYkU=",
+        "lastModified": 1781064232,
+        "narHash": "sha256-+7cIaqM6ucKf5fDyMnkwehxG8tBdaU51TZOMtxacXmI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c58ead12efcac436afffa93a22099a5595eb4157",
+        "rev": "1ffdc28076a1809ee7c0cf08f06af18f31c480cd",
         "type": "github"
       },
       "original": {
@@ -440,15 +440,16 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1781024171,
-        "narHash": "sha256-4vK3xNKgPWS/5jsygCYv/vg3ST8V9zypfY3H5ojDKrw=",
+        "lastModified": 1780926109,
+        "narHash": "sha256-CqkgDTWmWeQutSAwhPT824UjzVX6b5N8sHhdSkom+oA=",
         "ref": "refs/heads/main",
-        "rev": "4cbb7dedcb5c6d022e509800208334a601274738",
-        "revCount": 7439,
+        "rev": "a11a718a45c6436abf3d6116618ebb6ae3735148",
+        "revCount": 7435,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
       },
       "original": {
+        "rev": "a11a718a45c6436abf3d6116618ebb6ae3735148",
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
       }
@@ -714,11 +715,11 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1781013408,
-        "narHash": "sha256-GT6x6fBs+xpjDfiq9gnXp/806yuSc342C0qqys3dNN0=",
+        "lastModified": 1781063158,
+        "narHash": "sha256-siZKjrywRQM71JQ3xvsoUVlz0uPrUKSU17jdO5xgpJQ=",
         "owner": "DreamMaoMao",
         "repo": "mango",
-        "rev": "ef59224cdb110731c361a68959f4596665e6d2a2",
+        "rev": "cd6e2883db6a2fbe7ae113087a052599a08aea40",
         "type": "github"
       },
       "original": {

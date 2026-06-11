@@ -1,20 +1,22 @@
-{ stylix, config, pkgs, firefox-addons, lib, ... }: 
-# let
-  # customAddons = pkgs.callPackage ./addons.nix {
-  #   inherit lib;
-  #   inherit (firefox-addons.lib.${pkgs.stdenv.hostPlatform.system}) buildFirefoxXpiAddon;
-  # };
-# in
+{ stylix, config, pkgs, firefox-addons, lib, ... }: let
+  customAddons = pkgs.callPackage ./addons.nix {
+    inherit lib;
+    inherit (firefox-addons.lib.${pkgs.stdenv.hostPlatform.system}) buildFirefoxXpiAddon;
+  };
+in
 { 
-  stylix.targets.firefox.enable = true;
   stylix.targets.firefox.profileNames = [ "default" ];
   stylix.targets.librewolf.profileNames = [ "default" ];
   programs = {
+    # librewolf = {
+    #   enable = true;
+    # };
     qutebrowser.enable = true;
     chromium.enable = true;
     firefox = {
       enable = true;
       configPath = "${config.xdg.configHome}/mozilla/firefox";
+      # configPath = "/home/nikola/.config/mozilla/firefox";
       profiles.default = {
         id = 0;
         name = "default";
@@ -43,8 +45,6 @@
           "toolkit.telemetry.shutdownPingSender.enabled" = false;
           "toolkit.telemetry.unified" = false;
           "toolkit.telemetry.updatePing.enabled" = false;
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-
 
           # As well as Firefox 'experiments'
           "experiments.activeExperiment" = false;
@@ -59,8 +59,6 @@
           "extensions.pocket.oAuthConsumerKey" = "";
           "extensions.pocket.showHome" = false;
           "extensions.pocket.site" = "";
-
-          "extensions.activeThemeID" = "";
 
           # Tabs
           "browser.tabs.groups.enabled" = true;
@@ -107,8 +105,7 @@
           bitwarden
           darkreader
           ublock-origin
-        ];
-        # ] ++ (with customAddons; [ minimalist-nord ]);
+        ] ++ (with customAddons; [ minimalist-nord ]);
       };
     };
   };

@@ -16,7 +16,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland";
+      # url = "git+https://github.com/hyprwm/Hyprland";
+      url = "git+https://github.com/hyprwm/Hyprland?rev=a11a718a45c6436abf3d6116618ebb6ae3735148";
     };
 
     hyprsplit = {
@@ -136,7 +137,7 @@
             {
               nixpkgs.overlays = [
                 claude-desktop.overlays.default
-                (import ./overlays/claude-desktop-fhs.nix)
+                (import ./overlays/claude-desktop-python.nix)
               ];
             }
             home-manager.nixosModules.home-manager
