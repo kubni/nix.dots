@@ -102,7 +102,7 @@
         "$mainMod, T, togglefloating"
 
         "$mainMod, RETURN, exec, $terminal"
-        "$mainMod, F, exec, librewolf"
+        "$mainMod, F, exec, firefox"
         "$mainMod, D, exec, $menu"
         "$mainMod, E, exec, emacs"
         "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphistdecode | wl-copy"
