@@ -7,6 +7,12 @@
 
 {
 
+  boot = {
+    kernelPackages = pkgs.linuxPackages;
+    kernelModules = [ "ntsync" ];
+    # supportedFilesystems = [ "ntfs" ];
+  };
+
   # Users
   users.users.nikola = {
     isNormalUser = true;
@@ -54,6 +60,22 @@
         pkgs.vial
         pkgs.qmk-udev-rules
       ];
+    };
+    gvfs.enable = true;
+    gnome.gnome-keyring.enable = true;
+  };
+
+  programs = {
+    steam.enable = true;
+    gamemode.enable = true;
+    kdeconnect.enable = true;
+    virt-manager.enable = true;
+
+    ssh = {
+      extraConfig = "
+        Host *
+        ServerAliveInterval 100
+      ";
     };
   };
 

@@ -7,6 +7,9 @@
 }:
 
 {
+  imports = [
+    ./hyprpaper.nix
+  ];
   wayland.windowManager.hyprland = {
     settings = {
       monitor = [

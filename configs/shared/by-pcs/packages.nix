@@ -32,43 +32,45 @@ let
 in
 {
   environment = {
-    systemPackages = with pkgs; [
-      winePkg
-      wineSymlink
-      winetricks
-      mako
-      libnotify
-      grim
-      slurp
-      cliphist
-      wlsunset
-      pulsemixer
-      wl-clipboard
-      mono
-      qbittorrent
-      wofi
-      waybar
-      mpv
-      jdk21
-      xeyes
-      brightnessctl
-      pcmanfm
-      xdg-utils
-      gnome-keyring
-      virtio-win
-      appimage-run
-      libxml2
-      OVMF
-      mosh
-      nix-tree
-      cpu-x
-      vial
-      qmk
-      qmk-udev-rules
-      android-tools
-      devenv
-      toggleNightlight
-    ];
+    systemPackages =
+      with pkgs;
+      [
+        winePkg
+        wineSymlink
+        winetricks
+        mako
+        libnotify
+        grim
+        slurp
+        cliphist
+        wlsunset
+        pulsemixer
+        wl-clipboard
+        mono
+        qbittorrent
+        wofi
+        waybar
+        mpv
+        jdk21
+        xeyes
+        brightnessctl
+        pcmanfm
+        xdg-utils
+        gnome-keyring
+        virtio-win
+        appimage-run
+        libxml2
+        OVMF
+        mosh
+        nix-tree
+        cpu-x
+        vial
+        qmk
+        qmk-udev-rules
+        android-tools
+        devenv
+        toggleNightlight
+      ];
 
     sessionVariables.NIXOS_OZONE_WL = "1";
   };

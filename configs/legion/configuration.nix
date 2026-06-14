@@ -58,8 +58,6 @@
   };
 
   services = {
-    gvfs.enable = true;
-    gnome.gnome-keyring.enable = true;
     fwupd.enable = true;
 
     xserver.videoDrivers = [
@@ -68,30 +66,11 @@
     ];
   };
 
-  programs = {
-    steam.enable = true;
-    gamemode.enable = true;
-    kdeconnect.enable = true;
-    virt-manager.enable = true;
-
-    ssh = {
-      extraConfig = "
-        Host *
-        ServerAliveInterval 100
-      ";
-    };
-  };
-
   environment.systemPackages = with pkgs; [
     nixd
     lenovo-legion
     wireguard-tools
     powertop
-    claude-desktop-fhs
-    bubblewrap
-    qemu_kvm
-    socat
-    virtiofsd
     nodejs
   ];
 

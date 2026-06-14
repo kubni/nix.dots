@@ -15,6 +15,7 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     hyprland = {
       # url = "git+https://github.com/hyprwm/Hyprland";
       url = "git+https://github.com/hyprwm/Hyprland?rev=a11a718a45c6436abf3d6116618ebb6ae3735148";
@@ -47,6 +48,8 @@
 
     # claude-desktop.url = "github:aaddrick/claude-desktop-debian";
     claude-desktop.url = "github:aaddrick/claude-desktop-debian/5dd948e96d853ed37636bc0e2368fc2665cd1104";
+
+    # jiratui.url = "github:whyisdifficult/jiratui";
   };
 
   outputs =
@@ -63,6 +66,7 @@
       stylix,
       nixos-hardware,
       claude-desktop,
+      # jiratui,
     }:
     let
       lib = nixpkgs.lib;
@@ -128,7 +132,13 @@
         };
         legion = lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit vars hyprland claude-desktop; };
+          specialArgs = {
+            inherit
+              vars
+              hyprland
+              claude-desktop
+              ;
+          };
           modules = [
             ./configs/legion/configuration.nix
             nvf.nixosModules.default
