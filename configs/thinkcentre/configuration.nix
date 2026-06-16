@@ -98,6 +98,7 @@
       "docker"
     ];
     shell = pkgs.zsh;
+    openssh.authorizedKeys.keyFiles = [ ./ssh/authorized_keys ];
   };
 
   programs = {
