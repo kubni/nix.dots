@@ -82,15 +82,19 @@
         ];
       };
 
-    in
-    {
-      nixosConfigurations = {
-        homepc = lib.nixosSystem {
-          system = "x86_64-linux";
+      # Helper function that helps with deduplication of the flake.nix file.
+      mkPcHost =
+        {
+          hostname,
+          system ? "x86_64-linux",
+          extraModules ? [ ],
+        }:
+        lib.nixosSystem {
+          inherit system;
           specialArgs = { inherit vars hyprland; };
           modules = [
-            ./configs/homepc/configuration.nix
-            ./configs/homepc/disko.nix
+            ./configs/${hostname}/configuration.nix
+            # ./configs/${hostname}/disko.nix
             overlaysModule
             {
               nixpkgs.overlays = [
@@ -98,8 +102,8 @@
                 (import ./overlays/claude-desktop-python.nix)
               ];
             }
-            nixos-hardware.nixosModules.gigabyte-b650
-            disko.nixosModules.disko
+            # nixos-hardware.nixosModules.gigabyte-b650
+            # disko.nixosModules.disko
             nvf.nixosModules.default
             stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
@@ -111,99 +115,46 @@
               home-manager.users.nikola = {
                 imports = [
                   ./configs/homepc/home-manager
-                  (
-                    { ... }:
-                    {
-                      wayland.windowManager.mango = {
-                        enable = true;
-                        autostart_sh = ''
-                          # see autostart.sh
-                          # Note: here no need to add shebang
-                        '';
-                      };
-                    }
-                  )
-                ]
-                ++ [ mango.hmModules.mango ];
+                ];
               };
             }
-
-          ];
+          ]
+          ++ extraModules;
         };
-        legion = lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit
-              vars
-              hyprland
-              claude-desktop
-              ;
-          };
-          modules = [
-            ./configs/legion/configuration.nix
-            nvf.nixosModules.default
-            stylix.nixosModules.stylix
-            overlaysModule
-            {
-              nixpkgs.overlays = [
-                claude-desktop.overlays.default
-                (import ./overlays/claude-desktop-python.nix)
-              ];
-            }
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit
-                  hyprland
-                  hyprsplit
-                  firefox-addons
-                  claude-desktop
-                  ;
-              };
-              home-manager.users.nikola = {
-                imports = [
-                  ./configs/legion/home-manager
-                  # TODO: What does this do?
-                  (
-                    { ... }:
-                    {
-                      wayland.windowManager.mango = {
-                        enable = true;
-                        autostart_sh = ''
-                          # see autostart.sh
-                          # Note: here no need to add shebang
-                        '';
-                      };
-                    }
-                  )
-                ]
-                ++ [ mango.hmModules.mango ];
-              };
-            }
-
-          ];
-        };
-        piserver = lib.nixosSystem {
-          system = "aarch64-linux";
-          modules = [
-            ./configs/piserver/configuration.nix
-            nvf.nixosModules.default
-          ];
-        };
-        thinkcentre = lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./configs/thinkcentre/configuration.nix
-            nvf.nixosModules.default
+    in
+    {
+      nixosConfigurations = {
+        homepc = mkPcHost {
+          hostname = "homepc";
+          extraModules = [
+            ./configs/homepc/disko.nix
             disko.nixosModules.disko
-            ./configs/thinkcentre/disko.nix
-            overlaysModule
+            nixos-hardware.nixosModules.gigabyte-b650
           ];
         };
-
+        legion = mkPcHost {
+          hostname = "legion";
+          extraModules = [ ];
+        };
       };
+      # piserver = lib.nixosSystem {
+      #   system = "aarch64-linux";
+      #   modules = [
+      #     ./configs/piserver/configuration.nix
+      #     nvf.nixosModules.default
+      #   ];
+      # };
+      thinkcentre = lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configs/thinkcentre/configuration.nix
+          nvf.nixosModules.default
+          disko.nixosModules.disko
+          ./configs/thinkcentre/disko.nix
+          overlaysModule
+        ];
+      };
+
     };
 }
 

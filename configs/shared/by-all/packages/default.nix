@@ -4,13 +4,14 @@
 
   environment = {
     systemPackages = with pkgs; [
+      zip
+      unzip
       nixfmt
       zsh
       wget
       curl
       git
       unrar
-      unzip
       p7zip
       fzf
       fd
