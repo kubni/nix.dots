@@ -9,7 +9,7 @@
     ./hardware-configuration.nix
     ./wireguard-server.nix
     ./ssh
-    ../shared
+    ../shared/by-all
   ];
 
   boot = {
