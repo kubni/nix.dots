@@ -8,6 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ./wireguard-server.nix
+    ./ssh
     ../shared
   ];
 
@@ -110,6 +111,7 @@
       qrencode
       # agenix.packages."${system}".default
     ];
+
     sessionVariables = {
       LIBVA_DRIVER_NAME = "iHD";
     };
