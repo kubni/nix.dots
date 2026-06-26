@@ -6,5 +6,6 @@
     ./stylix.nix
     ./claude-desktop.nix
     ./hyprland.nix
+    ./zsh.nix
   ];
 }

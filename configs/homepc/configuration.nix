@@ -43,6 +43,7 @@ in
       motherboard = "amd";
       server.port = 6742;
     };
+    envfs.enable = true;
   };
 
   environment = {
@@ -51,6 +52,7 @@ in
       texlab
       openrgb-with-all-plugins
       amdgpu_top
+      fladder
     ];
   };
 

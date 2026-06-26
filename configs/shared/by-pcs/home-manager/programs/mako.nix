@@ -4,14 +4,11 @@
     enable = true;
     settings = {
         anchor = "top-right";
-        # backgroundColor = "#D8DEE9";
-        borderSize = 2;
-        # borderColor = "#81A1C1";
-        defaultTimeout = 3000;
-        # font = "CommitMono 10";
+        default-timeout = 3000;
+        border-size = 2;
+        icons = true;
         height = 200;
         width = 350;
-        # textColor = "#5E81AC";
         layer = "overlay";
         sort = "-time";
         "urgency=low" = {
