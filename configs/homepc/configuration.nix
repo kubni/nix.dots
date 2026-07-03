@@ -21,6 +21,14 @@ in
     ../shared/by-pcs
   ];
 
+  nix.settings.system-features = [
+    "gccarch-znver4"
+    "benchmark"
+    "big-parallel"
+    "kvm"
+    "nixos-test"
+  ];
+
   networking = {
     hostName = "homepc";
     hostId = "dae119c6";
@@ -37,12 +45,12 @@ in
   };
 
   services = {
-    hardware.openrgb = {
-      enable = true;
-      package = pkgs.openrgb-with-all-plugins;
-      motherboard = "amd";
-      server.port = 6742;
-    };
+    # hardware.openrgb = {
+    #   enable = true;
+    #   package = pkgs.openrgb-with-all-plugins;
+    #   motherboard = "amd";
+    #   server.port = 6742;
+    # };
     envfs.enable = true;
   };
 
@@ -50,7 +58,7 @@ in
     systemPackages = with pkgs; [
       texlive.combined.scheme-medium
       texlab
-      openrgb-with-all-plugins
+      # openrgb-with-all-plugins
       amdgpu_top
       fladder
     ];

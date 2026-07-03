@@ -37,7 +37,7 @@
     };
 
     mango = {
-      url = "github:DreamMaoMao/mango";
+      url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -102,10 +102,11 @@
                 (import ./overlays/claude-desktop-python.nix)
               ];
             }
-            # nixos-hardware.nixosModules.gigabyte-b650
-            # disko.nixosModules.disko
             nvf.nixosModules.default
             stylix.nixosModules.stylix
+
+            mango.nixosModules.mango
+
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -115,6 +116,7 @@
               home-manager.users.nikola = {
                 imports = [
                   ./configs/homepc/home-manager
+                  mango.hmModules.mango
                 ];
               };
             }

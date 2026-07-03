@@ -8,6 +8,7 @@
 {
   imports = [
     ./hyprland
+    ./mango
     ./waybar
     ./terminals
     ./mako.nix
@@ -19,7 +20,7 @@
   home.packages = with pkgs; [
     fastfetch
     lsd
-    vesktop
+    # vesktop
     mangohud
     jellyfin-media-player
     jellyfin-mpv-shim
@@ -34,7 +35,7 @@
     browsh
     wezterm
     bottles
-    signal-desktop
+    #signal-desktop
     prismlauncher
 
     (pkgs.lutris.override {

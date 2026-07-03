@@ -8,7 +8,7 @@
 {
 
   boot = {
-    kernelPackages = pkgs.linuxPackages;
+    kernelPackages = pkgs.linuxPackages_7_0;
     kernelModules = [ "ntsync" ];
     # supportedFilesystems = [ "ntfs" ];
   };

@@ -13,7 +13,7 @@
     settings = {
       monitor = [
         "DP-2,2560x1440@74.97,auto,auto"
-        # "HDMI-A-1,preferred,auto-left,auto"
+        "HDMI-A-1,preferred,auto-left,auto"
       ];
 
       input = {
