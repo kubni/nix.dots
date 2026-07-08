@@ -115,7 +115,7 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.nikola = {
                 imports = [
-                  ./configs/homepc/home-manager
+                  ./configs/${hostname}/home-manager
                   mango.hmModules.mango
                 ];
               };
@@ -154,5 +154,4 @@
 }
 
 # TODO:
-# 1) Give mango its own config files
-# 2) Declarative ssh
+# 1) Declarative ssh

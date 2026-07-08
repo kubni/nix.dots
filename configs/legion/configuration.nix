@@ -13,7 +13,6 @@
   ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "amdgpu" ];
     supportedFilesystems = [ "ntfs" ];
     initrd.systemd.network.wait-online.enable = false;
