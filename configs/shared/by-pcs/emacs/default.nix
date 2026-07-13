@@ -6,7 +6,10 @@
 }:
 
 {
-  services.emacs.enable = true;
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs-pgtk;
+  };
 
   system.userActivationScripts = {
     # Installation Script on Rebuild
@@ -31,6 +34,7 @@
   environment.systemPackages = with pkgs; [
     clang
     coreutils
+    config.services.emacs.package
     fd
     git
     ripgrep
