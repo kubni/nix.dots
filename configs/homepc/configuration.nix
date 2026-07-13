@@ -55,8 +55,6 @@ in
 
   environment = {
     systemPackages = with pkgs; [
-      texlive.combined.scheme-medium
-      texlab
       # openrgb-with-all-plugins
       amdgpu_top
       fladder
