@@ -34,7 +34,7 @@
     thunderbird-latest
     browsh
     wezterm
-    bottles
+    # bottles
     prismlauncher
 
     (pkgs.lutris.override {

@@ -100,7 +100,7 @@
         }:
         lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit vars hyprland; };
+          specialArgs = { inherit vars hyprland agenix; };
           modules = [
             ./configs/${hostname}/configuration.nix
             # ./configs/${hostname}/disko.nix

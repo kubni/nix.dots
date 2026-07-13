@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  agenix,
   ...
 }:
 
@@ -75,6 +76,7 @@ in
       aerc
       cacert
       ddcutil
+      agenix.packages.${pkgs.system}.default
     ];
 
     sessionVariables.NIXOS_OZONE_WL = "1";
