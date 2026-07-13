@@ -71,6 +71,9 @@ in
       # bitwarden-desktop
       texlive.combined.scheme-medium
       texlab
+      neomutt
+      aerc
+      cacert
     ];
 
     sessionVariables.NIXOS_OZONE_WL = "1";

@@ -49,7 +49,10 @@
     # claude-desktop.url = "github:aaddrick/claude-desktop-debian";
     claude-desktop.url = "github:aaddrick/claude-desktop-debian/5dd948e96d853ed37636bc0e2368fc2665cd1104";
 
-    # jiratui.url = "github:whyisdifficult/jiratui";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -66,7 +69,7 @@
       stylix,
       nixos-hardware,
       claude-desktop,
-      # jiratui,
+      agenix,
     }:
     let
       lib = nixpkgs.lib;
@@ -104,7 +107,7 @@
             }
             nvf.nixosModules.default
             stylix.nixosModules.stylix
-
+            agenix.nixosModules.default
             mango.nixosModules.mango
 
             home-manager.nixosModules.home-manager

@@ -7,6 +7,7 @@
     ./claude-desktop.nix
     ./hyprland.nix
     ./zsh.nix
+    ./mail-secrets.nix
     ./emacs
   ];
 }
