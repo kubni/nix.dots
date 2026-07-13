@@ -44,6 +44,7 @@
       enable = true;
       powerOnBoot = true;
     };
+
   };
 
   # Services

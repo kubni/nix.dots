@@ -46,6 +46,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # claude-desktop.url = "github:aaddrick/claude-desktop-debian";
     claude-desktop.url = "github:aaddrick/claude-desktop-debian/5dd948e96d853ed37636bc0e2368fc2665cd1104";
 
@@ -70,6 +75,7 @@
       nixos-hardware,
       claude-desktop,
       agenix,
+      noctalia,
     }:
     let
       lib = nixpkgs.lib;
@@ -120,6 +126,7 @@
                 imports = [
                   ./configs/${hostname}/home-manager
                   mango.hmModules.mango
+                  noctalia.homeModules.default
                 ];
               };
             }

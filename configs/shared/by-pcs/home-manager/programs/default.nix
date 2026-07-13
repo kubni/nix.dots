@@ -9,18 +9,18 @@
   imports = [
     ./hyprland
     ./mango
-    ./waybar
+    # ./waybar
     ./terminals
     ./mako.nix
     ./direnv.nix
     ./browsers.nix
     ./dconf.nix
+    ./noctalia.nix
   ];
 
   home.packages = with pkgs; [
     fastfetch
     lsd
-    # vesktop
     mangohud
     jellyfin-media-player
     jellyfin-mpv-shim
@@ -35,7 +35,6 @@
     browsh
     wezterm
     bottles
-    #signal-desktop
     prismlauncher
 
     (pkgs.lutris.override {

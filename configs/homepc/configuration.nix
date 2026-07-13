@@ -11,8 +11,8 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    # ./proton-wireguard.nix
-    ./mullvad-wireguard.nix
+    ./proton-wireguard.nix
+    # ./mullvad-wireguard.nix
     ./virt.nix
     ./sanoid.nix
     ./zsh.nix
@@ -41,6 +41,8 @@ in
       enable32Bit = true;
       package32 = pkgs-unstable.pkgsi686Linux.mesa;
     };
+
+    i2c.enable = true; # Makes ddcutil work for monitors
   };
 
   services = {
