@@ -1,4 +1,9 @@
-{ config, pkgs, vars, ... }:
+{
+  config,
+  pkgs,
+  vars,
+  ...
+}:
 
 {
   services.emacs.enable = true;
@@ -26,7 +31,6 @@
   environment.systemPackages = with pkgs; [
     clang
     coreutils
-    emacs
     fd
     git
     ripgrep
