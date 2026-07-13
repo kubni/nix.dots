@@ -16,6 +16,7 @@
     ./browsers.nix
     ./dconf.nix
     ./noctalia.nix
+    ./aerc.nix
   ];
 
   home.packages = with pkgs; [

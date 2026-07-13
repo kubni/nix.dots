@@ -73,7 +73,6 @@ in
       texlive.combined.scheme-medium
       texlab
       neomutt
-      aerc
       cacert
       ddcutil
       agenix.packages.${pkgs.system}.default
