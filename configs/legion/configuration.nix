@@ -7,7 +7,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./emacs
     ../shared/by-all
     ../shared/by-pcs
   ];

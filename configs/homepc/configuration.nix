@@ -10,7 +10,6 @@ let
 in
 {
   imports = [
-    ./emacs
     ./hardware-configuration.nix
     # ./proton-wireguard.nix
     ./mullvad-wireguard.nix
