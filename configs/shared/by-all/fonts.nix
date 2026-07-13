@@ -12,5 +12,6 @@
     atkinson-hyperlegible
     nerd-fonts.symbols-only
     intel-one-mono
+    symbola
   ];
 }
