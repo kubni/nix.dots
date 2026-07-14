@@ -76,6 +76,8 @@ in
       cacert
       ddcutil
       agenix.packages.${pkgs.system}.default
+      signal-desktop
+      vesktop
     ];
 
     sessionVariables.NIXOS_OZONE_WL = "1";

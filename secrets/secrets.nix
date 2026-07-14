@@ -12,4 +12,8 @@ let
 in
 {
   "gmail-aerc.age".publicKeys = all;
+  "gmail-2-aerc.age".publicKeys = all;
+  "gmail-3-aerc.age".publicKeys = all;
+  "gmail-nh-aerc.age".publicKeys = all;
+  "alas-aerc.age".publicKeys = all;
 }
