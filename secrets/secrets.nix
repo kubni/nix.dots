@@ -22,15 +22,26 @@ in
     legion
     user-legion
   ];
-
   "ssh-work-legion.age".publicKeys = [
     legion
     user-legion
   ];
-
   "ssh-forgejo-legion.age".publicKeys = [
     legion
     user-legion
+  ];
+
+  "ssh-personal-homepc.age".publicKeys = [
+    homepc
+    user-homepc
+  ];
+  "ssh-work-homepc.age".publicKeys = [
+    homepc
+    user-homepc
+  ];
+  "ssh-forgejo-homepc.age".publicKeys = [
+    homepc
+    user-homepc
   ];
 
 }

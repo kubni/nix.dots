@@ -5,7 +5,7 @@
       file  = ../../secrets/ssh-personal-legion.age;
       path  = "/home/nikola/.ssh/id_ed25519_personal";
       owner = "nikola";
-      mode  = "0400";           # ssh rejects group/other-readable private keys
+      mode  = "0400";
     };
     ssh-work = {
       file  = ../../secrets/ssh-work-legion.age;

@@ -11,6 +11,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
+    ./ssh-secrets.nix
     ./proton-wireguard.nix
     # ./mullvad-wireguard.nix
     ./virt.nix
@@ -42,22 +43,15 @@ in
       package32 = pkgs-unstable.pkgsi686Linux.mesa;
     };
 
-    i2c.enable = true; # Makes ddcutil work for monitors
+    i2c.enable = true;
   };
 
   services = {
-    # hardware.openrgb = {
-    #   enable = true;
-    #   package = pkgs.openrgb-with-all-plugins;
-    #   motherboard = "amd";
-    #   server.port = 6742;
-    # };
     envfs.enable = true;
   };
 
   environment = {
     systemPackages = with pkgs; [
-      # openrgb-with-all-plugins
       amdgpu_top
       fladder
     ];
