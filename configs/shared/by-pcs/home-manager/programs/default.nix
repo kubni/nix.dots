@@ -17,6 +17,7 @@
     ./dconf.nix
     ./noctalia.nix
     ./aerc.nix
+    ./git.nix
   ];
 
   home.packages = with pkgs; [

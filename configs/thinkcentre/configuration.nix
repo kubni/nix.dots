@@ -110,6 +110,7 @@
       mesa
       wireguard-tools
       qrencode
+      git
       # agenix.packages."${system}".default
     ];
 

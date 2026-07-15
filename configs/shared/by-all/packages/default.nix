@@ -10,7 +10,6 @@
       zsh
       wget
       curl
-      git
       unrar
       p7zip
       fzf
