@@ -7,6 +7,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./ssh-secrets.nix
     ../shared/by-all
     ../shared/by-pcs
   ];

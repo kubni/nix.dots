@@ -5,11 +5,16 @@
   ...
 }:
 let
-  allowedSigners = pkgs.writeText "git-allowed-signers" ''
-    nikola.kuburovic123@gmail.com namespaces="git" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIUQ+2rzvhuAm69XftteVgnnwcaNR7eBO8qE9CwN2IL8
-    nikola.kuburovic123@gmail.com namespaces="git" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGJjZmsLyiiMZvYb6sYkIeUBPgW2TsScXULL2BTmwkgr
-    nikola.kuburovic@next-halo.com namespaces="git" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAqKlSZdUJp9AqHS/qiBeNeLRNFMihf0dBkzsLfjL6mi
-  '';
+  pubkeys = import ../../../by-all/ssh-pubkeys.nix;
+
+  # Flatten every host's identities into "email namespaces=git key" lines.
+  # TODO: Adjust this
+  toLine = id: ''${id.email} namespaces="git" ${id.key}'';
+  allLines = lib.concatMapStringsSep "\n" toLine (
+    lib.concatMap lib.attrValues (lib.attrValues pubkeys)
+  );
+
+  allowedSigners = pkgs.writeText "git-allowed-signers" (allLines + "\n");
 in
 {
   xdg.configFile."git/allowed_signers".source = allowedSigners;
