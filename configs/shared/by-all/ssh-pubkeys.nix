@@ -1,4 +1,5 @@
 {
+  # TODO: Keep these in device-specific dirs? How would that impact the git signers file creation?
   legion = {
     personal = {
       email = "nikola.kuburovic123@gmail.com";
