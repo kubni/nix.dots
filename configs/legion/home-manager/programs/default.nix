@@ -1,9 +1,10 @@
 { pkgs, ... }: {
 
   imports = [
-    ./kdeconnect.nix
     ./hyprland
     ./mpv
+    ./kdeconnect.nix
+    ./ssh.nix
   ];
 
   programs = {
