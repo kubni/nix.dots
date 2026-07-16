@@ -49,3 +49,15 @@ wayland.windowManager.hyprland = {
 ```
 Monitor configuration is something specific to the actual device, so we needed to specify that per device, but the syntax is identical, without any concatenation logic which would append
 device-specific adjustments to the shared logic.
+
+
+
+
+
+
+
+
+
+# TODO
+* Improve the `thinkcentre` nix config (ssh keys, git, ...)
+* Improve the README.md
