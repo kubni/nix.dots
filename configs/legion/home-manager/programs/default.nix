@@ -4,7 +4,6 @@
     ./hyprland
     ./mpv
     ./kdeconnect.nix
-    ./ssh.nix
   ];
 
   programs = {

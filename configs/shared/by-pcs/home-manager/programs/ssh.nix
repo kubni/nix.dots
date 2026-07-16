@@ -23,14 +23,18 @@
         hostname = "192.168.1.112";
         user = "git";
         port = 222;
-        # preferredAuthentications = "publickey";
         identitiesOnly = true;
         identityFile = "~/.ssh/id_ed25519_forgejo";
         addKeysToAgent = "confirm";
       };
-      # "forgejo-ts" = {
-
-      # };
+      "forgejo-ts" = {
+        hostname = "thinkcentre.tail81862c.ts.net";
+        user = "git";
+        port = 222;
+        identitiesOnly = true;
+        identityFile = "~/.ssh/id_ed25519_forgejo";
+        addKeysToAgent = "confirm";
+      };
     };
   };
 }

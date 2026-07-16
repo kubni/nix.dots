@@ -18,6 +18,7 @@
     ./noctalia.nix
     ./aerc.nix
     ./git.nix
+    ./ssh.nix
   ];
 
   home.packages = with pkgs; [
