@@ -4,11 +4,15 @@
   vars,
   ...
 }:
-
+let
+  emacsPgtkWithPdf = (pkgs.emacsPackagesFor pkgs.emacs-pgtk).emacsWithPackages (epkgs: [
+    epkgs.pdf-tools
+  ]);
+in
 {
   services.emacs = {
     enable = true;
-    package = pkgs.emacs-pgtk;
+    package = emacsPgtkWithPdf;
   };
 
   system.userActivationScripts = {

@@ -58,6 +58,7 @@
 
   services = {
     fwupd.enable = true;
+    upower.enable = true;
 
     xserver.videoDrivers = [
       "amdgpu"

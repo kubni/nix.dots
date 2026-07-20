@@ -37,6 +37,7 @@
 
           start = [
             "clock"
+            "battery"
             "notifications"
           ];
 

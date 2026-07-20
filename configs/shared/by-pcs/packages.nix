@@ -70,7 +70,13 @@ in
       devenv
       toggleNightlight
       # bitwarden-desktop
-      texlive.combined.scheme-medium
+      (pkgs.texlive.combine {
+        inherit (pkgs.texlive)
+          scheme-medium
+          babel-serbian
+          hyphen-serbian
+          ;
+      })
       texlab
       neomutt
       cacert

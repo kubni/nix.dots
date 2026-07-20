@@ -132,8 +132,10 @@
 (map! :map cdlatex-mode-map :i "TAB" #'cdlatex-tab)
 
 ;; Use zathura as latex pdf viewer
-(setq +latex-viewers '(zathura))
-
+;; (setq +latex-viewers '(zathura))
+(after! latex
+  ;; Render the PDF inside Emacs via pdf-tools, not an external viewer.
+  (setq TeX-view-program-selection '((output-pdf "PDF Tools"))))
 
 ;; evil-multiedit config
 (require 'evil-multiedit)
