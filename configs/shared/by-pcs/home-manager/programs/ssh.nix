@@ -3,6 +3,13 @@
   programs.ssh = {
     enable = true;
     matchBlocks = {
+      "gitlab.winehq.org" = {
+        user = "git";
+        identitiesOnly = true;
+        identityFile = "~/.ssh/id_ed25519_personal";
+        addKeysToAgent = "confirm";
+      };
+
       "personal.github.com" = {
         hostname = "github.com";
         user = "git";

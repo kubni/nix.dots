@@ -11,7 +11,7 @@
     ./mango
     # ./waybar
     ./terminals
-    ./mako.nix
+    # ./mako.nix
     ./direnv.nix
     ./browsers.nix
     ./dconf.nix
@@ -27,7 +27,7 @@
     mangohud
     jellyfin-media-player
     jellyfin-mpv-shim
-    libreoffice-qt6-fresh
+    libreoffice-qt-stable
     pandoc
     foliate
     qview

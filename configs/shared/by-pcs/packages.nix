@@ -37,7 +37,7 @@ in
       winePkg
       wineSymlink
       winetricks
-      mako
+      # mako
       libnotify
       grim
       slurp
@@ -69,14 +69,10 @@ in
       android-tools
       devenv
       toggleNightlight
-      # bitwarden-desktop
-      (pkgs.texlive.combine {
-        inherit (pkgs.texlive)
-          scheme-medium
-          babel-serbian
-          hyphen-serbian
-          ;
-      })
+      (pkgs.texliveMedium.withPackages (ps: [
+        ps.babel-serbian
+        ps.hyphen-serbian
+      ]))
       texlab
       neomutt
       cacert
@@ -84,6 +80,7 @@ in
       agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
       signal-desktop
       vesktop
+      hugo
     ];
 
     sessionVariables.NIXOS_OZONE_WL = "1";

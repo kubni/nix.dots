@@ -68,7 +68,7 @@
 (package! org-fragtog)
 
 ;; envrc.el
-(package! envrc :recipe (:host github :repo "purcell/envrc"))
+;; (package! envrc :recipe (:host github :repo "purcell/envrc"))
 
 
 ;; TODO: Is this needed for pdf?

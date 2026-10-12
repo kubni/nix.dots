@@ -5,15 +5,15 @@
   hyprland,
   ...
 }:
-let
-  pkgs-unstable = hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in
+# let
+#   pkgs-unstable = hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+# in
 {
   imports = [
     ./hardware-configuration.nix
     ./ssh-secrets.nix
-    ./proton-wireguard.nix
-    # ./mullvad-wireguard.nix
+    # ./proton-wireguard.nix
+    ./mullvad-wireguard.nix
     ./virt.nix
     ./sanoid.nix
     ./zsh.nix
@@ -38,9 +38,11 @@ in
   hardware = {
     enableRedistributableFirmware = lib.mkDefault true;
     graphics = {
-      package = pkgs-unstable.mesa;
+      # package = pkgs-unstable.mesa;
+      package = pkgs.mesa;
       enable32Bit = true;
-      package32 = pkgs-unstable.pkgsi686Linux.mesa;
+      # package32 = pkgs-unstable.pkgsi686Linux.mesa;
+      package32 = pkgs.pkgsi686Linux.mesa;
     };
 
     i2c.enable = true;
@@ -48,12 +50,16 @@ in
 
   services = {
     envfs.enable = true;
+    flatpak.enable = true;
   };
 
   environment = {
     systemPackages = with pkgs; [
       amdgpu_top
       fladder
+      lact
+      fuse-overlayfs
+      psmisc
     ];
   };
 

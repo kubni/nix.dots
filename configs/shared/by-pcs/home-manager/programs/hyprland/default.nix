@@ -1,151 +1,175 @@
 {
   pkgs,
-  hyprsplit,
+  lib,
+  split-monitor-workspaces,
   ...
 }:
 
+let
+  inherit (lib.generators) mkLuaInline;
+in
 {
-
+  xdg.configFile."hypr/plugins/split-monitor-workspaces".source = split-monitor-workspaces;
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;
     portalPackage = null;
-    configType = "hyprlang";
+    configType = "lua";
 
-    settings = {
-      debug.disable_logs = true;
-
-      # TODO: Check whether Mako works
-      exec-once = [
-        "mako &"
-        "noctalia &"
-        "wl-paste --type text --watch cliphist store"
-        "wl-paste --type image --watch cliphist store"
-      ];
-
-      "$mainMod" = "SUPER";
-      "$terminal" = "wezterm";
-      "$fileManager" = "wezterm start ranger";
-      "$menu" = "wofi --show drun";
-
-      env = [
-        "HYPRCURSOR_THEME, Nordzy-hyprcursors-white"
-        "HYPRCURSOR_SIZE, 40"
-        "QT_QPA_PLATFORM,wayland;xcb"
-        "QT_QPA_PLATFORMTHEME, qt6ct"
-      ];
-
-      input = {
-        kb_layout = "us,rs,";
-        kb_variant = ",latin";
-        kb_model = ",qwerty";
-        kb_options = "grp:alt_shift_toggle";
-
-        follow_mouse = "1";
-        sensitivity = "0";
+    extraLuaFiles = {
+      "lib.vars" = {
+        content = ./lua/vars.lua;
+        autoLoad = false;
       };
-
-      general = {
-        gaps_in = "5";
-        gaps_out = "10";
-        border_size = "2";
-
-        layout = "master";
+      "bindings" = {
+        content = ./lua/bindings.lua;
+        autoLoad = true;
       };
-
-      decoration = {
-        rounding = "10";
-        blur = {
-          enabled = "true";
-          size = "3";
-          passes = "1";
-          vibrancy = "0.1696";
-        };
-        shadow = {
-          enabled = "true";
-          range = "4";
-          render_power = "3";
-        };
-      };
-
-      animations = {
-        enabled = "true";
-        bezier = [
-          "myBezier, 0.05, 0.9, 0.1, 1.05"
-        ];
-        animation = [
-          "windows, 1, 7, myBezier"
-          "windowsOut, 1, 7, default, popin 80%"
-          "border, 1, 10, default"
-          "borderangle, 1, 8, default"
-          "fade, 1, 7, default"
-          "workspaces, 1, 6, default"
-        ];
-      };
-
-      dwindle = {
-        preserve_split = "true";
-      };
-
-      master = {
-        new_status = "master";
-      };
-
-      bind = [
-        "$mainMod, Q, killactive"
-        "$mainMod SHIFT, Q, exit"
-        "$mainMod SHIFT, F, fullscreen"
-        "$mainMod, P, pseudo"
-        "$mainMod, J, layoutmsg, togglesplit"
-        "$mainMod, T, togglefloating"
-
-        "$mainMod, RETURN, exec, $terminal"
-        "$mainMod, F, exec, firefox"
-        "$mainMod, D, exec, $menu"
-        "$mainMod, E, exec, emacs"
-        "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphistdecode | wl-copy"
-
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
-
-        "ALT, F, exec, $terminal start ranger"
-        "ALT, P, exec, $terminal start pulsemixer"
-
-        ", Print, exec, grim -g \"$(slurp)\" - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of the region taken\" -t 1000"
-
-        "SHIFT, Print, exec, grim -c - | wl-copy && wl-paste > ~/Screenshots/Screenshot-$(date +%F_%T).png | dunstify \"Screenshot of the whole screen taken\""
-
-        "$mainMod, 1, split:workspace, 1"
-        "$mainMod, 2, split:workspace, 2"
-        "$mainMod, 3, split:workspace, 3"
-        "$mainMod, 4, split:workspace, 4"
-        "$mainMod, 5, split:workspace, 5"
-        "$mainMod, 6, split:workspace, 6"
-        "$mainMod, 7, split:workspace, 7"
-        "$mainMod, 8, split:workspace, 8"
-        "$mainMod, 9, split:workspace, 9"
-        "$mainMod, 10, split:workspace, 10"
-
-        "$mainMod SHIFT, 1,  split:movetoworkspace, 1"
-        "$mainMod SHIFT, 2,  split:movetoworkspace, 2"
-        "$mainMod SHIFT, 3,  split:movetoworkspace, 3"
-        "$mainMod SHIFT, 4,  split:movetoworkspace, 4"
-        "$mainMod SHIFT, 5,  split:movetoworkspace, 5"
-        "$mainMod SHIFT, 6,  split:movetoworkspace, 6"
-        "$mainMod SHIFT, 7,  split:movetoworkspace, 7"
-        "$mainMod SHIFT, 8,  split:movetoworkspace, 8"
-        "$mainMod SHIFT, 9,  split:movetoworkspace, 9"
-        "$mainMod SHIFT, 10, split:movetoworkspace, 10"
-
-        "$mainMod, mouse_down, split:workspace, e+1"
-        "$mainMod, mouse_up, split:workspace, e-1"
-      ];
     };
 
-    plugins = [
-      hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit
-    ];
+    settings = {
+      config = {
+        debug.disable_logs = true;
+
+        input = {
+          kb_layout = "us,rs,";
+          kb_variant = ",latin";
+          kb_model = ",qwerty";
+          kb_options = "grp:alt_shift_toggle";
+
+          follow_mouse = 1;
+          sensitivity = 0;
+        };
+
+        general = {
+          gaps_in = 0;
+          gaps_out = 0;
+          border_size = 2;
+
+          layout = "master";
+        };
+
+        decoration = {
+          rounding = 10;
+          blur = {
+            enabled = true;
+            size = 3;
+            passes = 1;
+            vibrancy = 0.1696;
+          };
+          shadow = {
+            enabled = true;
+            range = 4;
+            render_power = 3;
+          };
+        };
+
+        animations.enabled = true;
+
+        dwindle.preserve_split = true;
+
+        master.new_status = "master";
+      };
+
+      curve = [
+        {
+          _args = [
+            "myBezier"
+            {
+              type = "bezier";
+              points = [
+                [
+                  0.05
+                  0.9
+                ]
+                [
+                  0.1
+                  1.05
+                ]
+              ];
+            }
+          ];
+        }
+      ];
+
+      animation = [
+        {
+          leaf = "windows";
+          enabled = true;
+          speed = 7;
+          bezier = "myBezier";
+        }
+        {
+          leaf = "windowsOut";
+          enabled = true;
+          speed = 7;
+          bezier = "default";
+          style = "popin 80%";
+        }
+        {
+          leaf = "border";
+          enabled = true;
+          speed = 10;
+          bezier = "default";
+        }
+        {
+          leaf = "borderangle";
+          enabled = true;
+          speed = 8;
+          bezier = "default";
+        }
+        {
+          leaf = "fade";
+          enabled = true;
+          speed = 7;
+          bezier = "default";
+        }
+        {
+          leaf = "workspaces";
+          enabled = false;
+        }
+      ];
+
+      env = [
+        {
+          _args = [
+            "HYPRCURSOR_THEME"
+            "Nordzy-hyprcursors-white"
+          ];
+        }
+        {
+          _args = [
+            "HYPRCURSOR_SIZE"
+            "40"
+          ];
+        }
+        {
+          _args = [
+            "QT_QPA_PLATFORM"
+            "wayland;xcb"
+          ];
+        }
+        {
+          _args = [
+            "QT_QPA_PLATFORMTHEME"
+            "qt6ct"
+          ];
+        }
+      ];
+
+      # TODO: Check whether Mako works
+      on = {
+        _args = [
+          "hyprland.start"
+          (mkLuaInline ''
+            function()
+              -- hl.exec_cmd("mako &")
+              hl.exec_cmd("noctalia &")
+              hl.exec_cmd("wl-paste --type text --watch cliphist store")
+              hl.exec_cmd("wl-paste --type image --watch cliphist store")
+            end'')
+        ];
+      };
+    };
   };
 }

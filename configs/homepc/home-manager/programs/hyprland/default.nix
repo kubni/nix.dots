@@ -2,46 +2,62 @@
   pkgs,
   lib,
   hyprland,
-  hyprsplit,
   ...
 }:
 
 {
 
   imports = [ ./hyprpaper.nix ];
+
   wayland.windowManager.hyprland = {
+    extraLuaFiles."bindings-homepc" = {
+      content = ./lua/bindings-homepc.lua;
+      autoLoad = true;
+    };
+
     settings = {
       monitor = [
-        "DP-2,2560x1440@74.97,auto,auto"
-        "HDMI-A-1,preferred,auto-left,auto"
+        {
+          output = "DP-2";
+          mode = "2560x1440@74.97";
+          position = "auto";
+          scale = "auto";
+        }
+        {
+          output = "HDMI-A-1";
+          mode = "preferred";
+          position = "auto-left";
+          scale = "auto";
+        }
       ];
 
-      input = {
-        touchpad = {
+      config = {
+        input.touchpad = {
           natural_scroll = false;
-          tap-to-click = true;
         };
+
+        general.allow_tearing = true;
+
+        misc.force_default_wallpaper = 0;
       };
 
-      general.allow_tearing = true;
-      windowrule = [
-        "match:class cs2, immediate on"
-        "match:class horizonzerodawnremastered.exe, immediate on"
+      window_rule = [
+        {
+          name = "immediate-cs2";
+          match.class = "cs2";
+          immediate = true;
+        }
+        {
+          name = "immediate-horizonzerodawn";
+          match.class = "horizonzerodawnremastered.exe";
+          immediate = true;
+        }
       ];
-
-      misc = {
-        force_default_wallpaper = "0";
-      };
 
       device = {
-         name = "logitech-g403-prodigy-gaming-mouse";
-         accel_profile ="flat";
-       };
-
-      bindm = [
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
-      ];
+        name = "logitech-g403-prodigy-gaming-mouse";
+        accel_profile = "flat";
+      };
     };
   };
 }

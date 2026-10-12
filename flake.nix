@@ -17,13 +17,13 @@
     };
 
     hyprland = {
-      # url = "git+https://github.com/hyprwm/Hyprland";
-      url = "git+https://github.com/hyprwm/Hyprland?rev=a11a718a45c6436abf3d6116618ebb6ae3735148";
+      url = "git+https://github.com/hyprwm/Hyprland";
+      # url = "git+https://github.com/hyprwm/Hyprland?rev=a11a718a45c6436abf3d6116618ebb6ae3735148";
     };
 
-    hyprsplit = {
-      url = "github:shezdy/hyprsplit";
-      inputs.hyprland.follows = "hyprland";
+    split-monitor-workspaces = {
+      url = "github:zjeffer/split-monitor-workspaces";
+      flake = false;
     };
 
     disko = {
@@ -46,10 +46,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # noctalia = {
+    #   url = "github:noctalia-dev/noctalia";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     claude-desktop.url = "github:aaddrick/claude-desktop-debian";
     # claude-desktop.url = "github:aaddrick/claude-desktop-debian/5dd948e96d853ed37636bc0e2368fc2665cd1104";
@@ -67,7 +67,7 @@
       home-manager,
       nvf,
       hyprland,
-      hyprsplit,
+
       disko,
       firefox-addons,
       mango,
@@ -75,7 +75,7 @@
       nixos-hardware,
       claude-desktop,
       agenix,
-      noctalia,
+      split-monitor-workspaces,
     }:
     let
       lib = nixpkgs.lib;
@@ -100,7 +100,14 @@
         }:
         lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit vars hyprland agenix; };
+          specialArgs = {
+            inherit
+              vars
+              hyprland
+              split-monitor-workspaces
+              agenix
+              ;
+          };
           modules = [
             ./configs/${hostname}/configuration.nix
             # ./configs/${hostname}/disko.nix
@@ -120,13 +127,12 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit hyprland hyprsplit firefox-addons; };
+              home-manager.extraSpecialArgs = { inherit hyprland firefox-addons split-monitor-workspaces; };
               home-manager.backupFileExtension = "backup";
               home-manager.users.nikola = {
                 imports = [
                   ./configs/${hostname}/home-manager
                   mango.hmModules.mango
-                  noctalia.homeModules.default
                 ];
               };
             }

@@ -18,7 +18,6 @@
 
       brightness = {
         enable_ddcutil = true;
-
         monitor.DP-2.backend = "ddcutil";
         monitor.HDMI-A-1.backend = "backlight";
       };
@@ -32,7 +31,7 @@
           margin_ends = 0;
           scale = 1.5;
           thickness = 60;
-          corner_radius = 0;
+          radius = 0;
           # background_opacity = 0.0;
 
           start = [
@@ -41,8 +40,12 @@
             "notifications"
           ];
 
-          center = [ "workspaces" ];
-
+          center = [
+            {
+              type = "workspaces";
+              show_all_outputs = true;
+            }
+          ];
           end = [
             "media"
             "clipboard"
