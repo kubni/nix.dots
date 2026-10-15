@@ -22,6 +22,10 @@
         monitor.HDMI-A-1.backend = "backlight";
       };
 
+      widget.workspaces = {
+        hide_when_empty = true;
+      };
+
       bar = {
         main = {
           position = "right";
@@ -40,12 +44,7 @@
             "notifications"
           ];
 
-          center = [
-            {
-              type = "workspaces";
-              show_all_outputs = true;
-            }
-          ];
+          center = [ "workspaces" ];
           end = [
             "media"
             "clipboard"
