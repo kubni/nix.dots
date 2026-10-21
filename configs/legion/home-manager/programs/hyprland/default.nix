@@ -35,7 +35,6 @@
       config = {
         input.touchpad = {
           natural_scroll = false;
-          tap-to-click = true;
         };
 
         general.allow_tearing = true;

@@ -21,6 +21,7 @@
   networking = {
     hostName = "legion";
     hostId = "781678cc";
+    nameservers = [ "1.1.1.1" ];
     nftables.enable = true;
     firewall = {
       enable = true;
